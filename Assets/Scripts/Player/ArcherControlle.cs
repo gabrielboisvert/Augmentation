@@ -13,7 +13,9 @@ public class ArcherControlle : MonoBehaviour
     private Coroutine rotationAnimeCoro;
     private GameObject visibleFist;
     private bool isShooting = false;
+    private bool isGrappling = false;
     private float shootTimer;
+    private GameObject grabbedBlock;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -23,7 +25,10 @@ public class ArcherControlle : MonoBehaviour
     public GameObject leftFist;
     public GameObject rightFist;
     public GameObject arrow;
+    public GameObject grappinVisual;
     public float shootCooldown = 0.5f;
+    public LayerMask mask;
+    public float grabSpeed = 10;
 
     void Start()
     {
@@ -31,12 +36,44 @@ public class ArcherControlle : MonoBehaviour
         this.visibleFist = rightFist;
     }
 
+    private void Update()
+    {
+        if (this.grabbedBlock != null)
+        {
+            //Interpolate
+            Vector3 newPos = Vector3.MoveTowards(this.transform.position, this.grabbedBlock.transform.position, this.grabSpeed * Time.deltaTime);
+            this.transform.position = newPos;
+
+            this.GetComponent<Collider>().isTrigger = true;
+            this.body.isKinematic = true;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (this.grabbedBlock != null)
+            return;
+
         if (this.isShooting)
             this.Shoot();
 
+        RotateArmsUpdate();
+
+        this.body.velocity = new Vector3(Mathf.Clamp(this.body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
+
+        if (this.joystickSide == this.prevWallNormal.x)
+            return;
+
+        if (this.rotationAnimeCoro != null)
+            return;
+
+        Vector3 force = -this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime);
+        this.body.AddRelativeForce(force, ForceMode.VelocityChange);
+    }
+
+    private void RotateArmsUpdate()
+    {
         float angle = 180 - (Mathf.Atan2(this.armRotation.x, this.armRotation.y) * Mathf.Rad2Deg);
         this.visibleFist.transform.rotation = Quaternion.Euler(0, 0, angle);
 
@@ -53,17 +90,16 @@ public class ArcherControlle : MonoBehaviour
             this.visibleFist = this.rightFist;
         }
 
-
-        this.body.velocity = new Vector3(Mathf.Clamp(this.body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
-
-        if (this.joystickSide == this.prevWallNormal.x)
-            return;
-
-        if (this.rotationAnimeCoro != null)
-            return;
-
-        Vector3 force = -this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime);
-        this.body.AddRelativeForce(force, ForceMode.VelocityChange);
+        //Show Calculate grap
+        if (this.isGrappling)
+        {
+            RaycastHit hit;
+            Debug.DrawRay(this.visibleFist.transform.position, -this.visibleFist.transform.up * 2000, Color.yellow);
+            if (Physics.Raycast(this.visibleFist.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
+            {
+                //Show visual here
+            }
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -136,7 +172,22 @@ public class ArcherControlle : MonoBehaviour
         if (collision.gameObject.CompareTag("ground"))
             this.prevWallNormal = Vector3.zero;
     }
+    public void Grappling(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            this.isGrappling = true;
+        }
+        else if (context.canceled)
+        {
+            this.isGrappling = false;
 
+            RaycastHit hit;
+            if (Physics.Raycast(this.visibleFist.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
+                if (hit.collider.gameObject.CompareTag("GrabBlock"))
+                    this.grabbedBlock = hit.collider.gameObject;
+        }
+    }
     public void RangeAttack(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -159,6 +210,16 @@ public class ArcherControlle : MonoBehaviour
         {
             this.shootTimer = Time.time;
             Instantiate(this.arrow, this.visibleFist.transform.position, this.visibleFist.transform.rotation);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GrabBlock"))
+        {
+            this.grabbedBlock = null;
+            this.GetComponent<Collider>().isTrigger = false;
+            this.body.isKinematic = false;
         }
     }
 }

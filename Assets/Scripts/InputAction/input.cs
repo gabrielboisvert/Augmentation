@@ -81,6 +81,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Grappling"",
+                    ""type"": ""Button"",
+                    ""id"": ""67c5e118-cce2-4d44-a75f-ec250a58ed4b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -372,6 +380,17 @@ public class @Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""93dbb12e-d045-497a-9f2e-e546a900b0fa"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arms"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3f3c0c93-0a96-424c-b09e-11b81f96020a"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -389,6 +408,28 @@ public class @Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08ee241d-2370-48bc-98cf-c9fd70f18543"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grappling"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce088513-71b9-441b-a716-41efed1552b7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grappling"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -468,6 +509,7 @@ public class @Input : IInputActionCollection, IDisposable
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         m_Player_Arms = m_Player.FindAction("Arms", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Grappling = m_Player.FindAction("Grappling", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -525,6 +567,7 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Shield;
     private readonly InputAction m_Player_Arms;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Grappling;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -537,6 +580,7 @@ public class @Input : IInputActionCollection, IDisposable
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputAction @Arms => m_Wrapper.m_Player_Arms;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Grappling => m_Wrapper.m_Player_Grappling;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -570,6 +614,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Grappling.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
+                @Grappling.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
+                @Grappling.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -598,6 +645,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Grappling.started += instance.OnGrappling;
+                @Grappling.performed += instance.OnGrappling;
+                @Grappling.canceled += instance.OnGrappling;
             }
         }
     }
@@ -657,5 +707,6 @@ public class @Input : IInputActionCollection, IDisposable
         void OnShield(InputAction.CallbackContext context);
         void OnArms(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnGrappling(InputAction.CallbackContext context);
     }
 }
