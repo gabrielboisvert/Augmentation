@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4194115487040724483}
   m_Layer: 0
   m_Name: WallPL_3x5_V2
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
