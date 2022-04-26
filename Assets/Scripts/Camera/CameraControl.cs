@@ -11,8 +11,14 @@ public class CameraControl : MonoBehaviour
     private BoxCollider collider;
     private bool canMoveX;
     private float oldX;
+
     private bool canMoveY;
     private float oldY;
+
+    public float speed = 10;
+
+    private Vector3 velocity = Vector3.zero;
+
     public Vector3 EdgeDetectorSize { get => edgeDetectorSize; set => edgeDetectorSize = value; }
     void Start()
     {
