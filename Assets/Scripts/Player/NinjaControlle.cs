@@ -22,7 +22,7 @@ public class NinjaControlle : MonoBehaviour
 
 
     public float movementSpeed = 50;
-    public float jumpForce = 10;
+    public float jumpForce = 6.5f;
     public float maxMovementSpeed = 5;
     public float maxJumpSpeed = 10;
     public float WallJumpForceX = 10;
@@ -73,8 +73,6 @@ public class NinjaControlle : MonoBehaviour
                 this.tmpInput = 1;
             else
                 this.tmpInput = 0;
-
-            Debug.Log("block");
         }
     }
 

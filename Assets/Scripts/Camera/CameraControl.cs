@@ -6,6 +6,7 @@ public class CameraControl : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private Vector3 edgeDetectorSize;
+    public float yAddition = 2;
     private float zAway;
 
     private BoxCollider collider;
@@ -39,7 +40,7 @@ public class CameraControl : MonoBehaviour
         // Camera position
         Vector3 newPos = new Vector3(this.oldX, this.oldY, this.zAway);
         if (this.canMoveY)
-            newPos.y = this.oldY = player.transform.position.y;
+            newPos.y = this.oldY = player.transform.position.y + this.yAddition;
         if (this.canMoveX)
             newPos.x = this.oldX = player.transform.position.x;
         this.transform.position = newPos;
