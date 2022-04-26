@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,6 +206,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d9bf2aa0-715b-4bdd-ab27-6c62c346b575
     m_ActionName: Player/Jump[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 549819602}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: Slide
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: 88f778e7-16db-4063-83bb-830129fee059
+    m_ActionName: Player/Slide[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -220,11 +236,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 549819600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f840f44c583fa438ea2b8e929df198, type: 3}
+  m_Script: {fileID: 11500000, guid: 54b734c60f29dc64b8d9890143095209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  jumpForce: 2
+  speed: 50
+  jumpForce: 10
+  maxSpeed: 3
+  WallJumpForceX: 10
+  userSlideDrag: 3.5
+  slideSpeed: 50
 --- !u!54 &549819603
 Rigidbody:
   m_ObjectHideFlags: 0
