@@ -11,6 +11,7 @@ public class KnightControlle : MonoBehaviour
     private float orientation = 1;
     private Vector3 prevWallNormal = Vector3.zero;
     private Coroutine rotationAnimeCoro;
+    private Coroutine attackCoro;
     private bool hasShield = false;
     private bool isChargeAttack = false;
 
@@ -18,15 +19,15 @@ public class KnightControlle : MonoBehaviour
     public float jumpForce = 6.5f;
     public float maxMovementSpeed = 5;
     public float maxJumpSpeed = 10;
+    public float dashSpeed = 400;
     public float rotationSpeed = 700;
     public GameObject Shield;
-    public GameObject[] fists;
+    public GameObject attackRange;
 
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
-        for (int i = 0; i < fists.Length; i++)
-            fists[i].GetComponent<MeshCollider>().enabled = false;
+        this.attackRange.SetActive(false);
     }
 
     // Update is called once per frame
@@ -117,16 +118,24 @@ public class KnightControlle : MonoBehaviour
 
     public void MeleAttack(InputAction.CallbackContext context)
     {
+        if (this.attackCoro != null)
+            return;
+
         if (context.started || context.performed)
             return;
 
         if (this.isChargeAttack)
             return;
 
+        this.attackRange.SetActive(true);
+        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
     }
 
     public void ChargeAttack(InputAction.CallbackContext context)
     {
+        if (this.attackCoro != null)
+            return;
+
         if (context.performed)
         {
             this.isChargeAttack = true;
@@ -136,7 +145,22 @@ public class KnightControlle : MonoBehaviour
             if (this.isChargeAttack)
             {
                 StartCoroutine(this.DisableCharge());
+                StartCoroutine(this.StopSlide(0.2f));
+                this.attackRange.SetActive(true);
+                this.attackCoro = StartCoroutine(this.DisableAttack(0.5f));
             }
+        }
+    }
+
+    IEnumerator StopSlide(float duration)
+    {
+        float elapse = 0;
+        while (elapse < duration)
+        {
+            elapse += Time.deltaTime;
+            this.body.AddForce(new Vector3(this.orientation * this.dashSpeed * Time.deltaTime, 0, 0), ForceMode.Impulse);
+
+            yield return null;
         }
     }
 
@@ -144,5 +168,13 @@ public class KnightControlle : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         this.isChargeAttack = false;
+    }
+
+    IEnumerator DisableAttack(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        this.attackRange.SetActive(false);
+
+        this.attackCoro = null;
     }
 }

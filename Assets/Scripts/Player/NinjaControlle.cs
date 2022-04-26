@@ -19,6 +19,7 @@ public class NinjaControlle : MonoBehaviour
     private Vector3 prevWallNormal = Vector3.zero;
     private float joystickSide = 0;
     private Coroutine rotationAnimeCoro;
+    private Coroutine attackCoro;
 
 
     public float movementSpeed = 50;
@@ -29,12 +30,14 @@ public class NinjaControlle : MonoBehaviour
     public float userSlideDrag = 3.5f;
     public float dashSpeed = 400;
     public float rotationSpeed = 700;
+    public GameObject attackRange;
 
 
     // Start is called before the first frame update
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
+        this.attackRange.SetActive(false);
     }
 
     // Update is called once per frame
@@ -146,7 +149,6 @@ public class NinjaControlle : MonoBehaviour
         {
             this.orientation = this.joystickSide;
             rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
-            
         }
     }
 
@@ -236,6 +238,21 @@ public class NinjaControlle : MonoBehaviour
 
     public void MeleAttack(InputAction.CallbackContext context)
     {
-        
+        if (this.attackCoro != null)
+            return;
+
+        if (context.started || context.performed)
+            return;
+
+        this.attackRange.SetActive(true);
+        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
+    }
+
+    IEnumerator DisableAttack(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        this.attackRange.SetActive(false);
+
+        this.attackCoro = null;
     }
 }
