@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class KnightControlle : MonoBehaviour
+public class ArcherControlle : MonoBehaviour
 {
     private Rigidbody body;
     private bool canJump = true;
@@ -11,49 +10,16 @@ public class KnightControlle : MonoBehaviour
     private float orientation = 1;
     private Vector3 prevWallNormal = Vector3.zero;
     private Coroutine rotationAnimeCoro;
-    private Coroutine attackCoro;
-    private bool hasShield = false;
-    private bool isChargeAttack = false;
-    private float shieldTimer;
-    private float shieldCooldownTimer;
-    private bool isShieldCooldown = false;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
     public float maxMovementSpeed = 5;
     public float maxJumpSpeed = 10;
-    public float dashSpeed = 400;
     public float rotationSpeed = 700;
-    public GameObject attackRange;
-    public float shieldDuration = 1;
-    public float shieldCooldown = 2;
 
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
-        this.attackRange.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (this.hasShield)
-        {
-            if (Time.time - this.shieldTimer > this.shieldDuration)
-            {
-                this.hasShield = false;
-                this.shieldCooldownTimer = Time.time;
-                isShieldCooldown = true;
-            }
-        }
-
-        if (this.isShieldCooldown)
-        {
-            if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
-            {
-                this.isShieldCooldown = false;
-                Debug.Log("shield ready");
-            }
-        }
     }
 
     // Update is called once per frame
@@ -121,12 +87,8 @@ public class KnightControlle : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("ground"))
-        {
             if (collision.GetContact(0).normal == Vector3.up)
                 this.canJump = true;
-        }
-        else if (this.hasShield)
-            return;
     }
 
     public void OnCollisionStay(Collision collision)
@@ -146,83 +108,13 @@ public class KnightControlle : MonoBehaviour
             this.prevWallNormal = Vector3.zero;
     }
 
-    public void MeleAttack(InputAction.CallbackContext context)
+    public void RangeAttack(InputAction.CallbackContext context)
     {
-        if (this.attackCoro != null)
-            return;
 
-        if (context.started || context.performed)
-            return;
-
-        if (this.isChargeAttack)
-            return;
-
-        this.attackRange.SetActive(true);
-        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
     }
 
-    public void ChargeAttack(InputAction.CallbackContext context)
+    public void RotateArm(InputAction.CallbackContext context)
     {
-        if (this.attackCoro != null)
-            return;
-
-        if (context.performed)
-        {
-            this.isChargeAttack = true;
-        }
-        else if (context.canceled)
-        {
-            if (this.isChargeAttack)
-            {
-                StartCoroutine(this.DisableCharge());
-                StartCoroutine(this.StopSlide(0.2f));
-                this.attackRange.SetActive(true);
-                this.attackCoro = StartCoroutine(this.DisableAttack(0.5f));
-            }
-        }
-    }
-
-    IEnumerator StopSlide(float duration)
-    {
-        float elapse = 0;
-        while (elapse < duration)
-        {
-            elapse += Time.deltaTime;
-            this.body.AddForce(new Vector3(this.orientation * this.dashSpeed * Time.deltaTime, 0, 0), ForceMode.Impulse);
-
-            yield return null;
-        }
-    }
-
-    IEnumerator DisableCharge()
-    {
-        yield return new WaitForSeconds(0.5f);
-        this.isChargeAttack = false;
-    }
-
-    IEnumerator DisableAttack(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        this.attackRange.SetActive(false);
-
-        this.attackCoro = null;
-    }
-
-    public void Shield(InputAction.CallbackContext context)
-    {
-        if (this.isShieldCooldown)
-            return;
-
-        if (context.started)
-        {
-            this.shieldTimer = Time.time;
-            this.hasShield = true;
-        }
-        else if (context.canceled)
-        {
-            this.hasShield = false;
-            this.shieldCooldownTimer = Time.time;
-            this.isShieldCooldown = true;
-        }
+        
     }
 }
