@@ -271,6 +271,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ceab81d880395e7489f10b2ec5cd2473, type: 3}
   m_PrefabInstance: {fileID: 51128685}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &84539586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2040542448765327740, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+  m_PrefabInstance: {fileID: 765635838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109534308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e3c94636d91c4342bacc541994c64be, type: 3}
@@ -326,6 +331,10 @@ MonoBehaviour:
   maxMovementSpeed: 5
   maxJumpSpeed: 10
   rotationSpeed: 700
+  leftFist: {fileID: 565448186}
+  rightFist: {fileID: 84539586}
+  arrow: {fileID: 7946161788436268249, guid: 542adbb3c6fb92c45957a956e3cb6222, type: 3}
+  shootCooldown: 0.5
 --- !u!114 &564311241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,9 +409,37 @@ MonoBehaviour:
     m_ActionId: 543137a1-7921-4769-8f3d-8e80fe51905f
     m_ActionName: Player/Shield[/DualShock4GamepadHID/rightShoulder,/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 564311240}
+        m_TargetAssemblyTypeName: ArcherControlle, Assembly-CSharp
+        m_MethodName: RotateArm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f6bca448-164f-477b-96ae-73b48d9acce3
     m_ActionName: Player/Arms
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 564311240}
+        m_TargetAssemblyTypeName: ArcherControlle, Assembly-CSharp
+        m_MethodName: RangeAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a7138380-ab08-47c9-a739-9eead75efe18
+    m_ActionName: Player/Shoot[/Mouse/leftButton,/DualShock4GamepadHID/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -437,6 +474,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!1 &565448186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9157943139577863650, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+  m_PrefabInstance: {fileID: 765635838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &610142849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,13 +766,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4620282718447106903, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
       propertyPath: m_Name
       value: ArcherCharact
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040542448765327740, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_Name
+      value: rightFist
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040542448765327740, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564783574603935192, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587788796799408565, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373755574485294491, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562889748348933850, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750397243111347764, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536400945726557719, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157943139577863650, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_Name
+      value: leftFist
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157943139577863650, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
@@ -1994,7 +2084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00082e25eb6b9aa4c9663df0d5b5a00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 564311238}
+  player: {fileID: 1688659306}
   edgeDetectorSize: {x: 0, y: 0, z: 0}
   yAddition: 2
   speed: 10
@@ -2256,6 +2346,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 64b3206026f7a9e4f8022c66c924b0f8, type: 3}
   m_PrefabInstance: {fileID: 1593507785}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1688659306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5043161537080613220, guid: 7f223fc037a586640a46d2829fc58c39, type: 3}
+  m_PrefabInstance: {fileID: 5277516601906044713}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1688659307 stripped
 Transform:
@@ -2799,6 +2894,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
 --- !u!1001 &5277516601906044713
@@ -2814,7 +2913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043161537080613220, guid: 7f223fc037a586640a46d2829fc58c39, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043161537080613220, guid: 7f223fc037a586640a46d2829fc58c39, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5672063957736227806, guid: 7f223fc037a586640a46d2829fc58c39, type: 3}
       propertyPath: m_RootOrder

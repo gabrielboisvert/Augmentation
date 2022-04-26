@@ -7,9 +7,8 @@ public class MeleAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("ground"))
-        {
-            Destroy(other.gameObject);
-        }
+        if (other.GetComponentInParent<KnightControlle>() != null)
+            if (!other.CompareTag("ground"))
+                Destroy(other.gameObject);
     }
 }

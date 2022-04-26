@@ -68,8 +68,16 @@ public class @Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Arms"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""f6bca448-164f-477b-96ae-73b48d9acce3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7138380-ab08-47c9-a739-9eead75efe18"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -352,59 +360,37 @@ public class @Input : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""2dbf8b1a-e82d-4b5f-95c9-612ec5996611"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""092ca0a8-221a-428c-98b9-d20e875ae2fd"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Arms"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""08dcde4f-232d-442a-8bc8-3593e2d427e2"",
-                    ""path"": """",
+                    ""name"": """",
+                    ""id"": ""3f3c0c93-0a96-424c-b09e-11b81f96020a"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arms"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""448fa626-716a-4a8c-9c3d-cb2ea465ef2a"",
-                    ""path"": """",
+                    ""name"": """",
+                    ""id"": ""6190f340-39c9-4f99-8c73-9d44e3c970af"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arms"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""27e5524f-73b6-4f65-a3b1-fc0543026289"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Arms"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""3369699c-0a0e-4117-b57e-5ca83b408db2"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Arms"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -481,6 +467,7 @@ public class @Input : IInputActionCollection, IDisposable
         m_Player_ChargeAttack = m_Player.FindAction("ChargeAttack", throwIfNotFound: true);
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         m_Player_Arms = m_Player.FindAction("Arms", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,6 +524,7 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ChargeAttack;
     private readonly InputAction m_Player_Shield;
     private readonly InputAction m_Player_Arms;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -548,6 +536,7 @@ public class @Input : IInputActionCollection, IDisposable
         public InputAction @ChargeAttack => m_Wrapper.m_Player_ChargeAttack;
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputAction @Arms => m_Wrapper.m_Player_Arms;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -578,6 +567,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Arms.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnArms;
                 @Arms.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnArms;
                 @Arms.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnArms;
+                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -603,6 +595,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Arms.started += instance.OnArms;
                 @Arms.performed += instance.OnArms;
                 @Arms.canceled += instance.OnArms;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -661,5 +656,6 @@ public class @Input : IInputActionCollection, IDisposable
         void OnChargeAttack(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnArms(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
