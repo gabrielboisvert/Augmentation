@@ -46,8 +46,8 @@ MonoBehaviour:
   maxMovementSpeed: 5
   maxJumpSpeed: 10
   rotationSpeed: 700
-  leftFist: {fileID: 7694758288240595076}
-  rightFist: {fileID: 688980017879847962}
+  leftFist: {fileID: 5656169109443663875}
+  rightFist: {fileID: 2199035111776679055}
   arrow: {fileID: 7946161788436268249, guid: 542adbb3c6fb92c45957a956e3cb6222, type: 3}
   grappinVisual: {fileID: 0}
   shootCooldown: 0.5
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
       propertyPath: m_Name
-      value: ArcherCharact Variant
+      value: ArcherCharact
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
       propertyPath: m_IsActive
@@ -295,13 +295,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
   m_PrefabInstance: {fileID: 1575918087772917094}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &688980017879847962 stripped
+--- !u!1 &5656169109443663875 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2040542448765327740, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6602407830735295845, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
   m_PrefabInstance: {fileID: 1575918087772917094}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7694758288240595076 stripped
+--- !u!1 &2199035111776679055 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9157943139577863650, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 818040975138896361, guid: ae4bf5c5b3c6e454285b45a3bc43c1fd, type: 3}
   m_PrefabInstance: {fileID: 1575918087772917094}
   m_PrefabAsset: {fileID: 0}

@@ -127,9 +127,15 @@ public class ArcherControlle : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
+            {
                 transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+                this.visibleFist = this.rightFist;
+            }
             else
+            {
                 transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+                this.visibleFist = this.leftFist;
+            }
 
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
@@ -201,7 +207,16 @@ public class ArcherControlle : MonoBehaviour
 
     public void RotateArm(InputAction.CallbackContext context)
     {
-        armRotation = context.ReadValue<Vector2>();
+        bool isMouse = context.control.device is Mouse;
+        bool isGamepad = context.control.device is Gamepad;
+
+        if (isMouse)
+        {
+            Vector2 pos = context.ReadValue<Vector2>();
+            armRotation = new Vector2(Mathf.Clamp(pos.x, -1, 1), Mathf.Clamp(pos.y, -1, 1));
+        }
+        else
+            armRotation = context.ReadValue<Vector2>();
     }
 
     public void Shoot()
