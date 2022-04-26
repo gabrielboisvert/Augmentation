@@ -18,7 +18,8 @@ public class NinjaControlle : MonoBehaviour
     private GameObject prevWall;
     private Vector3 prevWallNormal = Vector3.zero;
     private float joystickSide = 0;
-
+    private Coroutine rotationAnimeCoro;
+    private Coroutine attackCoro;
 
 
     public float movementSpeed = 50;
@@ -27,13 +28,16 @@ public class NinjaControlle : MonoBehaviour
     public float maxJumpSpeed = 10;
     public float WallJumpForceX = 10;
     public float userSlideDrag = 3.5f;
-    public float dashSpeed = 10;
+    public float dashSpeed = 400;
+    public float rotationSpeed = 700;
+    public GameObject attackRange;
 
 
     // Start is called before the first frame update
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
+        this.attackRange.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,7 +53,11 @@ public class NinjaControlle : MonoBehaviour
         if (this.joystickSide == this.prevWallNormal.x)
             return;
 
-        this.body.AddRelativeForce(new Vector3(this.joystickSide * this.movementSpeed * Time.fixedDeltaTime, 0, 0), ForceMode.VelocityChange);
+        if (this.rotationAnimeCoro != null)
+            return;
+
+        Vector3 force = -this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime);
+        this.body.AddRelativeForce(force, ForceMode.VelocityChange);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -59,9 +67,17 @@ public class NinjaControlle : MonoBehaviour
         if (!this.blockInput)
         {
             if (direct.x < 0)
+            {
                 this.joystickSide = this.tmpInput = this.orientation = -1;
+                if (this.rotationAnimeCoro == null)
+                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            }
             else if (direct.x > 0)
+            {
                 this.joystickSide = this.tmpInput = this.orientation = 1;
+                if (this.rotationAnimeCoro == null)
+                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            }
             else
                 this.joystickSide = this.tmpInput = 0;
         }
@@ -76,6 +92,24 @@ public class NinjaControlle : MonoBehaviour
         }
     }
 
+    IEnumerator RotateAnimation()
+    {
+        while (true)
+        {
+            if (this.orientation == 1)
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+            else
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+
+            if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
+                break;
+
+            yield return null;
+        }
+
+        this.rotationAnimeCoro = null;
+    }
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.started || (!this.canJump && !this.canDoubleJump))
@@ -83,8 +117,10 @@ public class NinjaControlle : MonoBehaviour
 
         if (this.onWall)
         {
-            this.orientation *= -1;
-            this.body.AddForce(new Vector3(this.orientation * this.WallJumpForceX, this.jumpForce, 0), ForceMode.Impulse);
+            Vector3 jump = -this.transform.right * this.orientation * this.WallJumpForceX;
+            jump.y = this.jumpForce;
+
+            this.body.AddForce(jump, ForceMode.Impulse);
             StartCoroutine(this.RestoreJoystick(0.5f));
         }
         else
@@ -108,6 +144,12 @@ public class NinjaControlle : MonoBehaviour
         yield return new WaitForSeconds(duration);
         this.joystickSide = this.tmpInput;
         this.blockInput = false;
+
+        if (this.joystickSide != this.orientation && this.joystickSide != 0)
+        {
+            this.orientation = this.joystickSide;
+            rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -125,6 +167,15 @@ public class NinjaControlle : MonoBehaviour
                     this.canJump = this.canDoubleJump = true;
                     this.inTheAirDash = false;
                     this.inTheAir = false;
+                    this.orientation = collision.GetContact(0).normal.x;
+
+                    if (this.orientation == 1)
+                        this.transform.rotation = Quaternion.Euler(0, 90, 0);
+                    else
+                        this.transform.rotation = Quaternion.Euler(0, 270, 0);
+
+                    if (this.hasDash)
+                        this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
                 }
     }
 
@@ -183,5 +234,25 @@ public class NinjaControlle : MonoBehaviour
         }
 
         this.hasDash = false;
+    }
+
+    public void MeleAttack(InputAction.CallbackContext context)
+    {
+        if (this.attackCoro != null)
+            return;
+
+        if (context.started || context.performed)
+            return;
+
+        this.attackRange.SetActive(true);
+        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
+    }
+
+    IEnumerator DisableAttack(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        this.attackRange.SetActive(false);
+
+        this.attackCoro = null;
     }
 }
