@@ -2665,6 +2665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 713815617}
   edgeDetectorSize: {x: 0, y: 0, z: 0}
+  yAddition: 2
   speed: 10
 --- !u!1001 &1446535300
 PrefabInstance:
@@ -3091,7 +3092,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 87fd708f6becff644a8d80aa2acacfeb, type: 2}
+      objectReference: {fileID: 2100000, guid: 7b83e99efa85c8847bea03e5ab2382cd, type: 2}
     - target: {fileID: 919132149155446097, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
       propertyPath: m_Name
       value: Spike (1)
@@ -3227,6 +3228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b83e99efa85c8847bea03e5ab2382cd, type: 2}
     - target: {fileID: 919132149155446097, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
       propertyPath: m_Name
       value: Spike
@@ -4190,7 +4195,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 87fd708f6becff644a8d80aa2acacfeb, type: 2}
+      objectReference: {fileID: 2100000, guid: 7b83e99efa85c8847bea03e5ab2382cd, type: 2}
     - target: {fileID: 919132149155446097, guid: a205e25f51d91054eb9bb7b373dc7353, type: 3}
       propertyPath: m_Name
       value: Spike (2)
