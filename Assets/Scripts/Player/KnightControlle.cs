@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor.Animations;
 
 public class KnightControlle : MonoBehaviour
 {
@@ -17,6 +17,9 @@ public class KnightControlle : MonoBehaviour
     private float shieldTimer;
     private float shieldCooldownTimer;
     private bool isShieldCooldown = false;
+    private Animation anim;
+    private AnimationClip current;
+    private float chargeTime;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -32,6 +35,11 @@ public class KnightControlle : MonoBehaviour
     {
         this.body = this.GetComponent<Rigidbody>();
         this.attackRange.SetActive(false);
+
+        this.anim = this.GetComponent<Animation>();
+
+        anim.clip = this.current = anim.GetClip("Idle");
+        anim.Play();
     }
 
     private void Update()
@@ -53,6 +61,29 @@ public class KnightControlle : MonoBehaviour
                 this.isShieldCooldown = false;
                 Debug.Log("shield ready");
             }
+        }
+
+        if (this.joystickSide != 0)
+        {
+            if (this.current == this.anim.GetClip("Walk"))
+                return;
+
+            if (this.attackCoro != null || this.isChargeAttack)
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Walk");
+            this.anim.Play();
+        }
+        else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
+        {
+            if (this.current == this.anim.GetClip("Idle"))
+                return;
+
+            if (this.attackCoro != null || this.isChargeAttack)
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Idle");
+            this.anim.Play();
         }
     }
 
@@ -96,9 +127,9 @@ public class KnightControlle : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
-            else
                 transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+            else
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
 
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
@@ -120,7 +151,7 @@ public class KnightControlle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         {
             if (collision.GetContact(0).normal == Vector3.up)
                 this.canJump = true;
@@ -131,7 +162,7 @@ public class KnightControlle : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         {
             if (collision.GetContact(0).normal == Vector3.up)
                 this.prevWallNormal = Vector3.zero;
@@ -142,7 +173,7 @@ public class KnightControlle : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             this.prevWallNormal = Vector3.zero;
     }
 
@@ -158,7 +189,10 @@ public class KnightControlle : MonoBehaviour
             return;
 
         this.attackRange.SetActive(true);
-        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
+        this.attackCoro = StartCoroutine(this.DisableAttack(0.7f));
+        
+        this.anim.clip = this.current = this.anim.GetClip("Punch");
+        this.anim.Play();
     }
 
     public void ChargeAttack(InputAction.CallbackContext context)
@@ -169,15 +203,27 @@ public class KnightControlle : MonoBehaviour
         if (context.performed)
         {
             this.isChargeAttack = true;
+            this.chargeTime = Time.time;
+
+            this.anim.clip = this.current = this.anim.GetClip("Charge");
+            this.anim.Play();
         }
         else if (context.canceled)
         {
             if (this.isChargeAttack)
             {
-                StartCoroutine(this.DisableCharge());
+                if (Time.time - this.chargeTime < 0.65f)
+                {
+                    this.isChargeAttack = false;
+                    return;
+                }
+
                 StartCoroutine(this.StopSlide(0.2f));
                 this.attackRange.SetActive(true);
-                this.attackCoro = StartCoroutine(this.DisableAttack(0.5f));
+                this.attackCoro = StartCoroutine(this.DisableAttack(0.7f));
+
+                this.anim.clip = this.current = this.anim.GetClip("DashPunch");
+                this.anim.Play();
             }
         }
     }
@@ -194,18 +240,13 @@ public class KnightControlle : MonoBehaviour
         }
     }
 
-    IEnumerator DisableCharge()
-    {
-        yield return new WaitForSeconds(0.5f);
-        this.isChargeAttack = false;
-    }
-
     IEnumerator DisableAttack(float duration)
     {
         yield return new WaitForSeconds(duration);
         this.attackRange.SetActive(false);
 
         this.attackCoro = null;
+        this.isChargeAttack = false;
     }
 
     public void Shield(InputAction.CallbackContext context)

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f76ff3bc8ae91b04082141b264d4b4c8
+guid: f5a2d6f030b640248875db432d8259bb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
+    second: DashPunch
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,12 +35,12 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: DashPunch
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
-      lastFrame: 120
-      wrapMode: 2
+      firstFrame: 27
+      lastFrame: 48
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
