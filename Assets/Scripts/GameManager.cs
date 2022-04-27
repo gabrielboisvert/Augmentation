@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private FadeSceneTransition fade = null;
     private Spawner spawner;
 
+    public GameObject fogV;
+    private Material copyMaterial;
     public void Awake()
     {
         if (instance != null)
@@ -20,6 +22,9 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+
+            this.copyMaterial = new Material(this.fogV.GetComponent<Renderer>().sharedMaterial);
+            this.fogV.GetComponent<Renderer>().sharedMaterial = this.copyMaterial;
         }
     }
     public static GameManager Instance { get => instance; set => instance = value; }
@@ -31,5 +36,12 @@ public class GameManager : MonoBehaviour
         //sound.GetComponent<AudioSource>().outputAudioMixerGroup = mixer;
         //sound.GetComponent<AudioSource>().PlayOneShot(clip);
         //sound.GetComponent<Fx>().OnFinish();
+    }
+
+    private void Update()
+    {
+
+        //Color newColor = this.copyMaterial.color;
+        //this.fogV.GetComponent<Renderer>().sharedMaterial.SetColor("_FogColor", newColor);
     }
 }
