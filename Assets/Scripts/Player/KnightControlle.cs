@@ -19,6 +19,7 @@ public class KnightControlle : MonoBehaviour
     private Animation anim;
     private AnimationClip current;
     private float chargeTime;
+    private AudioSource src;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -29,6 +30,8 @@ public class KnightControlle : MonoBehaviour
     public GameObject attackRange;
     public float shieldDuration = 1;
     public float shieldCooldown = 2;
+    public AudioClip[] clip;
+    public AudioSource footstep;
 
     void Start()
     {
@@ -39,6 +42,8 @@ public class KnightControlle : MonoBehaviour
 
         anim.clip = this.current = anim.GetClip("Idle");
         anim.Play();
+
+        this.src = this.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -72,6 +77,8 @@ public class KnightControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Walk");
             this.anim.Play();
+
+            this.footstep.Play();
         }
         else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
         {
@@ -148,6 +155,9 @@ public class KnightControlle : MonoBehaviour
 
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
+
+        this.src.PlayOneShot(this.clip[5]);
+        this.footstep.Stop();
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -166,10 +176,14 @@ public class KnightControlle : MonoBehaviour
 
         //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         if (collision.GetContact(0).normal == Vector3.up)
-                this.canJump = true;
+        {
+            this.canJump = true;
+            this.src.PlayOneShot(this.clip[4]);
+            this.footstep.Stop();
+        }
         
-            if (this.hasShield)
-                return;
+        if (this.hasShield)
+            return;
     }
 
     public void OnCollisionStay(Collision collision)
@@ -203,6 +217,9 @@ public class KnightControlle : MonoBehaviour
         
         this.anim.clip = this.current = this.anim.GetClip("Punch");
         this.anim.Play();
+
+        this.src.PlayOneShot(this.clip[2]);
+        this.footstep.Stop();
     }
 
     public void ChargeAttack(InputAction.CallbackContext context)
@@ -217,6 +234,9 @@ public class KnightControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Charge");
             this.anim.Play();
+
+            this.src.PlayOneShot(this.clip[6]);
+            this.footstep.Stop();
         }
         else if (context.canceled)
         {
@@ -225,6 +245,7 @@ public class KnightControlle : MonoBehaviour
                 if (Time.time - this.chargeTime < 0.65f)
                 {
                     this.isChargeAttack = false;
+                    this.src.Stop();
                     return;
                 }
 
@@ -234,6 +255,9 @@ public class KnightControlle : MonoBehaviour
 
                 this.anim.clip = this.current = this.anim.GetClip("DashPunch");
                 this.anim.Play();
+
+                this.src.PlayOneShot(this.clip[0]);
+                this.footstep.Stop();
             }
         }
     }
