@@ -13,7 +13,8 @@ public class MeleAttack : MonoBehaviour
 
     IEnumerator DestructBlock(GameObject obj)
     {
+        GameManager.Spawner.addObj(obj);
         yield return new WaitForSeconds(0.2f);
-        Destroy(obj);
+        obj.SetActive(false);
     }
 }

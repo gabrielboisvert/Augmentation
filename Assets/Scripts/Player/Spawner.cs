@@ -6,21 +6,45 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] players;
     public GameObject player;
+    public int currentPlayer;
     public Camera cam;
+
+    private List<GameObject> destroyedObjec = new List<GameObject>();
     void Awake()
     {
         this.Respawn();
+        GameManager.Spawner = this;
     }
 
     void Respawn()
     {
-        int rand = Random.Range(0, players.Length);
+        int rand;
+        do
+        {
+            rand = Random.Range(0, players.Length);
+        } while (rand == this.currentPlayer);
 
         this.player = Instantiate(players[rand]);
+        this.currentPlayer = rand;
 
         this.player.transform.position = this.transform.position;
 
         cam.GetComponent<CameraControl>().player = this.player;
+
+        this.ResetObj();
+    }
+
+    void ResetObj()
+    {
+        for (int i = 0; i < this.destroyedObjec.Count; i++)
+            this.destroyedObjec[i].SetActive(true);
+
+        this.destroyedObjec.Clear();
+    }
+
+    public void addObj(GameObject obj)
+    {
+        this.destroyedObjec.Add(obj);
     }
 
     private void Update()

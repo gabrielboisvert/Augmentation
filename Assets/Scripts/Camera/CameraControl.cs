@@ -33,6 +33,9 @@ public class CameraControl : MonoBehaviour
     }
     void Update()
     {
+        if (player == null)
+            return;
+
         if (!this.isLerping)
             this.ChangeCameraPos();
     }
