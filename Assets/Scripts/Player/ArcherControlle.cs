@@ -128,12 +128,12 @@ public class ArcherControlle : MonoBehaviour
         {
             if (this.orientation == 1)
             {
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
                 this.visibleFist = this.rightFist;
             }
             else
             {
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
                 this.visibleFist = this.leftFist;
             }
 
@@ -151,20 +151,22 @@ public class ArcherControlle : MonoBehaviour
         if (!context.started || !this.canJump)
             return;
 
+        this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
+
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             if (collision.GetContact(0).normal == Vector3.up)
                 this.canJump = true;
     }
 
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         {
             if (collision.GetContact(0).normal == Vector3.up)
                 this.prevWallNormal = Vector3.zero;
@@ -175,7 +177,7 @@ public class ArcherControlle : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             this.prevWallNormal = Vector3.zero;
     }
     public void Grappling(InputAction.CallbackContext context)
@@ -189,7 +191,7 @@ public class ArcherControlle : MonoBehaviour
             this.isGrappling = false;
 
             RaycastHit hit;
-            if (Physics.Raycast(this.visibleFist.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
+            if (Physics.Raycast(this.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
                 if (hit.collider.gameObject.CompareTag("GrabBlock"))
                     this.grabbedBlock = hit.collider.gameObject;
         }
@@ -207,16 +209,16 @@ public class ArcherControlle : MonoBehaviour
 
     public void RotateArm(InputAction.CallbackContext context)
     {
-        bool isMouse = context.control.device is Mouse;
-        bool isGamepad = context.control.device is Gamepad;
+        //bool isMouse = context.control.device is Mouse;
+        //bool isGamepad = context.control.device is Gamepad;
 
-        if (isMouse)
-        {
-            Vector2 pos = context.ReadValue<Vector2>();
-            armRotation = new Vector2(Mathf.Clamp(pos.x, -1, 1), Mathf.Clamp(pos.y, -1, 1));
-        }
-        else
-            armRotation = context.ReadValue<Vector2>();
+        //if (isMouse)
+        //{
+        //    Vector2 pos = context.ReadValue<Vector2>();
+        //    armRotation = new Vector2(Mathf.Clamp(pos.x, -1, 1), Mathf.Clamp(pos.y, -1, 1));
+        //}
+        //else
+        armRotation = context.ReadValue<Vector2>();
     }
 
     public void Shoot()

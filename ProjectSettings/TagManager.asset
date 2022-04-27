@@ -8,6 +8,7 @@ TagManager:
   - Top
   - ground
   - GrabBlock
+  - DestructibleBlock
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

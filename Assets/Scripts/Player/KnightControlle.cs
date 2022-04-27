@@ -145,6 +145,8 @@ public class KnightControlle : MonoBehaviour
         if (!context.started || !this.canJump)
             return;
 
+        this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
+
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
     }

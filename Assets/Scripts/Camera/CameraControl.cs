@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private Vector3 edgeDetectorSize;
+    public GameObject player;
+    public Vector3 edgeDetectorSize;
     public float yAddition = 2;
     private float zAway;
 
@@ -18,7 +18,7 @@ public class CameraControl : MonoBehaviour
 
     public float speed = 10;
 
-    private Vector3 velocity = Vector3.zero;
+    private bool isLerping = false;
 
     public Vector3 EdgeDetectorSize { get => edgeDetectorSize; set => edgeDetectorSize = value; }
     void Start()
@@ -33,7 +33,8 @@ public class CameraControl : MonoBehaviour
     }
     void Update()
     {
-        this.ChangeCameraPos();
+        if (!this.isLerping)
+            this.ChangeCameraPos();
     }
     private void ChangeCameraPos()
     {
@@ -63,5 +64,29 @@ public class CameraControl : MonoBehaviour
             this.canMoveY = true;
         else if (other.gameObject.CompareTag("Edge"))
             this.canMoveX = true;
+    }
+
+    public IEnumerator StarLerp()
+    {
+        this.isLerping = true;
+
+        float speed = Mathf.Abs(Vector3.Distance(player.transform.position, transform.position) * 2);
+
+        while (true)
+        {
+            Vector3 playerPos = this.player.transform.position;
+            playerPos.y += yAddition;
+            playerPos.z = this.zAway;
+
+            Vector3 newPos = Vector3.MoveTowards(this.transform.position, playerPos, speed * Time.deltaTime);
+            this.transform.position = newPos;
+
+            if (Vector3.Distance(transform.position, playerPos) < 0.001f)
+                break;
+
+            yield return null;
+        }
+
+        this.isLerping = false;
     }
 }

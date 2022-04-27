@@ -97,9 +97,9 @@ public class NinjaControlle : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
-            else
                 transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+            else
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
 
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
@@ -114,6 +114,8 @@ public class NinjaControlle : MonoBehaviour
     {
         if (!context.started || (!this.canJump && !this.canDoubleJump))
             return;
+
+        this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
 
         if (this.onWall)
         {
@@ -154,7 +156,7 @@ public class NinjaControlle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             if (collision.GetContact(0).normal == Vector3.up)
             {
                 this.canJump = this.canDoubleJump = true;
@@ -170,9 +172,9 @@ public class NinjaControlle : MonoBehaviour
                     this.orientation = collision.GetContact(0).normal.x;
 
                     if (this.orientation == 1)
-                        this.transform.rotation = Quaternion.Euler(0, 90, 0);
-                    else
                         this.transform.rotation = Quaternion.Euler(0, 270, 0);
+                    else
+                        this.transform.rotation = Quaternion.Euler(0, 90, 0);
 
                     if (this.hasDash)
                         this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
@@ -181,7 +183,7 @@ public class NinjaControlle : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         {
             if (collision.GetContact(0).normal == Vector3.up)
             {
@@ -204,7 +206,7 @@ public class NinjaControlle : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         {
             this.prevWallNormal = Vector3.zero;
             this.onWall = false;
