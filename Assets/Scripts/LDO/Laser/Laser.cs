@@ -26,7 +26,7 @@ public class Laser : MonoBehaviour
             if (Time.time - this.restTimer > this.restDuration)
             {
                 this.on = true;
-                this.duration = Time.time;
+                this.durationTimer = Time.time;
                 this.gameObject.GetComponent<Renderer>().enabled = false;
                 this.gameObject.GetComponent<Collider>().enabled = false;
             }
@@ -41,5 +41,11 @@ public class Laser : MonoBehaviour
                 this.gameObject.GetComponent<Collider>().enabled = true;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            Destroy(other.gameObject);
     }
 }
