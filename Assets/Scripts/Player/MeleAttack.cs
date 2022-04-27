@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MeleAttack : MonoBehaviour
@@ -5,8 +6,14 @@ public class MeleAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this.GetComponentInParent<KnightControlle>() != null)
-            if (!other.CompareTag("ground"))
-                Destroy(other.gameObject);
+        if (other.CompareTag("DestructibleBlock"))
+            if (this.GetComponentInParent<KnightControlle>() != null)
+                StartCoroutine(this.DestructBlock(other.gameObject));
+    }
+
+    IEnumerator DestructBlock(GameObject obj)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(obj);
     }
 }
