@@ -89,6 +89,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f2f9791-362c-40c6-8364-e84c0e07dafd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -432,6 +440,28 @@ public class @Input : IInputActionCollection, IDisposable
                     ""action"": ""Grappling"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1aaba741-84b4-45f6-954d-3799c0d501ee"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""117565ee-91eb-44c3-a983-f993e770597b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -510,6 +540,7 @@ public class @Input : IInputActionCollection, IDisposable
         m_Player_Arms = m_Player.FindAction("Arms", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Grappling = m_Player.FindAction("Grappling", throwIfNotFound: true);
+        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -568,6 +599,7 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Arms;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Grappling;
+    private readonly InputAction m_Player_PauseMenu;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -581,6 +613,7 @@ public class @Input : IInputActionCollection, IDisposable
         public InputAction @Arms => m_Wrapper.m_Player_Arms;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Grappling => m_Wrapper.m_Player_Grappling;
+        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -617,6 +650,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Grappling.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
                 @Grappling.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
                 @Grappling.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappling;
+                @PauseMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -648,6 +684,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Grappling.started += instance.OnGrappling;
                 @Grappling.performed += instance.OnGrappling;
                 @Grappling.canceled += instance.OnGrappling;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
             }
         }
     }
@@ -708,5 +747,6 @@ public class @Input : IInputActionCollection, IDisposable
         void OnArms(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
 }
