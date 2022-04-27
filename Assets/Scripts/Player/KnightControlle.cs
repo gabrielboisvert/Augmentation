@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEditor.Animations;
 
 public class KnightControlle : MonoBehaviour
 {
@@ -153,29 +152,38 @@ public class KnightControlle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-        {
+        if (collision.gameObject.CompareTag("AI"))
             if (collision.GetContact(0).normal == Vector3.up)
+            {
+                this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
+
+                Vector3 jump = -this.transform.right * this.orientation * 5;
+                jump.y = 5;
+
+                this.body.AddForce(jump, ForceMode.Impulse);
+                return;
+            }
+
+        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
+        if (collision.GetContact(0).normal == Vector3.up)
                 this.canJump = true;
-        }
-        else if (this.hasShield)
-            return;
+        
+            if (this.hasShield)
+                return;
     }
 
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-        {
+        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             if (collision.GetContact(0).normal == Vector3.up)
                 this.prevWallNormal = Vector3.zero;
             else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
                 this.prevWallNormal = -collision.GetContact(0).normal;
-        }
     }
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
+        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
             this.prevWallNormal = Vector3.zero;
     }
 
