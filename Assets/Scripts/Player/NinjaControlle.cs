@@ -20,7 +20,8 @@ public class NinjaControlle : MonoBehaviour
     private float joystickSide = 0;
     private Coroutine rotationAnimeCoro;
     private Coroutine attackCoro;
-
+    private Animation anim;
+    private AnimationClip current;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -38,12 +39,52 @@ public class NinjaControlle : MonoBehaviour
     {
         this.body = this.GetComponent<Rigidbody>();
         this.attackRange.SetActive(false);
+
+        this.anim = this.GetComponent<Animation>();
+
+        //anim.clip = this.current = anim.GetClip("Idle");
+        //anim.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
         this.body.drag = this.onWall ? this.userSlideDrag : 0;
+
+        if (this.joystickSide != 0)
+        {
+            if (this.current == this.anim.GetClip("Ninja_run"))
+                return;
+
+            if (this.attackCoro != null)
+                return;
+
+            if (!this.canJump)
+                return;
+
+            if (this.hasDash)
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Ninja_run");
+            this.anim.Play();
+        }
+        else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
+        {
+            if (this.attackCoro != null)
+                return;
+
+            if (!this.canJump)
+                return;
+
+            if (this.hasDash)
+                return;
+
+            //if (this.current == this.anim.GetClip("Idle"))
+            //    return;
+
+            //this.anim.clip = this.current = this.anim.GetClip("Idle");
+            //this.anim.Play();
+        }
     }
 
     void FixedUpdate()
@@ -97,9 +138,9 @@ public class NinjaControlle : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
-            else
                 transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+            else
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
 
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
@@ -184,9 +225,9 @@ public class NinjaControlle : MonoBehaviour
                     this.orientation = collision.GetContact(0).normal.x;
 
                     if (this.orientation == 1)
-                        this.transform.rotation = Quaternion.Euler(0, 270, 0);
-                    else
                         this.transform.rotation = Quaternion.Euler(0, 90, 0);
+                    else
+                        this.transform.rotation = Quaternion.Euler(0, 270, 0);
 
                     if (this.hasDash)
                         this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
@@ -228,6 +269,9 @@ public class NinjaControlle : MonoBehaviour
         if (!context.started || this.onWall || this.hasDash || this.inTheAir)
             return;
 
+        this.anim.clip = this.current = this.anim.GetClip("Ninja_Slide");
+        this.anim.Play();
+
         this.hasDash = true;
         StartCoroutine(this.StopSlide(0.5f));
     }
@@ -254,6 +298,9 @@ public class NinjaControlle : MonoBehaviour
 
         if (context.started || context.performed)
             return;
+
+        this.anim.clip = this.current = this.anim.GetClip("Ninja_Attack");
+        this.anim.Play();
 
         this.attackRange.SetActive(true);
         this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));

@@ -46,6 +46,7 @@ MonoBehaviour:
   players:
   - {fileID: 1810342559501545527, guid: 3f9897b7b6758a843bd41cbcc6c30963, type: 3}
   - {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
-  - {fileID: 5043161537080613220, guid: 7f223fc037a586640a46d2829fc58c39, type: 3}
+  - {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
   player: {fileID: 0}
+  currentPlayer: 0
   cam: {fileID: 0}

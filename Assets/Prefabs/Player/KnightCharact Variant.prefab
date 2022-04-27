@@ -1062,6 +1062,8 @@ Animation:
   - {fileID: 1827226128182048838, guid: f5a2d6f030b640248875db432d8259bb, type: 3}
   - {fileID: 1827226128182048838, guid: 7bff67f3d66c8f141afaf1c0b6f8591f, type: 3}
   - {fileID: 1827226128182048838, guid: 88e48cd934eef6144b18321321314809, type: 3}
+  - {fileID: 1827226128182048838, guid: 491b4f356b2b8f34cb05d4bd8e998b85, type: 3}
+  - {fileID: 1827226128182048838, guid: 7d3438ae03d4bd94d8461ce775e2f71b, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
