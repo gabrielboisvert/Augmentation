@@ -22,6 +22,7 @@ public class NinjaControlle : MonoBehaviour
     private Coroutine attackCoro;
     private Animation anim;
     private AnimationClip current;
+    private bool isDead = false;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -49,6 +50,9 @@ public class NinjaControlle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.isDead)
+            return;
+
         this.body.drag = this.onWall ? this.userSlideDrag : 0;
 
         if (this.joystickSide != 0)
@@ -65,6 +69,9 @@ public class NinjaControlle : MonoBehaviour
             if (this.hasDash)
                 return;
 
+            if (this.onWall)
+                return;
+
             this.anim.clip = this.current = this.anim.GetClip("Ninja_run");
             this.anim.Play();
         }
@@ -79,6 +86,9 @@ public class NinjaControlle : MonoBehaviour
             if (this.hasDash)
                 return;
 
+            if (this.onWall)
+                return;
+
             if (this.current == this.anim.GetClip("ninja_idle"))
                 return;
 
@@ -89,6 +99,9 @@ public class NinjaControlle : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (this.isDead)
+            return;
+
         this.body.velocity = new Vector3(Mathf.Clamp(this.body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
 
         if (this.joystickSide == this.prevWallNormal.x)
@@ -103,6 +116,9 @@ public class NinjaControlle : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         Vector2 direct = context.ReadValue<Vector2>();
 
         if (!this.blockInput)
@@ -153,6 +169,9 @@ public class NinjaControlle : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (!context.started || (!this.canJump && !this.canDoubleJump))
             return;
 
@@ -163,15 +182,21 @@ public class NinjaControlle : MonoBehaviour
             Vector3 jump = -this.transform.right * this.orientation * this.WallJumpForceX;
             jump.y = this.jumpForce;
 
+            this.anim.clip = this.current = this.anim.GetClip("ninja_wallJump");
+            this.anim.Play();
+
             this.body.AddForce(jump, ForceMode.Impulse);
             StartCoroutine(this.RestoreJoystick(0.5f));
         }
         else
         {
             this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
-            
-            this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
-            this.anim.Play();
+
+            if (!this.inTheAir)
+            {
+                this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
+                this.anim.Play();
+            }
         }
 
         if (this.canJump)
@@ -202,6 +227,9 @@ public class NinjaControlle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         if (collision.gameObject.CompareTag("AI"))
             if (collision.GetContact(0).normal == Vector3.up)
             {
@@ -215,34 +243,42 @@ public class NinjaControlle : MonoBehaviour
             }
 
         //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-            if (collision.GetContact(0).normal == Vector3.up)
+        if (collision.GetContact(0).normal == Vector3.up)
+        {
+            this.canJump = this.canDoubleJump = true;
+            this.inTheAirDash = false;
+            this.inTheAir = false;
+        }
+        else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
+        {
+            if (this.orientation == 1)
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
+            else
+                this.transform.rotation = Quaternion.Euler(0, 270, 0);
+
+            //this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
+            //this.anim.Play();
+
+            if (this.prevWall != collision.gameObject)
             {
                 this.canJump = this.canDoubleJump = true;
                 this.inTheAirDash = false;
                 this.inTheAir = false;
+                this.orientation = collision.GetContact(0).normal.x;
+
+                if (this.hasDash)
+                    this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
             }
-            else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
-                if (this.prevWall != collision.gameObject)
-                {
-                    this.canJump = this.canDoubleJump = true;
-                    this.inTheAirDash = false;
-                    this.inTheAir = false;
-                    this.orientation = collision.GetContact(0).normal.x;
-
-                    if (this.orientation == 1)
-                        this.transform.rotation = Quaternion.Euler(0, 90, 0);
-                    else
-                        this.transform.rotation = Quaternion.Euler(0, 270, 0);
-
-                    if (this.hasDash)
-                        this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
-                }
+        }
     }
 
     public void OnCollisionStay(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-            if (collision.GetContact(0).normal == Vector3.up)
+        if (collision.GetContact(0).normal == Vector3.up)
             {
                 this.prevWall = null;
                 this.prevWallNormal = Vector3.zero;
@@ -255,15 +291,23 @@ public class NinjaControlle : MonoBehaviour
                 this.prevWall = collision.gameObject;
                 this.prevWallNormal = -collision.GetContact(0).normal;
                 this.onWall = true;
-                this.inTheAirDash = false;
-                this.inTheAir = false;
+                
+                if (!this.blockInput)
+                    if (this.current != this.anim.GetClip("ninja_walljump_slide"))
+                    {
+                        this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
+                        this.anim.Play();
+                    }
             }
     }
 
     public void OnCollisionExit(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-        
+
         this.prevWallNormal = Vector3.zero;
         this.onWall = false;
         this.inTheAir = true;
@@ -271,6 +315,9 @@ public class NinjaControlle : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (!context.started || this.onWall || this.hasDash || this.inTheAir)
             return;
 
@@ -298,6 +345,9 @@ public class NinjaControlle : MonoBehaviour
 
     public void MeleAttack(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (this.attackCoro != null)
             return;
 
@@ -317,5 +367,17 @@ public class NinjaControlle : MonoBehaviour
         this.attackRange.SetActive(false);
 
         this.attackCoro = null;
+    }
+
+    public IEnumerator dead()
+    {
+        this.anim.clip = this.current = this.anim.GetClip("ninja_dead");
+        this.anim.Play();
+        this.GetComponent<Collider>().enabled = false;
+        this.body.isKinematic = true;
+        this.isDead = true;
+        //this.src.PlayOneShot(this.clip[5]);
+        yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length + 0.5f);
+        Destroy(this.gameObject);
     }
 }

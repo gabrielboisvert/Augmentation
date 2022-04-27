@@ -52,6 +52,10 @@ public class KnightControlle : MonoBehaviour
         if (this.isDead)
             return;
 
+        if (this.isShieldCooldown)
+            if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
+                this.isShieldCooldown = false;
+
         if (this.hasShield)
         {
             if (Time.time - this.shieldTimer > this.shieldDuration)
@@ -64,10 +68,6 @@ public class KnightControlle : MonoBehaviour
                 this.anim.Play();
             }
         }
-
-        if (this.isShieldCooldown)
-            if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
-                this.isShieldCooldown = false;
 
         if (this.joystickSide != 0)
         {
@@ -329,11 +329,11 @@ public class KnightControlle : MonoBehaviour
         if (this.isDead)
             return;
 
-        if (this.isShieldCooldown)
-            return;
-
         if (context.started)
         {
+            if (this.isShieldCooldown)
+                return;
+
             this.shieldTimer = Time.time;
             this.hasShield = true;
 
@@ -342,6 +342,9 @@ public class KnightControlle : MonoBehaviour
         }
         else if (context.canceled)
         {
+            if (this.isShieldCooldown)
+                return;
+
             this.hasShield = false;
             this.shieldCooldownTimer = Time.time;
             this.isShieldCooldown = true;
@@ -359,7 +362,7 @@ public class KnightControlle : MonoBehaviour
         this.body.isKinematic = true;
         this.isDead = true;
         this.src.PlayOneShot(this.clip[5]);
-        yield return new WaitForSeconds(this.anim.GetClip("DashPunch").length + 0.5f);
+        yield return new WaitForSeconds(this.anim.GetClip("DeadAnim").length);
         Destroy(this.gameObject);
     }
 

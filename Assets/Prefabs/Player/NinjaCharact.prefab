@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6823981407122691926}
   m_Layer: 0
   m_Name: CHARA_NINJA_R_ARMES
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2673753655800323237}
   m_Layer: 0
   m_Name: CHARA_NINJA_L_FOOT
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1339180767047902976}
   m_Layer: 0
   m_Name: joint5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 6078195808599240345}
   m_Layer: 0
   m_Name: joint3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,6 +229,7 @@ Transform:
   - {fileID: 9082254235441292194}
   - {fileID: 1192079958504372232}
   - {fileID: 975039068819733474}
+  - {fileID: 6177551042911568435}
   m_Father: {fileID: 2348187267806330448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -244,7 +245,7 @@ GameObject:
   - component: {fileID: 7275687558486294810}
   m_Layer: 0
   m_Name: CHARA_NINJA_L_TIGH
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +283,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -331,8 +332,8 @@ GameObject:
   - component: {fileID: 2606187694124381455}
   - component: {fileID: 1868284985839223548}
   m_Layer: 0
-  m_Name: NinjaCharact2
-  m_TagString: Untagged
+  m_Name: NinjaCharact
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538,6 +539,9 @@ Animation:
   - {fileID: 1827226128182048838, guid: d8c62839548c00d46b617d210c8b3569, type: 3}
   - {fileID: 1827226128182048838, guid: f4512f9eaad9163429f6a1f407708538, type: 3}
   - {fileID: 1827226128182048838, guid: 85f44cb0f69e77b4aa0a0f08ea95c8c0, type: 3}
+  - {fileID: 1827226128182048838, guid: da1849ba36d29d94fb384538755b394c, type: 3}
+  - {fileID: 1827226128182048838, guid: 3679719886b62f94ebd68474369ce37b, type: 3}
+  - {fileID: 1827226128182048838, guid: dfc4b0be8687e5b41a846aabc78c327c, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -553,7 +557,7 @@ GameObject:
   - component: {fileID: 1192079958504372232}
   m_Layer: 0
   m_Name: joint4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,7 +589,7 @@ GameObject:
   - component: {fileID: 6428829537693440221}
   m_Layer: 0
   m_Name: CHARA_NINJA_R_FOOT
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,7 +627,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -668,7 +672,7 @@ GameObject:
   - component: {fileID: 8528401102744164114}
   m_Layer: 0
   m_Name: joint12
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +702,7 @@ GameObject:
   - component: {fileID: 2411691082558689687}
   m_Layer: 0
   m_Name: joint15
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,7 +733,7 @@ GameObject:
   - component: {fileID: 9082254235441292194}
   m_Layer: 0
   m_Name: joint2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,7 +765,7 @@ GameObject:
   - component: {fileID: 4997121337704448887}
   m_Layer: 0
   m_Name: joint10
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +796,7 @@ GameObject:
   - component: {fileID: 3240948501302320880}
   m_Layer: 0
   m_Name: CHARA_NINJA_L_FIST
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,8 +835,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
-  - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
+  - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +883,7 @@ GameObject:
   - component: {fileID: 4973684988357085000}
   m_Layer: 0
   m_Name: MeleAttack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -934,7 +938,7 @@ GameObject:
   - component: {fileID: 9149120500957109562}
   m_Layer: 0
   m_Name: Save_v2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,7 +969,7 @@ GameObject:
   - component: {fileID: 7584337756021289113}
   m_Layer: 0
   m_Name: joint14
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -997,7 +1001,7 @@ GameObject:
   - component: {fileID: 4307562435789563140}
   m_Layer: 0
   m_Name: CHARA_NINJA_L_ARMES
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1035,8 +1039,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
-  - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
+  - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1081,7 +1085,7 @@ GameObject:
   - component: {fileID: 4801426552855157156}
   m_Layer: 0
   m_Name: joint8
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1112,7 +1116,7 @@ GameObject:
   - component: {fileID: 7404453521184406675}
   m_Layer: 0
   m_Name: CHARA_NINJA_R_TIGHT
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,7 +1154,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1196,7 +1200,7 @@ GameObject:
   - component: {fileID: 6635970179066780140}
   m_Layer: 0
   m_Name: CHARA_NINJA_EYE
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1280,7 +1284,7 @@ GameObject:
   - component: {fileID: 5894469567909614077}
   m_Layer: 0
   m_Name: CHARA_NINJA_BODY
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1318,7 +1322,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1364,7 +1368,7 @@ GameObject:
   - component: {fileID: 1124755982939205971}
   m_Layer: 0
   m_Name: CHARA_NINJA_R_FIST
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1403,7 +1407,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6623950920407987270, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
   - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1449,7 +1453,7 @@ GameObject:
   - component: {fileID: 3923855795318546249}
   m_Layer: 0
   m_Name: CHARA_NINJA_MESH
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1487,7 +1491,7 @@ GameObject:
   - component: {fileID: 975039068819733474}
   m_Layer: 0
   m_Name: joint7
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1507,3 +1511,77 @@ Transform:
   m_Father: {fileID: 6078195808599240345}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6298969763044651048
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6078195808599240345}
+    m_Modifications:
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17495206
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.17495206
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.17495206
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.269
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016853266798994218, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_Name
+      value: Trail_Eye
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+--- !u!4 &6177551042911568435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 203082348049560091, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+  m_PrefabInstance: {fileID: 6298969763044651048}
+  m_PrefabAsset: {fileID: 0}

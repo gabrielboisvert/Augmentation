@@ -18,8 +18,7 @@ public class Spike : MonoBehaviour
             NinjaControlle n = collision.gameObject.GetComponent<NinjaControlle>();
             if (n != null)
             {
-                //StartCoroutine(n.dead());
-                Destroy(collision.gameObject);
+                StartCoroutine(n.dead());
                 return;
             }
 

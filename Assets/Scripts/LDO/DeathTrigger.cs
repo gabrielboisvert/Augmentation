@@ -18,8 +18,7 @@ public class DeathTrigger : MonoBehaviour
             NinjaControlle n = other.GetComponent<NinjaControlle>();
             if (n != null)
             {
-                //StartCoroutine(n.dead());
-                Destroy(other.gameObject);
+                StartCoroutine(n.dead());
                 return;
             }
 
