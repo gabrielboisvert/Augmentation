@@ -3378,6 +3378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -4343,6 +4347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -5026,6 +5034,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -7341,6 +7353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -8133,7 +8149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &575534105
 Transform:
   m_ObjectHideFlags: 0
@@ -9732,6 +9748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -10109,6 +10129,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -10630,6 +10654,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -13792,6 +13820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -14388,6 +14420,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -15204,6 +15240,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -16750,6 +16790,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -18804,6 +18848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -19320,6 +19368,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -20146,6 +20198,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -21200,6 +21256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -22179,6 +22239,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -23405,6 +23469,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -26677,6 +26745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -26833,6 +26905,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -27458,6 +27534,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
@@ -28090,6 +28170,10 @@ PrefabInstance:
     - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_Name
       value: Trigger_PL_1x1_V1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139166422470851187, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
+      propertyPath: m_TagString
+      value: GrabBlock
       objectReference: {fileID: 0}
     - target: {fileID: 7518964799241527497, guid: a8eb8a8ce975a134eb97dd0e903883da, type: 3}
       propertyPath: m_RootOrder
