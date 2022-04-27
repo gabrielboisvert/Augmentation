@@ -59,17 +59,15 @@ public class KnightControlle : MonoBehaviour
                 this.hasShield = false;
                 this.shieldCooldownTimer = Time.time;
                 isShieldCooldown = true;
+
+                this.anim.clip = this.current = this.anim.GetClip("block_stopped");
+                this.anim.Play();
             }
         }
 
         if (this.isShieldCooldown)
-        {
             if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
-            {
                 this.isShieldCooldown = false;
-                Debug.Log("shield ready");
-            }
-        }
 
         if (this.joystickSide != 0)
         {
@@ -80,6 +78,9 @@ public class KnightControlle : MonoBehaviour
                 return;
 
             if (!this.canJump)
+                return;
+
+            if (this.hasShield)
                 return;
 
             this.anim.clip = this.current = this.anim.GetClip("Walk");
@@ -98,6 +99,8 @@ public class KnightControlle : MonoBehaviour
             if (!this.canJump)
                 return;
 
+            if (this.hasShield)
+                return;
 
             this.anim.clip = this.current = this.anim.GetClip("Idle");
             this.anim.Play();
@@ -333,12 +336,18 @@ public class KnightControlle : MonoBehaviour
         {
             this.shieldTimer = Time.time;
             this.hasShield = true;
+
+            this.anim.clip = this.current = this.anim.GetClip("block_actif");
+            this.anim.Play();
         }
         else if (context.canceled)
         {
             this.hasShield = false;
             this.shieldCooldownTimer = Time.time;
             this.isShieldCooldown = true;
+
+            this.anim.clip = this.current = this.anim.GetClip("block_stopped");
+            this.anim.Play();
         }
     }
 
@@ -352,5 +361,10 @@ public class KnightControlle : MonoBehaviour
         this.src.PlayOneShot(this.clip[5]);
         yield return new WaitForSeconds(this.anim.GetClip("DashPunch").length + 0.5f);
         Destroy(this.gameObject);
+    }
+
+    public bool isChargedAttack()
+    {
+        return this.isChargeAttack;
     }
 }
