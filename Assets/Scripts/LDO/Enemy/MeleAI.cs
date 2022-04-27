@@ -95,8 +95,8 @@ public class MeleAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-            player = other.gameObject;
+            if (other.CompareTag("Player"))
+                player = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)

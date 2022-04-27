@@ -462,9 +462,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 354caa36ceb38dc41968ac2c255380d2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.807
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1060,6 +1060,8 @@ Animation:
   - {fileID: 1827226128182048838, guid: 42a1750f998620941976ea08954f878f, type: 3}
   - {fileID: 1827226128182048838, guid: b95ee2551ed51af4e91dd434ef1b8749, type: 3}
   - {fileID: 1827226128182048838, guid: f5a2d6f030b640248875db432d8259bb, type: 3}
+  - {fileID: 1827226128182048838, guid: 7bff67f3d66c8f141afaf1c0b6f8591f, type: 3}
+  - {fileID: 1827226128182048838, guid: 88e48cd934eef6144b18321321314809, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1088,10 +1090,10 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: 54fbd55831cea7047880a3cc5748f9b7, type: 3}
   - {fileID: 8300000, guid: 373d85d148c56a841b08e724e9d5c378, type: 3}
-  - {fileID: 8300000, guid: 3bd883f8330066a449b24229b889430a, type: 3}
   - {fileID: 8300000, guid: ab362be2b976f6444ade3e9c85494111, type: 3}
   - {fileID: 8300000, guid: f172fa52fe5cfb14c961249db39c8ab6, type: 3}
   - {fileID: 8300000, guid: aabd05a632298ad458fba69ca997a053, type: 3}
+  - {fileID: 8300000, guid: 3bd883f8330066a449b24229b889430a, type: 3}
   footstep: {fileID: 6674178124891585928}
 --- !u!114 &195308446
 MonoBehaviour:
