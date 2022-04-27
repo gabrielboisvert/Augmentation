@@ -79,11 +79,11 @@ public class NinjaControlle : MonoBehaviour
             if (this.hasDash)
                 return;
 
-            //if (this.current == this.anim.GetClip("Idle"))
-            //    return;
+            if (this.current == this.anim.GetClip("ninja_idle"))
+                return;
 
-            //this.anim.clip = this.current = this.anim.GetClip("Idle");
-            //this.anim.Play();
+            this.anim.clip = this.current = this.anim.GetClip("ninja_idle");
+            this.anim.Play();
         }
     }
 
@@ -167,7 +167,12 @@ public class NinjaControlle : MonoBehaviour
             StartCoroutine(this.RestoreJoystick(0.5f));
         }
         else
+        {
             this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
+            
+            this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
+            this.anim.Play();
+        }
 
         if (this.canJump)
             this.canJump = false;
@@ -303,7 +308,7 @@ public class NinjaControlle : MonoBehaviour
         this.anim.Play();
 
         this.attackRange.SetActive(true);
-        this.attackCoro = StartCoroutine(this.DisableAttack(0.2f));
+        this.attackCoro = StartCoroutine(this.DisableAttack(this.anim.GetClip("Ninja_Attack").length));
     }
 
     IEnumerator DisableAttack(float duration)

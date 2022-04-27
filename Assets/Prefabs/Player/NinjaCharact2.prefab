@@ -492,6 +492,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 67c5e118-cce2-4d44-a75f-ec250a58ed4b
     m_ActionName: Player/Grappling[/DualShock4GamepadHID/rightTrigger,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f2f9791-362c-40c6-8364-e84c0e07dafd
+    m_ActionName: Player/PauseMenu[/Keyboard/p,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -527,11 +531,13 @@ Animation:
   m_GameObject: {fileID: 3160892848249808106}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 1827226128182048838, guid: f4512f9eaad9163429f6a1f407708538, type: 3}
   m_Animations:
   - {fileID: 1827226128182048838, guid: 896ac1fb300d5dc48b1c1e8c030f4bfd, type: 3}
   - {fileID: 1827226128182048838, guid: 2758aebeddebcbf4f83b376976f3b80d, type: 3}
   - {fileID: 1827226128182048838, guid: d8c62839548c00d46b617d210c8b3569, type: 3}
+  - {fileID: 1827226128182048838, guid: f4512f9eaad9163429f6a1f407708538, type: 3}
+  - {fileID: 1827226128182048838, guid: 85f44cb0f69e77b4aa0a0f08ea95c8c0, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
