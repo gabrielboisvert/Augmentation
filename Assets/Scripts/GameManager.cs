@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
@@ -31,5 +30,10 @@ public class GameManager : MonoBehaviour
         //sound.GetComponent<AudioSource>().outputAudioMixerGroup = mixer;
         //sound.GetComponent<AudioSource>().PlayOneShot(clip);
         //sound.GetComponent<Fx>().OnFinish();
+    }
+
+    private void Update()
+    {
+
     }
 }

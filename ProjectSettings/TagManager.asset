@@ -9,6 +9,8 @@ TagManager:
   - ground
   - GrabBlock
   - DestructibleBlock
+  - Bullet
+  - AI
   layers:
   - Default
   - TransparentFX
