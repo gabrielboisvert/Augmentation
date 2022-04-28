@@ -393,4 +393,9 @@ public class ArcherControlle : MonoBehaviour
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
     }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
+    }
 }

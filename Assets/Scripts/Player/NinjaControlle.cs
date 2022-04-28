@@ -409,4 +409,9 @@ public class NinjaControlle : MonoBehaviour
         yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length);
         Destroy(this.gameObject);
     }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
+    }
 }
