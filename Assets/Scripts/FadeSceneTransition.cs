@@ -24,7 +24,7 @@ public class FadeSceneTransition : MonoBehaviour
     }
     public IEnumerator LoadAsyncScene(string scene, float duration)
     {
-        this.canvas.sortingOrder = 300;
+        this.canvas.sortingOrder = 600;
         GetComponent<Animator>().SetBool("Fade", false);
         yield return new WaitForSeconds(duration);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneUtility.GetBuildIndexByScenePath(scene), LoadSceneMode.Single);

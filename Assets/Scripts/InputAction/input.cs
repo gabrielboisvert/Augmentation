@@ -454,7 +454,7 @@ public class @Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""117565ee-91eb-44c3-a983-f993e770597b"",
+                    ""id"": ""c5b42ba6-52f4-433f-8ef0-7a6c5fd8a571"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
