@@ -529,7 +529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9732d6b2af331a9448d0d6f366b66215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   movementSpeed: 150
+=======
+  movementSpeed: 50
+>>>>>>> Stashed changes
   jumpForce: 15
   maxMovementSpeed: 5
   maxJumpSpeed: 10
