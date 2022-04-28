@@ -266,19 +266,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 50
-  jumpForce: 6.5
+  jumpForce: 15
   maxMovementSpeed: 5
   maxJumpSpeed: 10
   rotationSpeed: 700
   leftFist: {fileID: 5618923579400672343}
   rightFist: {fileID: 5618923579400672343}
   arrow: {fileID: 7946161788436268249, guid: 542adbb3c6fb92c45957a956e3cb6222, type: 3}
-  grappinVisual: {fileID: 0}
   shootCooldown: 0.5
   mask:
     serializedVersion: 2
     m_Bits: 55
   grabSpeed: 10
+  gravityAdition: 15
 --- !u!114 &7454205511449683055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ Animation:
   - {fileID: 1827226128182048838, guid: d087f232ad8750344a88a7d81728147f, type: 3}
   - {fileID: 1827226128182048838, guid: d52a642ef2e701d43846186e65be005f, type: 3}
   - {fileID: 1827226128182048838, guid: cf40521677a9bbb448c1c1db3c58369f, type: 3}
-  - {fileID: 1827226128182048838, guid: e22103637def3164bbc43d081bb9b917, type: 3}
+  - {fileID: 1827226128182048838, guid: 9b7da7c4dc222384a9b16c0f238759c8, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

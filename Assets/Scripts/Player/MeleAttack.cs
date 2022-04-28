@@ -20,7 +20,7 @@ public class MeleAttack : MonoBehaviour
         GameManager.Spawner.addObj(obj);
         obj.GetComponent<Collider>().isTrigger = true;
         yield return new WaitForSeconds(0.1f);
-        obj.GetComponent<Collider>().isTrigger = true;
+        obj.GetComponent<Collider>().isTrigger = false;
         obj.SetActive(false);
     }
 
