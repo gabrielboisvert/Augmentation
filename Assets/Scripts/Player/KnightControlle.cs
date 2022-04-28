@@ -108,6 +108,8 @@ public class KnightControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Idle");
             this.anim.Play();
+
+            this.footstep.Stop();
         }
     }
 
@@ -153,7 +155,7 @@ public class KnightControlle : MonoBehaviour
     }
     public void Pause(InputAction.CallbackContext context)
     {
-            GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
+        GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
     }
 
     IEnumerator RotateAnimation()
@@ -378,7 +380,7 @@ public class KnightControlle : MonoBehaviour
         this.body.isKinematic = true;
         this.isDead = true;
         this.src.PlayOneShot(this.clip[5]);
-
+        this.footstep.Stop();
         float time = this.anim.GetClip("DeadAnim").length;
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);

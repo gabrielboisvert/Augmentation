@@ -21,6 +21,7 @@ public class ArcherControlle : MonoBehaviour
     private bool isDead;
     private Coroutine shootingCoro;
     private LineRenderer line;
+    private AudioSource src;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -36,6 +37,9 @@ public class ArcherControlle : MonoBehaviour
 
     public float gravityAdition = 15;
 
+    public AudioClip[] clip;
+    public AudioSource footstep;
+
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
@@ -46,6 +50,8 @@ public class ArcherControlle : MonoBehaviour
         this.anim = this.GetComponent<Animation>();
         anim.clip = this.current = anim.GetClip("Shooter_idle");
         anim.Play();
+
+        this.src = this.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -81,6 +87,8 @@ public class ArcherControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Shooter_run");
             this.anim.Play();
+
+            this.footstep.Play();
         }
         else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
         {
@@ -98,6 +106,8 @@ public class ArcherControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Shooter_idle");
             this.anim.Play();
+
+            this.footstep.Stop();
         }
     }
 
@@ -235,6 +245,9 @@ public class ArcherControlle : MonoBehaviour
 
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
+
+        this.src.PlayOneShot(this.clip[3]);
+        this.footstep.Stop();
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -255,7 +268,12 @@ public class ArcherControlle : MonoBehaviour
             }
 
         if (collision.GetContact(0).normal == Vector3.up)
-                this.canJump = true;
+        {
+            this.canJump = true;
+
+            this.src.PlayOneShot(this.clip[2]);
+            this.footstep.Stop();
+        }
     }
 
     public void OnCollisionStay(Collision collision)
@@ -300,7 +318,12 @@ public class ArcherControlle : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(this.visibleFist.transform.position, new Vector3(this.armRotation.x, this.armRotation.y, 0), out hit, Mathf.Infinity, this.mask))
                 if (hit.collider.gameObject.CompareTag("GrabBlock"))
+                {
                     this.grabbedBlock = hit.collider.gameObject;
+
+                    this.src.PlayOneShot(this.clip[0]);
+                    this.footstep.Stop();
+                }
         }
     }
     public void RangeAttack(InputAction.CallbackContext context)
@@ -347,6 +370,9 @@ public class ArcherControlle : MonoBehaviour
 
         yield return new WaitForSeconds(this.anim.GetClip("Shooter_shoot").length);
 
+        this.src.PlayOneShot(this.clip[1]);
+        this.footstep.Stop();
+
         if (this.orientation == -1)
         {
             float angle = Vector3.Angle(new Vector3(this.armRotation.x, this.armRotation.y, 0), Vector3.up);
@@ -388,7 +414,8 @@ public class ArcherControlle : MonoBehaviour
         this.GetComponent<Collider>().enabled = false;
         this.body.isKinematic = true;
         this.isDead = true;
-
+        this.src.PlayOneShot(this.clip[4]);
+        this.footstep.Stop();
         float time = this.anim.GetClip("Shooter_dead").length;
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
