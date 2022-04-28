@@ -30,10 +30,11 @@ public class ArcherControlle : MonoBehaviour
     public GameObject leftFist;
     public GameObject rightFist;
     public GameObject arrow;
-    public GameObject grappinVisual;
     public float shootCooldown = 0.5f;
     public LayerMask mask;
     public float grabSpeed = 10;
+
+    public float gravityAdition = 15;
 
     void Start()
     {
@@ -51,6 +52,8 @@ public class ArcherControlle : MonoBehaviour
     {
         if (this.isDead)
             return;
+
+        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
 
         if (this.grabbedBlock != null)
         {
