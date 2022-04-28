@@ -25,8 +25,7 @@ public class Spike : MonoBehaviour
             ArcherControlle a = collision.gameObject.GetComponent<ArcherControlle>();
             if (a != null)
             {
-                //StartCoroutine(a.dead());
-                Destroy(collision.gameObject);
+                StartCoroutine(a.dead());
                 return;
             }
         }

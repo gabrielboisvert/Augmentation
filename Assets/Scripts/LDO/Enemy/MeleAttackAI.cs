@@ -25,8 +25,7 @@ public class MeleAttackAI : MonoBehaviour
             ArcherControlle a = other.GetComponent<ArcherControlle>();
             if (a != null)
             {
-                //StartCoroutine(a.dead());
-                Destroy(other.gameObject);
+                StartCoroutine(a.dead());
                 return;
             }
         }

@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] players;
     public GameObject player;
-    public int currentPlayer;
+    private int currentPlayer;
     public Camera cam;
 
     private List<GameObject> destroyedObjec = new List<GameObject>();

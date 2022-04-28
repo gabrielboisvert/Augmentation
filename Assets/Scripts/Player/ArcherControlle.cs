@@ -16,6 +16,11 @@ public class ArcherControlle : MonoBehaviour
     private bool isGrappling = false;
     private float shootTimer;
     private GameObject grabbedBlock;
+    private Animation anim;
+    private AnimationClip current;
+    private bool isDead;
+    private Coroutine shootingCoro;
+    private LineRenderer line;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -34,10 +39,19 @@ public class ArcherControlle : MonoBehaviour
     {
         this.body = this.GetComponent<Rigidbody>();
         this.visibleFist = rightFist;
+
+        this.line = this.GetComponent<LineRenderer>();
+
+        this.anim = this.GetComponent<Animation>();
+        anim.clip = this.current = anim.GetClip("Shooter_idle");
+        anim.Play();
     }
 
     private void Update()
     {
+        if (this.isDead)
+            return;
+
         if (this.grabbedBlock != null)
         {
             //Interpolate
@@ -46,6 +60,41 @@ public class ArcherControlle : MonoBehaviour
 
             this.GetComponent<Collider>().isTrigger = true;
             this.body.isKinematic = true;
+        }
+
+        if (this.joystickSide != 0)
+        {
+            if (this.current == this.anim.GetClip("Shooter_run"))
+                return;
+
+            if (!this.canJump)
+                return;
+
+            if (this.shootingCoro != null || this.isShooting)
+                return;
+
+            if ((this.armRotation != Vector2.zero))
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Shooter_run");
+            this.anim.Play();
+        }
+        else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
+        {
+            if (this.current == this.anim.GetClip("Shooter_idle"))
+                return;
+
+            if (!this.canJump)
+                return;
+
+            if (this.shootingCoro != null || this.isShooting)
+                return;
+
+            if ((this.armRotation != Vector2.zero))
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Shooter_idle");
+            this.anim.Play();
         }
     }
 
@@ -74,8 +123,16 @@ public class ArcherControlle : MonoBehaviour
 
     private void RotateArmsUpdate()
     {
+        if (this.armRotation != Vector2.zero)
+            this.anim.Stop();
+        else
+            this.anim.Play();
+
+        if (this.rotationAnimeCoro != null)
+            return;
+
         float angle = 180 - (Mathf.Atan2(this.armRotation.x, this.armRotation.y) * Mathf.Rad2Deg);
-        this.visibleFist.transform.rotation = Quaternion.Euler(0, 0, angle);
+        this.visibleFist.transform.rotation = Quaternion.Euler(angle, -90, 90);
 
         if (this.orientation == 1 && angle > 180)
         {
@@ -93,11 +150,19 @@ public class ArcherControlle : MonoBehaviour
         //Show Calculate grap
         if (this.isGrappling)
         {
+            this.line.SetPosition(0, this.transform.position);
+            this.line.SetPosition(1, this.transform.position);
+
             RaycastHit hit;
-            Debug.DrawRay(this.visibleFist.transform.position, -this.visibleFist.transform.up * 2000, Color.yellow);
-            if (Physics.Raycast(this.visibleFist.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
+            if (Physics.Raycast(this.visibleFist.transform.position, new Vector3(this.armRotation.x, this.armRotation.y, 0), out hit, Mathf.Infinity, this.mask))
             {
-                //Show visual here
+                this.line.SetPosition(0, this.visibleFist.transform.position);
+                this.line.SetPosition(1, hit.point);
+            }
+            else
+            {
+                this.line.SetPosition(0, this.visibleFist.transform.position);
+                this.line.SetPosition(1, this.visibleFist.transform.position + new Vector3(this.armRotation.x, this.armRotation.y, 0) * 10);
             }
         }
     }
@@ -171,37 +236,42 @@ public class ArcherControlle : MonoBehaviour
                 return;
             }
 
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         if (collision.GetContact(0).normal == Vector3.up)
                 this.canJump = true;
     }
 
     public void OnCollisionStay(Collision collision)
     {
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-            if (collision.GetContact(0).normal == Vector3.up)
-                this.prevWallNormal = Vector3.zero;
-            else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
-                this.prevWallNormal = -collision.GetContact(0).normal;
+        if (collision.GetContact(0).normal == Vector3.up)
+            this.prevWallNormal = Vector3.zero;
+        else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
+            this.prevWallNormal = -collision.GetContact(0).normal;
     }
 
     public void OnCollisionExit(Collision collision)
     {
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
-            this.prevWallNormal = Vector3.zero;
+        this.prevWallNormal = Vector3.zero;
     }
     public void Grappling(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             this.isGrappling = true;
+            this.line.enabled = true;
+
+            this.line.SetPosition(0, this.transform.position);
+            this.line.SetPosition(1, this.transform.position);
         }
         else if (context.canceled)
         {
             this.isGrappling = false;
+            this.line.enabled = false;
+
+            this.line.SetPosition(0, this.transform.position);
+            this.line.SetPosition(1, this.transform.position);
 
             RaycastHit hit;
-            if (Physics.Raycast(this.transform.position, -this.visibleFist.transform.up, out hit, Mathf.Infinity, this.mask))
+            if (Physics.Raycast(this.visibleFist.transform.position, new Vector3(this.armRotation.x, this.armRotation.y, 0), out hit, Mathf.Infinity, this.mask))
                 if (hit.collider.gameObject.CompareTag("GrabBlock"))
                     this.grabbedBlock = hit.collider.gameObject;
         }
@@ -214,30 +284,50 @@ public class ArcherControlle : MonoBehaviour
             this.shootTimer = Time.time;
         }
         else if (context.canceled)
+        {
             this.isShooting = false;
+            if (this.shootingCoro != null)
+            {
+                StopCoroutine(this.shootingCoro);
+                this.shootingCoro = null;
+            }
+        }
     }
 
     public void RotateArm(InputAction.CallbackContext context)
     {
-        //bool isMouse = context.control.device is Mouse;
-        //bool isGamepad = context.control.device is Gamepad;
-
-        //if (isMouse)
-        //{
-        //    Vector2 pos = context.ReadValue<Vector2>();
-        //    armRotation = new Vector2(Mathf.Clamp(pos.x, -1, 1), Mathf.Clamp(pos.y, -1, 1));
-        //}
-        //else
         armRotation = context.ReadValue<Vector2>();
     }
 
     public void Shoot()
     {
         if (Time.time - this.shootTimer > this.shootCooldown)
+            if (this.shootingCoro == null)
+                shootingCoro = StartCoroutine(this.shootBullet());
+    }
+
+    IEnumerator shootBullet()
+    {
+        this.anim.clip = this.current = this.anim.GetClip("Shooter_shoot");
+        this.anim.Play();
+
+        yield return new WaitForSeconds(this.anim.GetClip("Shooter_shoot").length);
+
+        this.shootTimer = Time.time;
+
+
+        if (this.orientation == -1)
         {
-            this.shootTimer = Time.time;
-            Instantiate(this.arrow, this.visibleFist.transform.position, this.visibleFist.transform.rotation);
+            float angle = Vector3.Angle(new Vector3(this.armRotation.x, this.armRotation.y, 0), Vector3.up);
+            Instantiate(this.arrow, this.visibleFist.transform.position, Quaternion.Euler(0, 0, angle + 180));
         }
+        else
+        {
+            float angle = Vector3.Angle(new Vector3(this.armRotation.x, this.armRotation.y, 0), -Vector3.up);
+            Instantiate(this.arrow, this.visibleFist.transform.position, Quaternion.Euler(0, 0, angle));
+        }
+
+        this.shootingCoro = null;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -247,6 +337,19 @@ public class ArcherControlle : MonoBehaviour
             this.grabbedBlock = null;
             this.GetComponent<Collider>().isTrigger = false;
             this.body.isKinematic = false;
+
+            this.canJump = true;
         }
+    }
+
+    public IEnumerator dead()
+    {
+        this.anim.clip = this.current = this.anim.GetClip("Shooter_dead");
+        this.anim.Play();
+        this.GetComponent<Collider>().enabled = false;
+        this.body.isKinematic = true;
+        this.isDead = true;
+        yield return new WaitForSeconds(this.anim.GetClip("Shooter_dead").length);
+        Destroy(this.gameObject);
     }
 }

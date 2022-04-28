@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeathTrigger : MonoBehaviour
@@ -25,8 +23,7 @@ public class DeathTrigger : MonoBehaviour
             ArcherControlle a = other.GetComponent<ArcherControlle>();
             if (a != null)
             {
-                //StartCoroutine(a.dead());
-                Destroy(other.gameObject);
+                StartCoroutine(a.dead());
                 return;
             }
         }
