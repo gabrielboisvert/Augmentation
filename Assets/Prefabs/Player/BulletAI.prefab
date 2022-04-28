@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5953305425726133560}
   - component: {fileID: 3026203984512330571}
   - component: {fileID: 3105419074631617663}
-  - component: {fileID: 6700735790164073527}
   - component: {fileID: 5794305446308640523}
+  - component: {fileID: 3213124138354133801}
   m_Layer: 0
   m_Name: BulletAI
   m_TagString: BulletAI
@@ -99,19 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6700735790164073527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7946161788436268249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a846c0669d7ae342a9e80aee2ef483f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
 --- !u!54 &5794305446308640523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,6 +115,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3213124138354133801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946161788436268249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35545f9f608ce93449f07a92e0660f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
 --- !u!1001 &3442149242183183212
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,10 @@ public class SpawnBalle : MonoBehaviour
         spawnPlace = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         if (TimeBTWShoot <= 0)
         {
-            Instantiate(balle, spawnPlace, Quaternion.identity);
+            Vector3 rotation = this.transform.rotation.eulerAngles;
+            rotation.z += 90;
+
+            Instantiate(balle, this.transform.position, Quaternion.Euler(rotation));
             TimeBTWShoot = StartTimeBTWShoot;
         }
         else

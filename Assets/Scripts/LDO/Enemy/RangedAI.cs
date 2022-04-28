@@ -55,24 +55,9 @@ public class RangedAI : MonoBehaviour
             newPos.y = this.transform.position.y;
             this.transform.position = newPos;
 
-            //if (Vector3.Distance(this.transform.position, player.transform.position) < this.attackRange)
-            //    this.Attack();
-
-            if (Time.time - this.attackCoolDownTimer > this.attackCoolDown)
-                this.isAttacking = false;
+            if (this.player != null)
+                this.CheckConeRange();
         }
-    }
-
-    void Attack()
-    {
-        if (this.dead)
-            return;
-
-        if (this.isAttacking)
-            return;
-
-        this.isAttacking = true;
-        this.attackCoolDownTimer = Time.time;
     }
 
     private void CheckConeRange()
@@ -92,9 +77,9 @@ public class RangedAI : MonoBehaviour
                 {
                     Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, this.player.transform.position - this.transform.position);
                     float oldRot = targetRotation.eulerAngles.z;
-                    this.pivot.transform.rotation = Quaternion.RotateTowards(this.pivot.transform.rotation, targetRotation, Time.deltaTime * this.rotationSpeed);
+                    //this.pivot.transform.rotation = Quaternion.RotateTowards(this.pivot.transform.rotation, targetRotation, Time.deltaTime * this.rotationSpeed);
 
-                    if (Time.time - this.attackCoolDownTimer < this.attackCoolDown)
+                    if (Time.time - this.attackCoolDownTimer > this.attackCoolDown)
                     {
                         float zDiff = oldRot - this.pivot.transform.rotation.eulerAngles.z;
                         if (-this.angleRangeNeedToShoot <= zDiff && zDiff <= this.angleRangeNeedToShoot)
@@ -102,7 +87,7 @@ public class RangedAI : MonoBehaviour
                             this.attackCoolDownTimer = Time.time;
 
                             //this.src.PlayOneShot(this.src.clip);
-                            Instantiate(this.bullet, this.pivot.transform.GetChild(0).position, this.pivot.transform.rotation);
+                            Instantiate(this.bullet, this.pivot.transform.position, this.pivot.transform.rotation);
                         }
                     }
                 }
