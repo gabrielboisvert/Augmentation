@@ -6,21 +6,26 @@ public class RangedAI : MonoBehaviour
 {
     private GameObject player;
     public float speed = 2;
+    public float attackRange = 3;
     public float attackCoolDown = 1;
-    public float rotationSpeed = 1400;
-    public bool dead = false;
     public GameObject bullet;
-    public LayerMask mask;
-    public float range = 5;
-    public GameObject pivot;
-    public float angleRangeNeedToShoot = 10;
+    public float rotationSpeed = 700;
+    public bool dead = false;
+    public AnimationClip[] clips;
 
-    private bool isAttacking = false;
-    private float attackCoolDownTimer;
-    private float orientation = 1;
     private Coroutine rotationAnimeCoro;
-    private float detectionFov = 360;
+    private bool isAttacking = false;
+    private float orientation = 1;
+    private Animation anim;
+    private AnimationClip current;
 
+    void Start()
+    {
+        this.anim = this.GetComponent<Animation>();
+
+        this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
+        this.anim.Play();
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,15 +37,7 @@ public class RangedAI : MonoBehaviour
         {
             Vector3 newPos = Vector3.MoveTowards(this.transform.position, player.transform.position, Time.deltaTime * this.speed);
 
-            if (this.transform.position.x - player.transform.position.x < 0)
-            {
-                if (this.orientation != 1)
-                {
-                    this.orientation = 1;
-                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
-                }
-            }
-            else
+            if (this.transform.position.x - player.transform.position.x > 0)
             {
                 if (this.orientation != -1)
                 {
@@ -48,51 +45,60 @@ public class RangedAI : MonoBehaviour
                     this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
                 }
             }
+            else
+            {
+                if (this.orientation != 1)
+                {
+                    this.orientation = 1;
+                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+                }
+            }
 
-            if (this.rotationAnimeCoro != null)
-                return;
+            if (Mathf.Abs(this.transform.position.x - player.transform.position.x) > this.attackRange)
+            {
+                newPos.y = this.transform.position.y;
+                this.transform.position = newPos;
+            }
 
-            newPos.y = this.transform.position.y;
-            this.transform.position = newPos;
+            if (Vector3.Distance(this.transform.position, player.transform.position) < this.attackRange)
+                this.Attack();
 
-            if (this.player != null)
-                this.CheckConeRange();
+            if (!this.isAttacking)
+            {
+                if (this.current == this.anim.GetClip("Ranged_Idle"))
+                    return;
+
+                this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
+                this.anim.Play();
+            }
         }
     }
 
-    private void CheckConeRange()
+    void Attack()
     {
-        Collider[] rangeCheck = Physics.OverlapSphere(this.transform.position, this.range * this.transform.localScale.x, this.mask);
-        if (rangeCheck.Length != 0)
-        {
-            Transform target = rangeCheck[0].transform;
-            Vector3 dir = (target.position - this.transform.position);
+        if (this.dead)
+            return;
 
-            float angle = Vector3.Angle(this.transform.up, dir);
-            if (angle < detectionFov / 2)
-            {
-                float dist = Vector3.Distance(this.transform.position, target.position);
+        if (this.isAttacking)
+            return;
 
-                if (Physics.Raycast(this.transform.position, dir, dist, this.mask))
-                {
-                    Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, this.player.transform.position - this.transform.position);
-                    float oldRot = targetRotation.eulerAngles.z;
-                    //this.pivot.transform.rotation = Quaternion.RotateTowards(this.pivot.transform.rotation, targetRotation, Time.deltaTime * this.rotationSpeed);
+        if (this.rotationAnimeCoro != null)
+            return;
 
-                    if (Time.time - this.attackCoolDownTimer > this.attackCoolDown)
-                    {
-                        float zDiff = oldRot - this.pivot.transform.rotation.eulerAngles.z;
-                        if (-this.angleRangeNeedToShoot <= zDiff && zDiff <= this.angleRangeNeedToShoot)
-                        {
-                            this.attackCoolDownTimer = Time.time;
+        this.isAttacking = true;
+        this.anim.clip = this.current = this.anim.GetClip("Ranged_Attack");
+        this.anim.Play();
 
-                            //this.src.PlayOneShot(this.src.clip);
-                            Instantiate(this.bullet, this.pivot.transform.position, this.pivot.transform.rotation);
-                        }
-                    }
-                }
-            }
-        }
+        StartCoroutine(this.StopAttacking());
+    }
+
+    IEnumerator StopAttacking()
+    {
+        yield return new WaitForSeconds(this.anim.GetClip("Ranged_Attack").length);
+        
+        //this.meleAttack.SetActive(false);
+        this.isAttacking = false;
+        this.anim.Stop();
     }
 
     IEnumerator RotateAnimation()
@@ -100,11 +106,15 @@ public class RangedAI : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+            {
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 0, 0), this.rotationSpeed * Time.deltaTime);
+            }
             else
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+            {
+                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 180, 0), this.rotationSpeed * Time.deltaTime);
+            }
 
-            if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
+            if (this.transform.rotation.eulerAngles.y == 0 || this.transform.rotation.eulerAngles.y == 180)
                 break;
 
             yield return null;

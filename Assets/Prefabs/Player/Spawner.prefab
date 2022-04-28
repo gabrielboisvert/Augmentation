@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964376931341630426}
   - component: {fileID: 1964376931341630425}
-  - component: {fileID: 285058795}
+  - component: {fileID: 1567341154}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 2461241337389971718, guid: e0c53a26af202dd469868d6cc5a41408, type: 3}
   - {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
-  - {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
+  - {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
+  - {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
   player: {fileID: 0}
   cam: {fileID: 0}
---- !u!114 &285058795
+--- !u!114 &1567341154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

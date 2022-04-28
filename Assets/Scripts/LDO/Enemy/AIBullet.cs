@@ -7,7 +7,7 @@ public class AIBullet : MonoBehaviour
     public float speed = 20;
     void Update()
     {
-        this.transform.position += (-this.transform.up * this.speed * Time.deltaTime);
+        this.transform.position += (this.transform.right * this.speed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision other)
     {

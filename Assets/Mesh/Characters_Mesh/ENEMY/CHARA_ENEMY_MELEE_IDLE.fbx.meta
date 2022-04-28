@@ -40,7 +40,7 @@ ModelImporter:
       internalID: 0
       firstFrame: 1
       lastFrame: 96
-      wrapMode: 0
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
