@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - AI
   - PlayerAttack
+  - BulletAI
   layers:
   - Default
   - TransparentFX
