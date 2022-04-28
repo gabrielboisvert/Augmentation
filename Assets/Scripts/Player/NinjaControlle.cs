@@ -389,6 +389,11 @@ public class NinjaControlle : MonoBehaviour
         this.attackCoro = null;
     }
 
+    public void wasDead()
+    {
+        StartCoroutine(this.dead());
+    }
+
     public IEnumerator dead()
     {
         this.anim.clip = this.current = this.anim.GetClip("ninja_dead");
@@ -397,7 +402,7 @@ public class NinjaControlle : MonoBehaviour
         this.body.isKinematic = true;
         this.isDead = true;
         //this.src.PlayOneShot(this.clip[5]);
-        yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length + 0.5f);
+        yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length);
         Destroy(this.gameObject);
     }
 }

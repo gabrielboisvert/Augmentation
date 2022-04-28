@@ -11,23 +11,30 @@ public class MeleAttackAI : MonoBehaviour
             KnightControlle k = other.GetComponent<KnightControlle>();
             if (k != null)
             {
-                StartCoroutine(k.dead());
+                this.gameObject.SetActive(false);
+                k.wasDead();
                 return;
             }
 
             NinjaControlle n = other.GetComponent<NinjaControlle>();
             if (n != null)
             {
-                StartCoroutine(n.dead());
+                this.gameObject.SetActive(false);
+                n.wasDead();
                 return;
             }
 
             ArcherControlle a = other.GetComponent<ArcherControlle>();
             if (a != null)
             {
-                StartCoroutine(a.dead());
+                this.gameObject.SetActive(false);
+                a.wasDead();
                 return;
             }
+
+
         }
+
+        
     }
 }

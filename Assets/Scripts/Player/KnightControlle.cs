@@ -179,8 +179,11 @@ public class KnightControlle : MonoBehaviour
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
 
-        this.anim.clip = this.current = this.anim.GetClip("Jump");
-        this.anim.Play();
+        if (!this.isChargeAttack)
+        {
+            this.anim.clip = this.current = this.anim.GetClip("Jump");
+            this.anim.Play();
+        }
 
         this.src.PlayOneShot(this.clip[3]);
         this.footstep.Stop();
@@ -354,6 +357,11 @@ public class KnightControlle : MonoBehaviour
         }
     }
 
+    public void wasDead()
+    {
+        StartCoroutine(this.dead());
+    }
+
     public IEnumerator dead()
     {
         this.anim.clip = this.current = this.anim.GetClip("DeadAnim");
@@ -362,7 +370,9 @@ public class KnightControlle : MonoBehaviour
         this.body.isKinematic = true;
         this.isDead = true;
         this.src.PlayOneShot(this.clip[5]);
-        yield return new WaitForSeconds(this.anim.GetClip("DeadAnim").length);
+
+        float time = this.anim.GetClip("DeadAnim").length;
+        yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
     }
 

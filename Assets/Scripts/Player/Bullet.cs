@@ -15,18 +15,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
             return;
 
-        if (other.gameObject.CompareTag("AI"))
-            StartCoroutine(this.DestructAI(other.gameObject));
-
         Destroy(this.gameObject);
-    }
-
-    IEnumerator DestructAI(GameObject obj)
-    {
-        GameManager.Spawner.addObj(obj);
-        this.GetComponent<Collider>().isTrigger = true;
-        yield return new WaitForSeconds(0.1f);
-        obj.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,8 +24,21 @@ public class Bullet : MonoBehaviour
             return;
 
         if (other.gameObject.CompareTag("AI"))
+        {
+            if (other.GetType() == typeof(BoxCollider))
+                StartCoroutine(this.DestructAI(other.gameObject));
             return;
+        }
 
         Destroy(this.gameObject);
+    }
+
+    IEnumerator DestructAI(GameObject obj)
+    {
+        GameManager.Spawner.addObj(obj);
+        obj.GetComponent<MeleAI>().dead = true;
+        yield return new WaitForSeconds(0.3f);
+        obj.GetComponent<MeleAI>().dead = false;
+        obj.SetActive(false);
     }
 }

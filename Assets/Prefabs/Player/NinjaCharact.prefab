@@ -51,7 +51,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
-  - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,6 +523,10 @@ MonoBehaviour:
   dashSpeed: 400
   rotationSpeed: 700
   attackRange: {fileID: 5518073551032155159}
+  slideHitBoxCenterOri: 0.5
+  slideHitBoxCenter: 0.25
+  slideHitBoxSizeOri: 1
+  slideHitBoxSize: 0.5
 --- !u!111 &1868284985839223548
 Animation:
   m_ObjectHideFlags: 0
@@ -883,7 +887,7 @@ GameObject:
   - component: {fileID: 4973684988357085000}
   m_Layer: 0
   m_Name: MeleAttack
-  m_TagString: Player
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1408,7 +1412,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 15a769f1a6f2b3a45bc110ccbcad20c7, type: 2}
-  - {fileID: -7848952084472943420, guid: 5e3d0dbc264cc4144ad2775b2bbdeb83, type: 3}
+  - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

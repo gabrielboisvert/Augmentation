@@ -10,6 +10,7 @@ public class MeleAI : MonoBehaviour
     public float attackCoolDown = 1;
     public GameObject meleAttack;
     public float rotationSpeed = 700;
+    public bool dead = false;
 
     private bool isAttacking = false;
     private float attackCoolDownTimer;
@@ -19,6 +20,9 @@ public class MeleAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.dead)
+            return;
+
         if (player != null)
         {
             Vector3 newPos = Vector3.MoveTowards(this.transform.position, player.transform.position, Time.deltaTime * this.speed);
@@ -59,6 +63,9 @@ public class MeleAI : MonoBehaviour
 
     void Attack()
     {
+        if (this.dead)
+            return;
+
         if (this.isAttacking)
             return;
 
@@ -95,8 +102,11 @@ public class MeleAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.CompareTag("Player"))
-                player = other.gameObject;
+        if (this.dead)
+            return;
+
+        if (other.CompareTag("Player"))
+            player = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)

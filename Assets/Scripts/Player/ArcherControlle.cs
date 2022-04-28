@@ -101,6 +101,9 @@ public class ArcherControlle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (this.isDead)
+            return;
+
         if (this.grabbedBlock != null)
             return;
 
@@ -123,6 +126,9 @@ public class ArcherControlle : MonoBehaviour
 
     private void RotateArmsUpdate()
     {
+        if (this.isDead)
+            return;
+
         if (this.armRotation != Vector2.zero)
             this.anim.Stop();
         else
@@ -169,6 +175,9 @@ public class ArcherControlle : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         Vector2 direct = context.ReadValue<Vector2>();
 
         if (direct.x < 0)
@@ -213,6 +222,9 @@ public class ArcherControlle : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (!context.started || !this.canJump)
             return;
 
@@ -224,6 +236,9 @@ public class ArcherControlle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         if (collision.gameObject.CompareTag("AI"))
             if (collision.GetContact(0).normal == Vector3.up)
             {
@@ -242,6 +257,9 @@ public class ArcherControlle : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         if (collision.GetContact(0).normal == Vector3.up)
             this.prevWallNormal = Vector3.zero;
         else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
@@ -250,10 +268,16 @@ public class ArcherControlle : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
+        if (this.isDead)
+            return;
+
         this.prevWallNormal = Vector3.zero;
     }
     public void Grappling(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (context.started)
         {
             this.isGrappling = true;
@@ -278,10 +302,12 @@ public class ArcherControlle : MonoBehaviour
     }
     public void RangeAttack(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         if (context.started)
         {
             this.isShooting = true;
-            this.shootTimer = Time.time;
         }
         else if (context.canceled)
         {
@@ -296,14 +322,19 @@ public class ArcherControlle : MonoBehaviour
 
     public void RotateArm(InputAction.CallbackContext context)
     {
+        if (this.isDead)
+            return;
+
         armRotation = context.ReadValue<Vector2>();
     }
 
     public void Shoot()
     {
-        if (Time.time - this.shootTimer > this.shootCooldown)
-            if (this.shootingCoro == null)
-                shootingCoro = StartCoroutine(this.shootBullet());
+        if (this.isDead)
+            return;
+
+        if (this.shootingCoro == null)
+            shootingCoro = StartCoroutine(this.shootBullet());
     }
 
     IEnumerator shootBullet()
@@ -312,9 +343,6 @@ public class ArcherControlle : MonoBehaviour
         this.anim.Play();
 
         yield return new WaitForSeconds(this.anim.GetClip("Shooter_shoot").length);
-
-        this.shootTimer = Time.time;
-
 
         if (this.orientation == -1)
         {
@@ -332,6 +360,9 @@ public class ArcherControlle : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        if (this.isDead)
+            return;
+
         if (other.gameObject.CompareTag("GrabBlock"))
         {
             this.grabbedBlock = null;
@@ -342,6 +373,11 @@ public class ArcherControlle : MonoBehaviour
         }
     }
 
+    public void wasDead()
+    {
+        StartCoroutine(this.dead());
+    }
+
     public IEnumerator dead()
     {
         this.anim.clip = this.current = this.anim.GetClip("Shooter_dead");
@@ -349,7 +385,9 @@ public class ArcherControlle : MonoBehaviour
         this.GetComponent<Collider>().enabled = false;
         this.body.isKinematic = true;
         this.isDead = true;
-        yield return new WaitForSeconds(this.anim.GetClip("Shooter_dead").length);
+
+        float time = this.anim.GetClip("Shooter_dead").length;
+        yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
     }
 }
