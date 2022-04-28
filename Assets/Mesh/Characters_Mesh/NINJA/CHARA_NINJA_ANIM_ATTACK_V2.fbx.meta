@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d8c62839548c00d46b617d210c8b3569
+guid: 1afb2af82e167ab4298ed24ea7ab0e38
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Ninja_Attack_old
+    second: Ninja_Attack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Ninja_Attack_old
+      name: Ninja_Attack
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 48
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
