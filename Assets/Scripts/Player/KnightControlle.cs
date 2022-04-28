@@ -352,6 +352,9 @@ public class KnightControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("block_actif");
             this.anim.Play();
+
+            this.src.PlayOneShot(this.clip[6]);
+            this.footstep.Stop();
         }
         else if (context.canceled)
         {
