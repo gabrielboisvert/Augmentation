@@ -10,6 +10,8 @@ public class Laser : MonoBehaviour
     public float duration;
     private float durationTimer;
 
+    public AudioSource src;
+
     bool on = false;
 
     public ParticleSystem hit;
@@ -34,6 +36,7 @@ public class Laser : MonoBehaviour
                 this.gameObject.GetComponent<Collider>().enabled = false;
 
                 hit.Stop();
+                src.Stop();
             }
         }
         else
@@ -46,6 +49,7 @@ public class Laser : MonoBehaviour
                 this.gameObject.GetComponent<Collider>().enabled = true;
 
                 hit.Play();
+                src.Play();
             }
         }
     }

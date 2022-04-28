@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MeleAttack : MonoBehaviour
 {
+    public AudioClip clip;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("DestructibleBlock"))
@@ -18,6 +20,7 @@ public class MeleAttack : MonoBehaviour
     IEnumerator DestructBlock(GameObject obj)
     {
         GameManager.Spawner.addObj(obj);
+        GameManager.PlaySound(this.clip);
         obj.GetComponent<Collider>().isTrigger = true;
         yield return new WaitForSeconds(0.1f);
         obj.GetComponent<Collider>().isTrigger = false;

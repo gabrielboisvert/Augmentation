@@ -24,11 +24,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get => instance; set => instance = value; }
     public static FadeSceneTransition Fade { get => Instance.fade; set => Instance.fade = value; }
     public static Spawner Spawner { get => Instance.spawner; set => Instance.spawner = value; }
-    public static void PlaySound(AudioClip clip, AudioMixerGroup mixer)
+    public static void PlaySound(AudioClip clip)
     {
-        //GameObject sound = new GameObject("sound", typeof(AudioSource), typeof(Fx));
-        //sound.GetComponent<AudioSource>().outputAudioMixerGroup = mixer;
-        //sound.GetComponent<AudioSource>().PlayOneShot(clip);
-        //sound.GetComponent<Fx>().OnFinish();
+        GameObject sound = new GameObject("sound", typeof(AudioSource));
+        sound.GetComponent<AudioSource>().PlayOneShot(clip);
     }
 }

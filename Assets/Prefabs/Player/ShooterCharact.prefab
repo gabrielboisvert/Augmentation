@@ -279,7 +279,7 @@ MonoBehaviour:
   shootCooldown: 0.5
   mask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 51
   grabSpeed: 10
   gravityAdition: 15
   clip:
