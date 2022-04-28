@@ -34,6 +34,8 @@ public class KnightControlle : MonoBehaviour
     public AudioClip[] clip;
     public AudioSource footstep;
 
+    public float gravityAdition = 15;
+
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
@@ -51,6 +53,8 @@ public class KnightControlle : MonoBehaviour
     {
         if (this.isDead)
             return;
+
+        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
 
         if (this.isShieldCooldown)
             if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
@@ -104,6 +108,8 @@ public class KnightControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Idle");
             this.anim.Play();
+
+            this.footstep.Stop();
         }
     }
 
@@ -146,6 +152,10 @@ public class KnightControlle : MonoBehaviour
         }
         else
             this.joystickSide = 0;
+    }
+    public void Pause(InputAction.CallbackContext context)
+    {
+        GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
     }
 
     IEnumerator RotateAnimation()
@@ -370,7 +380,7 @@ public class KnightControlle : MonoBehaviour
         this.body.isKinematic = true;
         this.isDead = true;
         this.src.PlayOneShot(this.clip[5]);
-
+        this.footstep.Stop();
         float time = this.anim.GetClip("DeadAnim").length;
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);

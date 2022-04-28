@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Destructible
-  m_Shader: {fileID: -6465566751694194690, guid: 7c73954aac85a134bb70d0fff46a180b, type: 3}
+  m_Name: Folliage
+  m_Shader: {fileID: -6465566751694194690, guid: e921d60cb383f854f9276f4556e44012, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,8 +32,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_2aa6d311d0e549bb92558d44aa476d56:
+        m_Texture: {fileID: 2800000, guid: ca2524f5cfca85748b66891833127c77, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_aa8b87186dd34dbcbae3d78eef223bdc:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ca2524f5cfca85748b66891833127c77, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -93,6 +97,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_4021c66d60cd41f98d7d310067e7aa5c: 133.54
+    - Vector1_e752b888d3914143a9fca19f3265eb2c: 1.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -120,7 +126,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_ec2b2775304e4622a845c6021b10d9b2: {r: 0, g: 1, b: 0.60588074, a: 0}
+    - Color_27f27f90e4cf4dfc8a386964e7f60686: {r: 0.9716981, g: 0.60960305, b: 0.9342246, a: 1}
+    - Color_ec2b2775304e4622a845c6021b10d9b2: {r: 0.025627613, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -23,6 +23,8 @@ public class NinjaControlle : MonoBehaviour
     private Animation anim;
     private AnimationClip current;
     private bool isDead = false;
+    private AudioSource src;
+
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -40,6 +42,11 @@ public class NinjaControlle : MonoBehaviour
     public float slideHitBoxSizeOri = 1;
     public float slideHitBoxSize = 0.5f;
 
+    public float gravityAdition = 15;
+
+    public AudioClip[] clip;
+    public AudioSource footstep;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +58,8 @@ public class NinjaControlle : MonoBehaviour
 
         anim.clip = this.current = anim.GetClip("Idle");
         anim.Play();
+
+        this.src = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,7 +68,9 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
+        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
         this.body.drag = this.onWall ? this.userSlideDrag : 0;
+
 
         if (this.joystickSide != 0)
         {
@@ -80,6 +91,8 @@ public class NinjaControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Ninja_run");
             this.anim.Play();
+
+            this.footstep.Play();
         }
         else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
         {
@@ -100,6 +113,8 @@ public class NinjaControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("ninja_idle");
             this.anim.Play();
+
+            this.footstep.Stop();
         }
     }
 
@@ -201,6 +216,9 @@ public class NinjaControlle : MonoBehaviour
             this.anim.clip = this.current = this.anim.GetClip("ninja_wallJump");
             this.anim.Play();
 
+            this.src.PlayOneShot(this.clip[3]);
+            this.footstep.Stop();
+
             this.body.AddForce(jump, ForceMode.Impulse);
             StartCoroutine(this.RestoreJoystick(0.5f));
         }
@@ -213,6 +231,9 @@ public class NinjaControlle : MonoBehaviour
                 this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
                 this.anim.Play();
             }
+
+            this.src.PlayOneShot(this.clip[0]);
+            this.footstep.Stop();
         }
 
         if (this.canJump)
@@ -270,6 +291,9 @@ public class NinjaControlle : MonoBehaviour
                 this.transform.rotation = Quaternion.Euler(0, 90, 0);
             else
                 this.transform.rotation = Quaternion.Euler(0, 270, 0);
+
+            this.src.PlayOneShot(this.clip[5]);
+            this.footstep.Stop();
         }
         else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
         {
@@ -287,6 +311,9 @@ public class NinjaControlle : MonoBehaviour
 
             if (this.prevWall != collision.gameObject)
                 this.canJump = this.canDoubleJump = true;
+
+            this.src.PlayOneShot(this.clip[4]);
+            this.footstep.Stop();
         }
     }
 
@@ -340,6 +367,9 @@ public class NinjaControlle : MonoBehaviour
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Slide");
         this.anim.Play();
 
+        this.src.PlayOneShot(this.clip[2]);
+        this.footstep.Stop();
+
         this.hasDash = true;
         this.GetComponent<BoxCollider>().center = new Vector3(0, this.slideHitBoxCenter, 0);
         this.GetComponent<BoxCollider>().size = new Vector3(1, this.slideHitBoxSize, 0.5f);
@@ -379,6 +409,9 @@ public class NinjaControlle : MonoBehaviour
 
         this.attackRange.SetActive(true);
         this.attackCoro = StartCoroutine(this.DisableAttack(this.anim.GetClip("Ninja_Attack").length));
+
+        this.src.PlayOneShot(this.clip[1]);
+        this.footstep.Stop();
     }
 
     IEnumerator DisableAttack(float duration)
@@ -401,8 +434,14 @@ public class NinjaControlle : MonoBehaviour
         this.GetComponent<Collider>().enabled = false;
         this.body.isKinematic = true;
         this.isDead = true;
-        //this.src.PlayOneShot(this.clip[5]);
+        this.src.PlayOneShot(this.clip[6]);
+        this.footstep.Stop();
         yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length);
         Destroy(this.gameObject);
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
     }
 }

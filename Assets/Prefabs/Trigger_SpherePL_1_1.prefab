@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7815048042649065626}
   - component: {fileID: 5444948157272517712}
   - component: {fileID: 2051437404}
-  - component: {fileID: 2051437405}
+  - component: {fileID: 2359145079098446100}
   m_Layer: 0
   m_Name: Trigger_SpherePL_1_1
   m_TagString: Untagged
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.6380435
   m_Center: {x: 0.006642759, y: -0.005559683, z: -0.0055960417}
---- !u!114 &2051437405
+--- !u!114 &2359145079098446100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d2352a54e4fb746938c703167511c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  door: []
