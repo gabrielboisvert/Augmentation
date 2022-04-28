@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2028117497}
   - component: {fileID: 2028117499}
   - component: {fileID: 2028117498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MeleAttack
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7626538328983421847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4691844001832879526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_MESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2380072755022527234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1897219362999638999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7818934458154097030}
   - component: {fileID: 3294060991101433292}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_R_FOOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4080921111046455573}
   - component: {fileID: 8433036722031882514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_R_FIST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -366,7 +366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4982930265710438882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1920455873405068623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Save_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6136855132297964811}
   - component: {fileID: 6674178124891585928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2809393963387757009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 945223686916311276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570511074443706919}
   - component: {fileID: 5436945713043760891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_R_TIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -702,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2167812525463444787}
   - component: {fileID: 1233181729516520370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG__BODY1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -786,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5573627865274063867}
   - component: {fileID: 6681416262472257179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_L_FIST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -870,7 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8418914929940496509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6513061079316167561}
   - component: {fileID: 8265697379161462415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_L_TIGH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +942,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 195308445}
   - component: {fileID: 195308446}
   - component: {fileID: 3432118125774252780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KnightCharact Variant
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1097,6 +1097,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f172fa52fe5cfb14c961249db39c8ab6, type: 3}
   - {fileID: 8300000, guid: aabd05a632298ad458fba69ca997a053, type: 3}
   - {fileID: 8300000, guid: 3bd883f8330066a449b24229b889430a, type: 3}
+  - {fileID: 8300000, guid: c0d7d8ed1b73c25459524982611de714, type: 3}
   footstep: {fileID: 6674178124891585928}
   gravityAdition: 15
 --- !u!114 &195308446
@@ -1346,7 +1347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1298188362674892647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8622752383172941377}
   - component: {fileID: 1691057521838440825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_L_FOOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1418,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea5919ee333e054db001e82e0bd37c3, type: 2}
+  - {fileID: 2100000, guid: 2398bd8b1c5237a49b0a1c6026f8b089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1461,7 +1462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2259274048672581030}
   - component: {fileID: 4854361998700631774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CHARA_STRONG_EYE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,7 +1545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3460160946621028076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8560033519080382325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,6 +1668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail_Eye
       objectReference: {fileID: 0}
+    - target: {fileID: 3016853266798994218, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4848cd85a149fd24683ec9eeefa09050, type: 3}
 --- !u!4 &1680467117851756061 stripped
@@ -1729,6 +1734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail_Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 3681023879383531667, guid: 962056d6c91fd8d409dc62ca0fb06016, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962056d6c91fd8d409dc62ca0fb06016, type: 3}
 --- !u!4 &1133555452583103262 stripped
@@ -1790,6 +1799,10 @@ PrefabInstance:
     - target: {fileID: 3681023879383531667, guid: 962056d6c91fd8d409dc62ca0fb06016, type: 3}
       propertyPath: m_Name
       value: Trail_Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681023879383531667, guid: 962056d6c91fd8d409dc62ca0fb06016, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962056d6c91fd8d409dc62ca0fb06016, type: 3}
