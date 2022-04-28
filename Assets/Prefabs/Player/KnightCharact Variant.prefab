@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  jumpForce: 6.5
+  jumpForce: 15
   maxMovementSpeed: 5
   maxJumpSpeed: 10
   dashSpeed: 400
