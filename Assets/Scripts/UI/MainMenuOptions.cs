@@ -20,6 +20,8 @@ public class MainMenuOptions : MonoBehaviour
 
     public void OnCredit()
     {
+        this.GetComponent<AudioSource>().Play();
+
         this.mainMenu.SetActive(false);
         this.credit.SetActive(true);
         EventSystem.current.SetSelectedGameObject(this.creditBackButton);

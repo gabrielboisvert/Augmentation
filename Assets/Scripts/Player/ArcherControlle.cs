@@ -248,6 +248,9 @@ public class ArcherControlle : MonoBehaviour
 
         this.src.PlayOneShot(this.clip[3]);
         this.footstep.Stop();
+
+        this.anim.clip = this.current = this.anim.GetClip("Shooter_jump");
+        this.anim.Play();
     }
 
     public void OnCollisionEnter(Collision collision)

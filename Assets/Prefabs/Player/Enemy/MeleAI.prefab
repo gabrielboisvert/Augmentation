@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 461512403620730733}
   - component: {fileID: 461512403620730732}
   - component: {fileID: 461512403620730735}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MeleAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,8 +69,8 @@ GameObject:
   - component: {fileID: 461512402462725647}
   - component: {fileID: 461512402462725645}
   - component: {fileID: 461512402462725644}
-  - component: {fileID: 461512402462725642}
-  m_Layer: 0
+  - component: {fileID: 1176612377636635710}
+  m_Layer: 2
   m_Name: MeleAI
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &461512402462725642
+--- !u!114 &1176612377636635710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,11 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0786c6926efaba3409d6824207a304ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   attackRange: 1
   attackCoolDown: 1
   meleAttack: {fileID: 461512403620730730}
-  rotationSpeed: 700
+  rotationSpeed: 1400
+  dead: 0
 --- !u!1 &1067855481773929279
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2253668903927270478}
   - component: {fileID: 4003716145653342536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_L_TIGH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3598472722854983610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6278508357937158304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3643274647976223110}
   - component: {fileID: 5931943011445175998}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_L_FOOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6520971058483393121}
   - component: {fileID: 467109796531069209}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_EYE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3742192531494611122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8440132087216120107}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3239004393660970064}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304395554550051425}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_MESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3001585451618545217}
   - component: {fileID: 7535492370812387851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_R_FOOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9045463662880569042}
   - component: {fileID: 3471575275050550997}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_R_FIST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 921164030713381}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7215363540223380677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6877541521859816464}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6882482193960866440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Save_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4814195902208472544}
   - component: {fileID: 1033083773185184060}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_R_TIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5204950097196793643}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7194871537130313238}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 611408065299950652}
   - component: {fileID: 1845492706991634780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG_L_FIST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6570812774623357684}
   - component: {fileID: 6068755915194479733}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CHARA_STRONG__BODY1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

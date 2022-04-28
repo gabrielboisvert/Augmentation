@@ -312,7 +312,6 @@ public class NinjaControlle : MonoBehaviour
             if (this.prevWall != collision.gameObject)
                 this.canJump = this.canDoubleJump = true;
 
-            this.src.PlayOneShot(this.clip[4]);
             this.footstep.Stop();
         }
     }
@@ -361,7 +360,7 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
-        if (!context.started || this.onWall || this.hasDash || this.inTheAir)
+        if (!context.started || this.onWall || this.hasDash)
             return;
 
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Slide");
