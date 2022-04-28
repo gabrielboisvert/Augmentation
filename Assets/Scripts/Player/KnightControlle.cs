@@ -34,6 +34,8 @@ public class KnightControlle : MonoBehaviour
     public AudioClip[] clip;
     public AudioSource footstep;
 
+    public float gravityAdition = 15;
+
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
@@ -51,6 +53,8 @@ public class KnightControlle : MonoBehaviour
     {
         if (this.isDead)
             return;
+
+        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
 
         if (this.isShieldCooldown)
             if (Time.time - this.shieldCooldownTimer > this.shieldCooldown)
@@ -146,6 +150,10 @@ public class KnightControlle : MonoBehaviour
         }
         else
             this.joystickSide = 0;
+    }
+    public void Pause(InputAction.CallbackContext context)
+    {
+            GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
     }
 
     IEnumerator RotateAnimation()

@@ -11,6 +11,9 @@ public class Laser : MonoBehaviour
     private float durationTimer;
 
     bool on = false;
+
+    public ParticleSystem hit;
+    
     void Start()
     {
         restTimer = Time.time;
@@ -29,6 +32,8 @@ public class Laser : MonoBehaviour
                 this.durationTimer = Time.time;
                 this.gameObject.GetComponent<Renderer>().enabled = false;
                 this.gameObject.GetComponent<Collider>().enabled = false;
+
+                hit.Stop();
             }
         }
         else
@@ -39,6 +44,8 @@ public class Laser : MonoBehaviour
                 this.restTimer = Time.time;
                 this.gameObject.GetComponent<Renderer>().enabled = true;
                 this.gameObject.GetComponent<Collider>().enabled = true;
+
+                hit.Play();
             }
         }
     }

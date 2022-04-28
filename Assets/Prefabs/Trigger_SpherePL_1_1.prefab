@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5444948157272517712}
   - component: {fileID: 2051437404}
   - component: {fileID: 2051437405}
+  - component: {fileID: -6066629099670575767}
   m_Layer: 0
   m_Name: Trigger_SpherePL_1_1
   m_TagString: Untagged
@@ -98,6 +99,19 @@ SphereCollider:
   m_Radius: 0.6380435
   m_Center: {x: 0.006642759, y: -0.005559683, z: -0.0055960417}
 --- !u!114 &2051437405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805328967632866693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d2352a54e4fb746938c703167511c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+--- !u!114 &-6066629099670575767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
