@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Knight Skin
+  m_Name: Shooter Player
   m_Shader: {fileID: -6465566751694194690, guid: 7c73954aac85a134bb70d0fff46a180b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -120,7 +120,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_ec2b2775304e4622a845c6021b10d9b2: {r: 0, g: 1, b: 0.60588074, a: 0}
+    - Color_ec2b2775304e4622a845c6021b10d9b2: {r: 0, g: 0.059193484, b: 0.3773585, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
