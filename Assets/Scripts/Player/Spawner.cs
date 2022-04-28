@@ -37,7 +37,14 @@ public class Spawner : MonoBehaviour
     void ResetObj()
     {
         for (int i = 0; i < this.destroyedObjec.Count; i++)
+        {
             this.destroyedObjec[i].SetActive(true);
+
+            DoorSwitch ds = this.destroyedObjec[i].GetComponent<DoorSwitch>();
+            if (ds != null)
+                ds.isActivated = false;
+        
+        }
 
         this.destroyedObjec.Clear();
     }
