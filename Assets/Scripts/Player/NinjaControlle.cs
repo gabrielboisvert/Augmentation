@@ -40,6 +40,8 @@ public class NinjaControlle : MonoBehaviour
     public float slideHitBoxSizeOri = 1;
     public float slideHitBoxSize = 0.5f;
 
+    public float gravityAdition = 15;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +61,9 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
+        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
         this.body.drag = this.onWall ? this.userSlideDrag : 0;
+
 
         if (this.joystickSide != 0)
         {
