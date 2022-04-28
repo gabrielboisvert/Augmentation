@@ -565,7 +565,7 @@ Animation:
   m_Animations:
   - {fileID: 1827226128182048838, guid: 896ac1fb300d5dc48b1c1e8c030f4bfd, type: 3}
   - {fileID: 1827226128182048838, guid: 2758aebeddebcbf4f83b376976f3b80d, type: 3}
-  - {fileID: 1827226128182048838, guid: d8c62839548c00d46b617d210c8b3569, type: 3}
+  - {fileID: 1827226128182048838, guid: 1afb2af82e167ab4298ed24ea7ab0e38, type: 3}
   - {fileID: 1827226128182048838, guid: f4512f9eaad9163429f6a1f407708538, type: 3}
   - {fileID: 1827226128182048838, guid: 85f44cb0f69e77b4aa0a0f08ea95c8c0, type: 3}
   - {fileID: 1827226128182048838, guid: da1849ba36d29d94fb384538755b394c, type: 3}

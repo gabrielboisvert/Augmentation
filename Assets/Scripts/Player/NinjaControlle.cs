@@ -361,7 +361,7 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
-        if (!context.started || this.onWall || this.hasDash || this.inTheAir)
+        if (!context.started || this.onWall || this.hasDash)
             return;
 
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Slide");
