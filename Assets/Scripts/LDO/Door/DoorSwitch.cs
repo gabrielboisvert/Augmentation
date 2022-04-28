@@ -3,12 +3,16 @@ using UnityEngine;
 public class DoorSwitch : MonoBehaviour
 {
     public GameObject[] door;
-    public AudioSource src;
+    private AudioSource src;
     public AudioClip triggerHit;
     public AudioClip doorOpen;
 
-    private bool isActivated = false;
+    public bool isActivated = false;
 
+    void Start()
+    {
+        this.src = this.GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

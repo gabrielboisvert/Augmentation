@@ -11,17 +11,34 @@ public class MeleAI : MonoBehaviour
     public GameObject meleAttack;
     public float rotationSpeed = 700;
     public bool dead = false;
+    public AnimationClip[] clips;
 
     private bool isAttacking = false;
     private float attackCoolDownTimer;
     private float orientation = 1;
     private Coroutine rotationAnimeCoro;
+    private Animation anim;
+    private AnimationClip current;
+
+    void Start()
+    {
+        this.anim = this.GetComponent<Animation>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (this.dead)
             return;
+
+        if (!this.isAttacking)
+        {
+            if (this.current == this.anim.GetClip("Mele_idle"))
+                return;
+
+            this.anim.clip = this.current = this.anim.GetClip("Mele_idle");
+            this.anim.Play();
+        }
 
         if (player != null)
         {
@@ -72,13 +89,16 @@ public class MeleAI : MonoBehaviour
         this.isAttacking = true;
         this.attackCoolDownTimer = Time.time;
 
+        this.anim.clip = this.current = this.anim.GetClip("Mele_attack");
+        this.anim.Play();
+
         this.meleAttack.SetActive(true);
         StartCoroutine(this.StopAttacking());
     }
 
     IEnumerator StopAttacking()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(this.anim.GetClip("Mele_attack").length);
         this.meleAttack.SetActive(false);
     }
 
