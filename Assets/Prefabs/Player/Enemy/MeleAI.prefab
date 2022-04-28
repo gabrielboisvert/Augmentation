@@ -69,13 +69,14 @@ GameObject:
   - component: {fileID: 461512402462725647}
   - component: {fileID: 461512402462725645}
   - component: {fileID: 461512402462725644}
+  - component: {fileID: 1176612377636635710}
   m_Layer: 2
   m_Name: MeleAI
   m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &138809394967556578
 Transform:
   m_ObjectHideFlags: 0
@@ -135,6 +136,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1176612377636635710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767572109734407000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0786c6926efaba3409d6824207a304ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  attackRange: 1
+  attackCoolDown: 1
+  meleAttack: {fileID: 461512403620730730}
+  rotationSpeed: 1400
+  dead: 0
 --- !u!1 &1067855481773929279
 GameObject:
   m_ObjectHideFlags: 0
