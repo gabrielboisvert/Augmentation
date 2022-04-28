@@ -34,6 +34,12 @@ public class NinjaControlle : MonoBehaviour
     public float rotationSpeed = 700;
     public GameObject attackRange;
 
+    public float slideHitBoxCenterOri = 0.5f;
+    public float slideHitBoxCenter = 0.25f;
+
+    public float slideHitBoxSizeOri = 1;
+    public float slideHitBoxSize = 0.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +49,8 @@ public class NinjaControlle : MonoBehaviour
 
         this.anim = this.GetComponent<Animation>();
 
-        //anim.clip = this.current = anim.GetClip("Idle");
-        //anim.Play();
+        anim.clip = this.current = anim.GetClip("Idle");
+        anim.Play();
     }
 
     // Update is called once per frame
@@ -123,6 +129,15 @@ public class NinjaControlle : MonoBehaviour
 
         if (!this.blockInput)
         {
+            //if (this.onWall)
+            //{
+            //    if (this.orientation == -1)
+            //        this.transform.rotation = Quaternion.Euler(0, 90, 0);
+            //    else
+            //        this.transform.rotation = Quaternion.Euler(0, 270, 0);
+            //}
+            //else
+            //{
             if (direct.x < 0)
             {
                 this.joystickSide = this.tmpInput = this.orientation = -1;
@@ -137,6 +152,7 @@ public class NinjaControlle : MonoBehaviour
             }
             else
                 this.joystickSide = this.tmpInput = 0;
+            //}
         }
         else
         {
@@ -231,6 +247,7 @@ public class NinjaControlle : MonoBehaviour
             return;
 
         if (collision.gameObject.CompareTag("AI"))
+        {
             if (collision.GetContact(0).normal == Vector3.up)
             {
                 this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
@@ -241,13 +258,18 @@ public class NinjaControlle : MonoBehaviour
                 this.body.AddForce(jump, ForceMode.Impulse);
                 return;
             }
+        }
 
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         if (collision.GetContact(0).normal == Vector3.up)
         {
             this.canJump = this.canDoubleJump = true;
             this.inTheAirDash = false;
             this.inTheAir = false;
+
+            if (this.orientation == 1)
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
+            else
+                this.transform.rotation = Quaternion.Euler(0, 270, 0);
         }
         else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
         {
@@ -256,19 +278,15 @@ public class NinjaControlle : MonoBehaviour
             else
                 this.transform.rotation = Quaternion.Euler(0, 270, 0);
 
-            //this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
-            //this.anim.Play();
+            this.inTheAirDash = false;
+            this.inTheAir = false;
+            this.orientation = collision.GetContact(0).normal.x;
+
+            if (this.hasDash)
+                this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
 
             if (this.prevWall != collision.gameObject)
-            {
                 this.canJump = this.canDoubleJump = true;
-                this.inTheAirDash = false;
-                this.inTheAir = false;
-                this.orientation = collision.GetContact(0).normal.x;
-
-                if (this.hasDash)
-                    this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
-            }
         }
     }
 
@@ -292,7 +310,7 @@ public class NinjaControlle : MonoBehaviour
                 this.prevWallNormal = -collision.GetContact(0).normal;
                 this.onWall = true;
                 
-                if (!this.blockInput)
+                if (!this.blockInput && !this.hasDash)
                     if (this.current != this.anim.GetClip("ninja_walljump_slide"))
                     {
                         this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
@@ -305,8 +323,6 @@ public class NinjaControlle : MonoBehaviour
     {
         if (this.isDead)
             return;
-
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
 
         this.prevWallNormal = Vector3.zero;
         this.onWall = false;
@@ -325,6 +341,8 @@ public class NinjaControlle : MonoBehaviour
         this.anim.Play();
 
         this.hasDash = true;
+        this.GetComponent<BoxCollider>().center = new Vector3(0, this.slideHitBoxCenter, 0);
+        this.GetComponent<BoxCollider>().size = new Vector3(1, this.slideHitBoxSize, 0.5f);
         StartCoroutine(this.StopSlide(0.5f));
     }
 
@@ -341,6 +359,8 @@ public class NinjaControlle : MonoBehaviour
         }
 
         this.hasDash = false;
+        this.GetComponent<BoxCollider>().center = new Vector3(0, this.slideHitBoxCenterOri, 0);
+        this.GetComponent<BoxCollider>().size = new Vector3(1, this.slideHitBoxSizeOri, 0.5f);
     }
 
     public void MeleAttack(InputAction.CallbackContext context)
