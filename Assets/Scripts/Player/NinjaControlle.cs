@@ -208,7 +208,7 @@ public class NinjaControlle : MonoBehaviour
         {
             this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
 
-            if (!this.inTheAir)
+            if (!this.inTheAir && this.attackCoro == null)
             {
                 this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
                 this.anim.Play();

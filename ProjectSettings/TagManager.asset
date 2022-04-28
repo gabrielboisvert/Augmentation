@@ -11,6 +11,7 @@ TagManager:
   - DestructibleBlock
   - Bullet
   - AI
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

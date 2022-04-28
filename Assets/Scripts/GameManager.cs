@@ -31,9 +31,4 @@ public class GameManager : MonoBehaviour
         //sound.GetComponent<AudioSource>().PlayOneShot(clip);
         //sound.GetComponent<Fx>().OnFinish();
     }
-
-    private void Update()
-    {
-
-    }
 }

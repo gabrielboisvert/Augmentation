@@ -4,12 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class FadeSceneTransition : MonoBehaviour
 {
+    private Canvas canvas;
+
     void Start()
     {
         if (GameManager.Fade == null)
         {
             DontDestroyOnLoad(transform.gameObject);
             GameManager.Fade = this;
+
+            this.canvas = GetComponentInChildren<Canvas>();
         }
         else
             Destroy(this.gameObject);
@@ -20,6 +24,7 @@ public class FadeSceneTransition : MonoBehaviour
     }
     public IEnumerator LoadAsyncScene(string scene, float duration)
     {
+        this.canvas.sortingOrder = 300;
         GetComponent<Animator>().SetBool("Fade", false);
         yield return new WaitForSeconds(duration);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneUtility.GetBuildIndexByScenePath(scene), LoadSceneMode.Single);
@@ -41,5 +46,10 @@ public class FadeSceneTransition : MonoBehaviour
             yield return null;
 
         GetComponent<Animator>().SetBool("Fade", true);
+    }
+
+    public void SortOrder()
+    {
+        this.canvas.sortingOrder = 100;
     }
 }
