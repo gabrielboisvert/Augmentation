@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6866836135452872597}
   - component: {fileID: 8696187395523803999}
   - component: {fileID: 5475497593015899417}
+  - component: {fileID: -4662516595864239905}
   m_Layer: 0
   m_Name: MovingPL_1x1_V2
   m_TagString: ground
@@ -96,3 +97,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28, z: 1.28}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4662516595864239905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183219606897777290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f3a8a9e9c32a74ead974c064b9ed7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  maxPos: {x: 0, y: 0, z: 0}

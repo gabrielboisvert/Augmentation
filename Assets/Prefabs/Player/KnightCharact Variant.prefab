@@ -238,7 +238,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -322,7 +322,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -657,7 +657,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -741,7 +741,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -825,7 +825,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -941,7 +941,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1080,12 +1080,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a5caeacbdfb2d44bf506d368b483b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 50
+  movementSpeed: 100
   jumpForce: 6.5
   maxMovementSpeed: 5
   maxJumpSpeed: 10
   dashSpeed: 400
-  rotationSpeed: 700
+  rotationSpeed: 1400
   attackRange: {fileID: 2028117496}
   shieldDuration: 1
   shieldCooldown: 2
@@ -1097,6 +1097,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aabd05a632298ad458fba69ca997a053, type: 3}
   - {fileID: 8300000, guid: 3bd883f8330066a449b24229b889430a, type: 3}
   footstep: {fileID: 6674178124891585928}
+  gravityAdition: 15
 --- !u!114 &195308446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1404,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37fc0f5ce132dd45886c6caf4e62f73, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

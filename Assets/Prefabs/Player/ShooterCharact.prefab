@@ -265,11 +265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d3521b2e3236c41abf14688ec7aaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 50
+  movementSpeed: 100
   jumpForce: 15
   maxMovementSpeed: 5
   maxJumpSpeed: 10
-  rotationSpeed: 700
+  rotationSpeed: 1400
   leftFist: {fileID: 5618923579400672343}
   rightFist: {fileID: 5618923579400672343}
   arrow: {fileID: 7946161788436268249, guid: 542adbb3c6fb92c45957a956e3cb6222, type: 3}
