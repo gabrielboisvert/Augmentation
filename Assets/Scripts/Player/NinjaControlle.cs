@@ -312,7 +312,6 @@ public class NinjaControlle : MonoBehaviour
             if (this.prevWall != collision.gameObject)
                 this.canJump = this.canDoubleJump = true;
 
-            this.src.PlayOneShot(this.clip[4]);
             this.footstep.Stop();
         }
     }
