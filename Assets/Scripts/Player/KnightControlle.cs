@@ -151,6 +151,10 @@ public class KnightControlle : MonoBehaviour
         else
             this.joystickSide = 0;
     }
+    public void Pause(InputAction.CallbackContext context)
+    {
+            GameManager.Spawner.GetComponent<InGameMenu>().Pause(context);
+    }
 
     IEnumerator RotateAnimation()
     {
