@@ -12,6 +12,8 @@ public class RangedAI : MonoBehaviour
     public float rotationSpeed = 700;
     public bool dead = false;
     public AnimationClip[] clips;
+    public GameObject aim;
+
 
     private Coroutine rotationAnimeCoro;
     private bool isAttacking = false;
@@ -95,7 +97,10 @@ public class RangedAI : MonoBehaviour
     IEnumerator StopAttacking()
     {
         yield return new WaitForSeconds(this.anim.GetClip("Ranged_attack_Charge").length);
-        Instantiate(this.bullet, Vector3.forward * this.orientation, Quaternion.Euler(0, 0, 270));
+        if (this.orientation == 1)
+            Instantiate(this.bullet, this.aim.transform.position, Quaternion.Euler(0, 0, 270));
+        else
+            Instantiate(this.bullet, this.aim.transform.position, Quaternion.Euler(0, 0, 90));
         this.anim.clip = this.current = this.anim.GetClip("Ranged_Attack");
         this.anim.Play();
 

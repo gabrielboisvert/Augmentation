@@ -7,7 +7,7 @@ public class AIBullet : MonoBehaviour
     public float speed = 20;
     void Update()
     {
-        this.transform.position += (this.transform.right * this.speed * Time.deltaTime);
+        this.transform.position += (this.transform.up * this.speed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -30,24 +30,27 @@ public class AIBullet : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            KnightControlle k = other.gameObject.GetComponent<KnightControlle>();
+            KnightControlle k = other.GetComponent<KnightControlle>();
             if (k != null)
             {
-                StartCoroutine(k.dead());
+                k.wasDead();
+                Destroy(this.gameObject);
                 return;
             }
 
-            NinjaControlle n = other.gameObject.GetComponent<NinjaControlle>();
+            NinjaControlle n = other.GetComponent<NinjaControlle>();
             if (n != null)
             {
-                StartCoroutine(n.dead());
+                n.wasDead();
+                Destroy(this.gameObject);
                 return;
             }
 
-            ArcherControlle a = other.gameObject.GetComponent<ArcherControlle>();
+            ArcherControlle a = other.GetComponent<ArcherControlle>();
             if (a != null)
             {
-                StartCoroutine(a.dead());
+                a.wasDead();
+                Destroy(this.gameObject);
                 return;
             }
         }

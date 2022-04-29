@@ -112,7 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door:
   - {fileID: 0}
-  src: {fileID: 0}
+  triggerHit: {fileID: 8300000, guid: 8826dd58d2280c64984a4c5930734575, type: 3}
+  doorOpen: {fileID: 8300000, guid: b117850fe12fc1e449ac9ce076745241, type: 3}
+  isActivated: 0
 --- !u!82 &285383261
 AudioSource:
   m_ObjectHideFlags: 0
