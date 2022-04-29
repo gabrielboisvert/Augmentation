@@ -23,6 +23,7 @@ public class RangedAI : MonoBehaviour
     private AudioSource src;
     public AudioClip[] clip;
 
+    public ParticleSystem hit;
     void Start()
     {
         this.anim = this.GetComponent<Animation>();
@@ -167,6 +168,7 @@ public class RangedAI : MonoBehaviour
 
     public void wasDead()
     {
+        this.hit.Play();
         StartCoroutine(DestructAI());
     }
 

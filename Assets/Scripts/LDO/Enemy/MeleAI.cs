@@ -19,6 +19,8 @@ public class MeleAI : MonoBehaviour
     private AudioSource src;
     public AudioClip[] clip;
 
+    public ParticleSystem hit;
+
     void Start()
     {
         this.anim = this.GetComponent<Animation>();
@@ -123,6 +125,7 @@ public class MeleAI : MonoBehaviour
 
     public void wasDead()
     {
+        this.hit.Play();
         StartCoroutine(DestructAI());
     }
 
