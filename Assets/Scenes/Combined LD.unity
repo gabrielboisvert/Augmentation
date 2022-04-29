@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641597, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2694,19 +2694,19 @@ Transform:
   - {fileID: 1645345158}
   - {fileID: 166515770}
   - {fileID: 747381409}
-  - {fileID: 1330653087}
   - {fileID: 623828112}
   - {fileID: 226777203}
   - {fileID: 1680233425}
+  - {fileID: 1330653087}
   - {fileID: 686183369}
   - {fileID: 1879107463}
   - {fileID: 1200745048}
   - {fileID: 2052766862}
   - {fileID: 2119725532}
-  - {fileID: 1728905617}
   - {fileID: 1287024698}
   - {fileID: 2002056244}
   - {fileID: 1781340670}
+  - {fileID: 1728905617}
   - {fileID: 910830684}
   - {fileID: 152417467}
   - {fileID: 144324769}
@@ -8408,7 +8408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0555594, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 125
+  m_RootOrder: 124
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &226777204
 BoxCollider:
@@ -11604,7 +11604,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2042725105}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
         m_MethodName: OnMainMenu
         m_Mode: 1
@@ -23014,7 +23014,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 124
+  m_RootOrder: 123
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &623828113
 BoxCollider:
@@ -38846,7 +38846,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2042725105}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
         m_MethodName: OnRestart
         m_Mode: 1
@@ -45701,7 +45701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 133
+  m_RootOrder: 132
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1287024699
 BoxCollider:
@@ -56099,7 +56099,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2042725105}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
         m_MethodName: OnMainMenu
         m_Mode: 1
@@ -56496,7 +56496,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2042725105}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
         m_MethodName: OnRestart
         m_Mode: 1
@@ -60064,7 +60064,7 @@ Transform:
   m_LocalScale: {x: 0.90002996, y: 1.8333, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 126
+  m_RootOrder: 125
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1680233426
 BoxCollider:
@@ -63888,7 +63888,7 @@ Transform:
   m_LocalScale: {x: 1.1841596, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 135
+  m_RootOrder: 134
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1781340671
 BoxCollider:
@@ -70138,7 +70138,7 @@ Transform:
   m_LocalScale: {x: 1.1841596, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72816157}
-  m_RootOrder: 134
+  m_RootOrder: 133
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2002056245
 BoxCollider:
@@ -71718,6 +71718,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042132743}
   m_Mesh: {fileID: -6900363925226992472, guid: 14e5486eef8b16340ae4d0ef60210d06, type: 3}
+--- !u!114 &2042725105 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1567341154, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
+  m_PrefabInstance: {fileID: 1811105358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a15a6b3e0f64b41827c4851b734cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2044613202
 PrefabInstance:
   m_ObjectHideFlags: 0
