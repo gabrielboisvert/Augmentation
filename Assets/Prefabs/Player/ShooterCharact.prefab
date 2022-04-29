@@ -256,8 +256,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.6}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 1.0769686, z: 0.6}
+  m_Center: {x: 0, y: 0.46151572, z: 0}
 --- !u!114 &6064862174118139491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,8 +449,9 @@ Animation:
   - {fileID: 1827226128182048838, guid: cf40521677a9bbb448c1c1db3c58369f, type: 3}
   - {fileID: 1827226128182048838, guid: 9b7da7c4dc222384a9b16c0f238759c8, type: 3}
   - {fileID: 1827226128182048838, guid: 42198bc2dd0a7b6469f0ec528411734c, type: 3}
+  - {fileID: 1827226128182048838, guid: 8ebad36b8c71f3c4ca01057c4edf657e, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!120 &3821428435971375452
