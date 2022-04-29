@@ -86,7 +86,7 @@ public class RangedAI : MonoBehaviour
             return;
 
         this.isAttacking = true;
-        this.anim.clip = this.current = this.anim.GetClip("Ranged_Attack");
+        this.anim.clip = this.current = this.anim.GetClip("Ranged_attack_Charge");
         this.anim.Play();
 
         StartCoroutine(this.StopAttacking());
@@ -94,9 +94,12 @@ public class RangedAI : MonoBehaviour
 
     IEnumerator StopAttacking()
     {
+        yield return new WaitForSeconds(this.anim.GetClip("Ranged_attack_Charge").length);
+        Instantiate(this.bullet, Vector3.forward * this.orientation, Quaternion.Euler(0, 0, 270));
+        this.anim.clip = this.current = this.anim.GetClip("Ranged_Attack");
+        this.anim.Play();
+
         yield return new WaitForSeconds(this.anim.GetClip("Ranged_Attack").length);
-        
-        //this.meleAttack.SetActive(false);
         this.isAttacking = false;
         this.anim.Stop();
     }
