@@ -12,7 +12,9 @@ public class InGameMenu : MonoBehaviour
     public GameObject FinishUI;
     public GameObject finishSelectedButton;
     public Color selectedColor;
-
+    public Text timeUI;
+    public Text FinaTimer;
+        
 
     private bool GameIsPaused = false;
     private GameObject current;
@@ -85,6 +87,7 @@ public class InGameMenu : MonoBehaviour
 
     public void OnWin()
     {
+        
         Time.timeScale = 0;
         this.FinishUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(this.finishSelectedButton);
