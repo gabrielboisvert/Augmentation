@@ -158,6 +158,8 @@ public class ArcherControlle : MonoBehaviour
         if (this.rotationAnimeCoro != null)
             return;
 
+        this.resetArmsRotation();
+
         float angle = 180 - (Mathf.Atan2(this.armRotation.x, this.armRotation.y) * Mathf.Rad2Deg);
         this.visibleFist.transform.rotation = Quaternion.Euler(angle, -90, 90);
 
@@ -194,6 +196,16 @@ public class ArcherControlle : MonoBehaviour
         }
     }
 
+    private void resetArmsRotation()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Trail"))
+                continue;
+
+            child.transform.rotation = Quaternion.Euler(0, 0, child.transform.rotation.eulerAngles.z);
+        }
+    }
     public void Move(InputAction.CallbackContext context)
     {
         if (this.isDead)
