@@ -31,6 +31,7 @@ public class DoorSwitch : MonoBehaviour
                 GameManager.Spawner.addObj(door[i]);
                 door[i].gameObject.SetActive(false);
             }
+            GameManager.Spawner.addObj(this.gameObject);
         }
     }
 }
