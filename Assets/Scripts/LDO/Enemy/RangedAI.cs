@@ -20,6 +20,8 @@ public class RangedAI : MonoBehaviour
     private float orientation = 1;
     private Animation anim;
     private AnimationClip current;
+    private AudioSource src;
+    public AudioClip[] clip;
 
     void Start()
     {
@@ -27,6 +29,8 @@ public class RangedAI : MonoBehaviour
 
         this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
         this.anim.Play();
+
+        this.src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -113,6 +117,8 @@ public class RangedAI : MonoBehaviour
             Instantiate(this.bullet, this.aim.transform.position, Quaternion.Euler(0, 0, 90));
         this.anim.clip = this.current = this.anim.GetClip("Ranged_Attack");
         this.anim.Play();
+
+        this.src.clip = this.clip[0];
 
         yield return new WaitForSeconds(this.anim.GetClip("Ranged_Attack").length);
         this.isAttacking = false;
