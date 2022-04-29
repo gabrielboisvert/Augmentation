@@ -11,12 +11,13 @@ public class MeleAI : MonoBehaviour
     public GameObject meleAttack;
     public float rotationSpeed = 700;
     public bool dead = false;
-    public AnimationClip[] clips;
 
     private bool isAttacking = false;
     private float orientation = 1;
     private Animation anim;
     private AnimationClip current;
+    private AudioSource src;
+    public AudioClip[] clip;
 
     void Start()
     {
@@ -24,6 +25,8 @@ public class MeleAI : MonoBehaviour
 
         this.anim.clip = this.current = this.anim.GetClip("Mele_idle");
         this.anim.Play();
+
+        this.src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -94,6 +97,8 @@ public class MeleAI : MonoBehaviour
     IEnumerator StopAttacking()
     {
         yield return new WaitForSeconds(0.3f);
+        this.src.clip = this.clip[0];
+        this.src.Play();
         this.meleAttack.SetActive(true);
         yield return new WaitForSeconds(this.anim.GetClip("Mele_attack").length - 0.6f);
         this.meleAttack.SetActive(false);
