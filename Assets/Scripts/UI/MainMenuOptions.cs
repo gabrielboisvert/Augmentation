@@ -15,7 +15,7 @@ public class MainMenuOptions : MonoBehaviour
 
     public void OnStart()
     {
-        GameManager.Fade.FadeStart("Combined LD", 1);
+        GameManager.Fade.FadeStart("HowToPlay", 1);
     }
 
     public void OnCredit()
