@@ -144,30 +144,50 @@ public class NinjaControlle : MonoBehaviour
 
         if (!this.blockInput)
         {
-            //if (this.onWall)
-            //{
-            //    if (this.orientation == -1)
-            //        this.transform.rotation = Quaternion.Euler(0, 90, 0);
-            //    else
-            //        this.transform.rotation = Quaternion.Euler(0, 270, 0);
-            //}
-            //else
-            //{
             if (direct.x < 0)
             {
+                if (this.onWall)
+                {
+                    if (this.orientation == 1)
+                    {
+                        this.footstep.Stop();
+                        //this.anim.Stop();
+                    }
+                    else
+                    {
+                        this.joystickSide = this.tmpInput = this.orientation = -1;
+                        transform.rotation = Quaternion.Euler(0, 270, 0);
+                        return;
+                    }
+                }
+
                 this.joystickSide = this.tmpInput = this.orientation = -1;
                 if (this.rotationAnimeCoro == null)
                     this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
             }
             else if (direct.x > 0)
             {
+                if (this.onWall)
+                {
+                    if (this.orientation == -1)
+                    {
+                        this.footstep.Stop();
+                        //this.anim.Stop();
+                    }
+                    else
+                    {
+                        this.joystickSide = this.tmpInput = this.orientation = 1;
+                        transform.rotation = Quaternion.Euler(0, 90, 0);
+                        return;
+                    }
+                }
+
                 this.joystickSide = this.tmpInput = this.orientation = 1;
                 if (this.rotationAnimeCoro == null)
                     this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
             }
             else
                 this.joystickSide = this.tmpInput = 0;
-            //}
         }
         else
         {
@@ -221,6 +241,11 @@ public class NinjaControlle : MonoBehaviour
 
             this.body.AddForce(jump, ForceMode.Impulse);
             StartCoroutine(this.RestoreJoystick(0.5f));
+
+            if (this.orientation == 1)
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
+            else
+                this.transform.rotation = Quaternion.Euler(0, 270, 0);
         }
         else
         {
@@ -304,22 +329,37 @@ public class NinjaControlle : MonoBehaviour
         }
         else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
         {
-            if (this.orientation == 1)
-                this.transform.rotation = Quaternion.Euler(0, 90, 0);
-            else
-                this.transform.rotation = Quaternion.Euler(0, 270, 0);
+            this.footstep.Stop();
 
+            if (rotationAnimeCoro != null)
+                return;
+
+            if (this.orientation == 1)
+            {
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
+                this.orientation = -1;
+            }
+            else
+            {
+                this.transform.rotation = Quaternion.Euler(0, 270, 0);
+                this.orientation = 1;
+            }
+
+            if (this.current != this.anim.GetClip("ninja_walljump_slide") && !this.hasDash)
+            {
+                this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
+                this.anim.Play();
+            }
+
+            this.onWall = true;
             this.inTheAirDash = false;
             this.inTheAir = false;
-            this.orientation = collision.GetContact(0).normal.x;
 
             if (this.hasDash)
                 this.body.velocity = new Vector3(0, this.body.velocity.y, 0);
 
             if (this.prevWall != collision.gameObject)
                 this.canJump = this.canDoubleJump = true;
-
-            this.footstep.Stop();
         }
     }
 
@@ -328,28 +368,28 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("DestructibleBlock"))
         if (collision.GetContact(0).normal == Vector3.up)
+        {
+            this.prevWall = null;
+            this.prevWallNormal = Vector3.zero;
+            this.onWall = false;
+            this.inTheAirDash = false;
+            this.inTheAir = false;
+        }
+        else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
+        {
+            this.prevWall = collision.gameObject;
+            this.prevWallNormal = -collision.GetContact(0).normal;
+            this.onWall = true;
+
+            this.footstep.Stop();
+
+            if (this.current != this.anim.GetClip("ninja_walljump_slide") && !this.hasDash)
             {
-                this.prevWall = null;
-                this.prevWallNormal = Vector3.zero;
-                this.onWall = false;
-                this.inTheAirDash = false;
-                this.inTheAir = false;
+                this.anim.clip = this.current = this.anim.GetClip("ninja_idle");
+                this.anim.Play();
             }
-            else if (collision.GetContact(0).normal == Vector3.right || collision.GetContact(0).normal == -Vector3.right)
-            {
-                this.prevWall = collision.gameObject;
-                this.prevWallNormal = -collision.GetContact(0).normal;
-                this.onWall = true;
-                
-                if (!this.blockInput && !this.hasDash)
-                    if (this.current != this.anim.GetClip("ninja_walljump_slide"))
-                    {
-                        this.anim.clip = this.current = this.anim.GetClip("ninja_walljump_slide");
-                        this.anim.Play();
-                    }
-            }
+        }
     }
 
     public void OnCollisionExit(Collision collision)
@@ -369,6 +409,14 @@ public class NinjaControlle : MonoBehaviour
 
         if (!context.started || this.onWall || this.hasDash)
             return;
+
+        if (this.inTheAir)
+        {
+            if (this.orientation == 1)
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
+            else
+                this.transform.rotation = Quaternion.Euler(0, 270, 0);
+        }
 
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Slide");
         this.anim.Play();
@@ -408,6 +456,9 @@ public class NinjaControlle : MonoBehaviour
             return;
 
         if (context.started || context.performed)
+            return;
+
+        if (this.onWall)
             return;
 
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Attack");
