@@ -189,7 +189,7 @@ public class KnightControlle : MonoBehaviour
         this.body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
         this.canJump = false;
 
-        if (!this.isChargeAttack && this.attackCoro == null)
+        if (!this.isChargeAttack && this.attackCoro == null && !this.hasShield)
         {
             this.anim.clip = this.current = this.anim.GetClip("Jump");
             this.anim.Play();
@@ -217,8 +217,11 @@ public class KnightControlle : MonoBehaviour
                 this.src.PlayOneShot(this.clip[3]);
                 this.footstep.Stop();
 
-                this.anim.clip = this.current = this.anim.GetClip("Jump");
-                this.anim.Play();
+                if (!this.hasShield)
+                {
+                    this.anim.clip = this.current = this.anim.GetClip("Jump");
+                    this.anim.Play();
+                }
                 return;
             }
 
