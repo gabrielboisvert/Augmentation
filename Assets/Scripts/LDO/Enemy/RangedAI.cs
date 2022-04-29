@@ -110,6 +110,8 @@ public class RangedAI : MonoBehaviour
 
     IEnumerator StopAttacking()
     {
+        this.src.clip = this.clip[1];
+        this.src.Play();
         yield return new WaitForSeconds(this.anim.GetClip("Ranged_attack_Charge").length);
         if (this.orientation == 1)
             Instantiate(this.bullet, this.aim.transform.position, Quaternion.Euler(0, 0, 270));
@@ -119,6 +121,7 @@ public class RangedAI : MonoBehaviour
         this.anim.Play();
 
         this.src.clip = this.clip[0];
+        this.src.Play();
 
         yield return new WaitForSeconds(this.anim.GetClip("Ranged_Attack").length);
         this.isAttacking = false;

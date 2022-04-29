@@ -1091,8 +1091,8 @@ MonoBehaviour:
   dashSpeed: 400
   rotationSpeed: 1400
   attackRange: {fileID: 2028117496}
-  shieldDuration: 1
-  shieldCooldown: 2
+  shieldDuration: 3
+  shieldCooldown: 0
   clip:
   - {fileID: 8300000, guid: 54fbd55831cea7047880a3cc5748f9b7, type: 3}
   - {fileID: 8300000, guid: 373d85d148c56a841b08e724e9d5c378, type: 3}
