@@ -74,6 +74,16 @@ public class RangedAI : MonoBehaviour
                 this.anim.Play();
             }
         }
+        else
+        {
+            if (this.current != this.anim.GetClip("Ranged_Idle"))
+            {
+                this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
+                this.anim.Play();
+            }
+            else if (!this.anim.isPlaying)
+                this.anim.Play();
+        }
     }
 
     void Attack()
@@ -158,6 +168,8 @@ public class RangedAI : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         this.dead = false;
         this.isAttacking = false;
+        this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
+        this.anim.Play();
         this.gameObject.SetActive(false);
     }
 }

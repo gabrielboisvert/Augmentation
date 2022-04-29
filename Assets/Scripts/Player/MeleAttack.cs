@@ -13,8 +13,24 @@ public class MeleAttack : MonoBehaviour
                     StartCoroutine(this.DestructBlock(other.gameObject));
 
         if (other.gameObject.CompareTag("AI"))
+        {
             if (other.GetType() == typeof(BoxCollider))
-                StartCoroutine(this.DestructAI(other.gameObject));
+            {
+                RangedAI Ra = other.GetComponent<RangedAI>();
+                if (Ra != null)
+                {
+                    Ra.wasDead();
+                    return;
+                }
+
+                MeleAI Ma = other.GetComponent<MeleAI>();
+                if (Ma != null)
+                {
+                    Ma.wasDead();
+                    return;
+                }
+            }
+        }
     }
 
     IEnumerator DestructBlock(GameObject obj)
@@ -24,15 +40,6 @@ public class MeleAttack : MonoBehaviour
         obj.GetComponent<Collider>().isTrigger = true;
         yield return new WaitForSeconds(0.1f);
         obj.GetComponent<Collider>().isTrigger = false;
-        obj.SetActive(false);
-    }
-
-    IEnumerator DestructAI(GameObject obj)
-    {
-        GameManager.Spawner.addObj(obj);
-        obj.GetComponent<MeleAI>().dead = true;
-        yield return new WaitForSeconds(0.3f);
-        obj.GetComponent<MeleAI>().dead = false;
         obj.SetActive(false);
     }
 }

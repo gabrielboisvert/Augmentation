@@ -274,9 +274,16 @@ public class NinjaControlle : MonoBehaviour
                 this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
 
                 Vector3 jump = -this.transform.right * this.orientation * 5;
-                jump.y = 5;
+                jump.y = jumpForce;
 
                 this.body.AddForce(jump, ForceMode.Impulse);
+
+
+                this.anim.clip = this.current = this.anim.GetClip("ninja_jump");
+                this.anim.Play();
+
+                this.src.PlayOneShot(this.clip[0]);
+                this.footstep.Stop();
                 return;
             }
         }
@@ -406,7 +413,7 @@ public class NinjaControlle : MonoBehaviour
         this.anim.clip = this.current = this.anim.GetClip("Ninja_Attack");
         this.anim.Play();
 
-        this.attackRange.SetActive(true);
+        
         this.attackCoro = StartCoroutine(this.DisableAttack(this.anim.GetClip("Ninja_Attack").length));
 
         this.src.PlayOneShot(this.clip[1]);
@@ -415,9 +422,9 @@ public class NinjaControlle : MonoBehaviour
 
     IEnumerator DisableAttack(float duration)
     {
+        this.attackRange.SetActive(true);
         yield return new WaitForSeconds(duration);
         this.attackRange.SetActive(false);
-
         this.attackCoro = null;
     }
 

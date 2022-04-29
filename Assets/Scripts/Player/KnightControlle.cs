@@ -210,9 +210,15 @@ public class KnightControlle : MonoBehaviour
                 this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
 
                 Vector3 jump = -this.transform.right * this.orientation * 5;
-                jump.y = 5;
+                jump.y = jumpForce;
 
                 this.body.AddForce(jump, ForceMode.Impulse);
+
+                this.src.PlayOneShot(this.clip[3]);
+                this.footstep.Stop();
+
+                this.anim.clip = this.current = this.anim.GetClip("Jump");
+                this.anim.Play();
                 return;
             }
 
@@ -372,6 +378,9 @@ public class KnightControlle : MonoBehaviour
 
     public void wasDead()
     {
+        if (this.hasShield)
+            return;
+
         StartCoroutine(this.dead());
     }
 

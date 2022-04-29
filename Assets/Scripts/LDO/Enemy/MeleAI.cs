@@ -59,6 +59,16 @@ public class MeleAI : MonoBehaviour
                 this.anim.Play();
             }
         }
+        else
+        {
+            if (this.current != this.anim.GetClip("Mele_idle"))
+            {
+                this.anim.clip = this.current = this.anim.GetClip("Mele_idle");
+                this.anim.Play();
+            }
+            else if (!this.anim.isPlaying)
+                this.anim.Play();
+        }
     }
 
     void Attack()
@@ -117,6 +127,9 @@ public class MeleAI : MonoBehaviour
         this.dead = true;
         yield return new WaitForSeconds(0.3f);
         this.dead = false;
+        this.isAttacking = false;
+        this.anim.clip = this.current = this.anim.GetClip("Mele_idle");
+        this.anim.Play();
         this.gameObject.SetActive(false);
     }
 }
