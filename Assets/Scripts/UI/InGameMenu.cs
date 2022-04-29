@@ -33,7 +33,6 @@ public class InGameMenu : MonoBehaviour
     }
 
     private void Pause()
-
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

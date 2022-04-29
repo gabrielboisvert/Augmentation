@@ -3278,17 +3278,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
+      propertyPath: players.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
+      objectReference: {fileID: 2461241337389971718, guid: e0c53a26af202dd469868d6cc5a41408, type: 3}
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[2]
       value: 
-      objectReference: {fileID: 5729528302060002463, guid: efc676f0d14a2ed4dbe1281a46cc6a13, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1964376931341630426, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: m_RootOrder
       value: 1

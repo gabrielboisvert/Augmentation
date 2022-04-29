@@ -26,19 +26,26 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("AI"))
         {
             if (other.GetType() == typeof(BoxCollider))
-                StartCoroutine(this.DestructAI(other.gameObject));
+            {
+                RangedAI Ra = other.GetComponent<RangedAI>();
+                if (Ra != null)
+                {
+                    Ra.wasDead();
+                    Destroy(this.gameObject);
+                    return;
+                }
+
+                MeleAI Ma = other.GetComponent<MeleAI>();
+                if (Ma != null)
+                {
+                    Ma.wasDead();
+                    Destroy(this.gameObject);
+                    return;
+                }
+            }
             return;
         }
 
         Destroy(this.gameObject);
-    }
-
-    IEnumerator DestructAI(GameObject obj)
-    {
-        GameManager.Spawner.addObj(obj);
-        obj.GetComponent<MeleAI>().dead = true;
-        yield return new WaitForSeconds(0.3f);
-        obj.GetComponent<MeleAI>().dead = false;
-        obj.SetActive(false);
     }
 }

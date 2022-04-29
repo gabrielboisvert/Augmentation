@@ -381,7 +381,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Arms"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

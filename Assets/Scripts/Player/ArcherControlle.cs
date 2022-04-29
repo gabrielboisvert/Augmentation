@@ -22,6 +22,7 @@ public class ArcherControlle : MonoBehaviour
     private Coroutine shootingCoro;
     private LineRenderer line;
     private AudioSource src;
+    private bool isAiming = false;
 
     public float movementSpeed = 50;
     public float jumpForce = 6.5f;
@@ -34,9 +35,7 @@ public class ArcherControlle : MonoBehaviour
     public float shootCooldown = 0.5f;
     public LayerMask mask;
     public float grabSpeed = 10;
-
     public float gravityAdition = 15;
-
     public AudioClip[] clip;
     public AudioSource footstep;
 
@@ -61,6 +60,11 @@ public class ArcherControlle : MonoBehaviour
 
         this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
 
+        if (this.isShooting)
+            this.Shoot();
+
+        this.RotateArmsUpdate();
+
         if (this.grabbedBlock != null)
         {
             //Interpolate
@@ -71,19 +75,26 @@ public class ArcherControlle : MonoBehaviour
             this.body.isKinematic = true;
         }
 
+        if (this.orientation != this.joystickSide && !this.isAiming && this.joystickSide != 0)
+        {
+            this.orientation = this.joystickSide;
+            this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+        }
+
         if (this.joystickSide != 0)
         {
-            if (this.current == this.anim.GetClip("Shooter_run"))
+            if (this.current == this.anim.GetClip("Shooter_run") && this.anim.isPlaying)
                 return;
 
             if (!this.canJump)
                 return;
 
-            if (this.shootingCoro != null || this.isShooting)
+            if (this.shootingCoro != null || this.isShooting || (this.armRotation != Vector2.zero))
+            {
+                if (!this.footstep.isPlaying)
+                    this.footstep.Play();
                 return;
-
-            if ((this.armRotation != Vector2.zero))
-                return;
+            }
 
             this.anim.clip = this.current = this.anim.GetClip("Shooter_run");
             this.anim.Play();
@@ -92,6 +103,8 @@ public class ArcherControlle : MonoBehaviour
         }
         else if (Mathf.Abs(this.body.velocity.x) < 0.001f)
         {
+            this.footstep.Stop();
+
             if (this.current == this.anim.GetClip("Shooter_idle"))
                 return;
 
@@ -106,8 +119,6 @@ public class ArcherControlle : MonoBehaviour
 
             this.anim.clip = this.current = this.anim.GetClip("Shooter_idle");
             this.anim.Play();
-
-            this.footstep.Stop();
         }
     }
 
@@ -120,11 +131,6 @@ public class ArcherControlle : MonoBehaviour
         if (this.grabbedBlock != null)
             return;
 
-        if (this.isShooting)
-            this.Shoot();
-
-        RotateArmsUpdate();
-
         this.body.velocity = new Vector3(Mathf.Clamp(this.body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
 
         if (this.joystickSide == this.prevWallNormal.x)
@@ -134,6 +140,8 @@ public class ArcherControlle : MonoBehaviour
             return;
 
         Vector3 force = -this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime);
+
+        
         this.body.AddRelativeForce(force, ForceMode.VelocityChange);
     }
 
@@ -195,15 +203,23 @@ public class ArcherControlle : MonoBehaviour
 
         if (direct.x < 0)
         {
-            this.joystickSide = this.orientation = -1;
-            if (this.rotationAnimeCoro == null)
-                this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            this.joystickSide = -1;
+            if (!this.isAiming)
+            {
+                this.orientation = -1;
+                if (this.rotationAnimeCoro == null)
+                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            }
         }
         else if (direct.x > 0)
         {
-            this.joystickSide = this.orientation = 1;
-            if (this.rotationAnimeCoro == null)
-                this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            this.joystickSide = 1;
+            if (!this.isAiming)
+            {
+                this.orientation = 1;
+                if (this.rotationAnimeCoro == null)
+                    this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
+            }
         }
         else
             this.joystickSide = 0;
@@ -264,7 +280,7 @@ public class ArcherControlle : MonoBehaviour
                 this.body.velocity = new Vector3(this.body.velocity.x, 0, 0);
 
                 Vector3 jump = -this.transform.right * this.orientation * 5;
-                jump.y = 5;
+                jump.y = jumpForce;
 
                 this.body.AddForce(jump, ForceMode.Impulse);
                 return;
@@ -353,6 +369,11 @@ public class ArcherControlle : MonoBehaviour
     {
         if (this.isDead)
             return;
+
+        if (context.started)
+            this.isAiming = true;
+        else if (context.canceled)
+            this.isAiming = false;
 
         armRotation = context.ReadValue<Vector2>();
     }

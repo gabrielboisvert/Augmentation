@@ -105,4 +105,18 @@ public class MeleAI : MonoBehaviour
         if (other.CompareTag("Player"))
             player = null;
     }
+
+    public void wasDead()
+    {
+        StartCoroutine(DestructAI());
+    }
+
+    IEnumerator DestructAI()
+    {
+        GameManager.Spawner.addObj(this.gameObject);
+        this.dead = true;
+        yield return new WaitForSeconds(0.3f);
+        this.dead = false;
+        this.gameObject.SetActive(false);
+    }
 }
