@@ -272,6 +272,7 @@ MonoBehaviour:
   aim: {fileID: 5700626399008236326}
   clip:
   - {fileID: 8300000, guid: d4450fca35967754db2d07911808a717, type: 3}
+  - {fileID: 8300000, guid: 40115d349a2ba9b428019086fb0b22e1, type: 3}
 --- !u!111 &2656272466647897603
 Animation:
   m_ObjectHideFlags: 0
