@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 2606187694124381455}
   - component: {fileID: 1868284985839223548}
   - component: {fileID: 9156452255176320654}
+  - component: {fileID: 923561527489786020}
   m_Layer: 6
   m_Name: NinjaCharact
   m_TagString: Player
@@ -672,6 +673,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &923561527489786020
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160892848249808106}
+  m_Enabled: 1
 --- !u!1 &3241328142479339079
 GameObject:
   m_ObjectHideFlags: 0

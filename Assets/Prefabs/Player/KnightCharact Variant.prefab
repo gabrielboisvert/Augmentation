@@ -992,6 +992,7 @@ GameObject:
   - component: {fileID: 195308445}
   - component: {fileID: 195308446}
   - component: {fileID: 3432118125774252780}
+  - component: {fileID: 6344964971705492739}
   m_Layer: 6
   m_Name: KnightCharact Variant
   m_TagString: Player
@@ -1340,6 +1341,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &6344964971705492739
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729528302060002463}
+  m_Enabled: 1
 --- !u!1 &6566256731991844385
 GameObject:
   m_ObjectHideFlags: 0
