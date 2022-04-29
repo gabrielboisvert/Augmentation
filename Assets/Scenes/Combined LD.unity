@@ -2412,6 +2412,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1416412810}
     m_Modifications:
     - target: {fileID: 1355321020451036038, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355321020451036038, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: maxPos.y
       value: 9.37
       objectReference: {fileID: 0}
@@ -5268,7 +5272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7503,7 +7507,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15825,7 +15829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30493,7 +30497,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30796,7 +30800,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c13809c5d4e93a4459431947e63a72c1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.109
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -52359,7 +52363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55769,7 +55773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7114387581966711182, guid: c1bf34a4457a6f741b0a984747b1d0cf, type: 3}
       propertyPath: m_LocalPosition.x
