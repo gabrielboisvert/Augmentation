@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-        if (this.isDead || GameManager.Cam.IsRespawn())
+        if (this.isDead)
             return;
 
         this.m_body.velocity = new Vector3(Mathf.Clamp(this.m_body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.m_body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext context)
     {
-        if (this.isDead || GameManager.Cam.IsRespawn())
+        if (this.isDead)
             return;
 
         Vector2 direct = context.ReadValue<Vector2>();

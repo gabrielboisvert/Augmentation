@@ -82,7 +82,7 @@ public class CameraControl : MonoBehaviour
     public float maxLerpY = 5;
     public float lerpSpeedX = 3;
     public float lerpSpeedy = 1;
-    public float minRespawnSpeed = 40;
+    public float minRespawnSpeed = 150;
 
     private Camera cam;
     private Transform startedTransf;

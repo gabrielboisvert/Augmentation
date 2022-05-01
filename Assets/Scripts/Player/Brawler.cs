@@ -40,6 +40,7 @@ public class Brawler : Player
     public new void Start()
     {
         base.Start();
+        this.transform.rotation = Quaternion.Euler(0, -90, 0);
 
         anim.clip = this.currentAnim = anim.GetClip(animationStr[(int)ANIMATION_STATE.IDLE]);
         anim.Play();
