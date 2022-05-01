@@ -2402,8 +2402,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b0f5659a735009c4396ee8c97a841a93, type: 3}
   m_PrefabInstance: {fileID: 174080333}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1439586617
-BoxCollider:
+--- !u!64 &1439586617
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2412,9 +2412,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.3999996, y: 1.28, z: 1.28}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1949990926270696385, guid: b0f5659a735009c4396ee8c97a841a93, type: 3}
 --- !u!20 &1446401588 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8938230773116276955, guid: 02f9f1008112fc043ab7da33778cfb4f, type: 3}
@@ -3635,7 +3636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726625207303575993, guid: db1d105c085eee349a36f4a6032ff368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.65
+      value: -13.82
       objectReference: {fileID: 0}
     - target: {fileID: 2726625207303575993, guid: db1d105c085eee349a36f4a6032ff368, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3675,7 +3676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726625207303575998, guid: db1d105c085eee349a36f4a6032ff368, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1d105c085eee349a36f4a6032ff368, type: 3}
