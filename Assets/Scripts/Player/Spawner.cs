@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +8,18 @@ public class Spawner : MonoBehaviour
     private int currentPlayer;
     public Camera cam;
 
+    public delegate void SpawnEvent(GameObject player);
+    public event SpawnEvent OnRespawn;
+
     private List<GameObject> destroyedObjec = new List<GameObject>();
     void Awake()
     {
-        this.Respawn();
         GameManager.Spawner = this;
+    }
+
+    private void Start()
+    {
+        this.Respawn();
     }
 
     void Respawn()
@@ -29,7 +35,9 @@ public class Spawner : MonoBehaviour
 
         this.player.transform.position = this.transform.position;
 
-        cam.GetComponent<CameraControl>().player = this.player;
+        //cam.GetComponent<CameraControl>().player = this.player;
+
+        this.OnRespawn.Invoke(this.player);
 
         this.ResetObj();
     }
@@ -59,7 +67,7 @@ public class Spawner : MonoBehaviour
         if (this.player == null)
         {
             this.Respawn();
-            StartCoroutine(this.cam.GetComponent<CameraControl>().StarLerp());
+            //StartCoroutine(this.cam.GetComponent<CameraControl>().StarLerp());
         }
     }
 }

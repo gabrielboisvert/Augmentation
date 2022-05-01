@@ -373,7 +373,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &7967247645430300354
@@ -383,7 +383,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3160892848249808106}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4fefbd6e426e0514c8fb763ebe8a9247, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -531,9 +531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9732d6b2af331a9448d0d6f366b66215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: 1
   movementSpeed: 150
   jumpForce: 15
-  maxMovementSpeed: 5
+  maxMovementSpeed: 7
   maxJumpSpeed: 10
   WallJumpForceX: 10
   userSlideDrag: 3.5
@@ -554,6 +555,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ab362be2b976f6444ade3e9c85494111, type: 3}
   - {fileID: 8300000, guid: 3bd883f8330066a449b24229b889430a, type: 3}
   footstep: {fileID: 3735511293269986747}
+  inputMove: {x: 0, y: 0}
 --- !u!111 &1868284985839223548
 Animation:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class NinjaControlle : MonoBehaviour
     private bool inTheAir = false;
     private bool blockInput = false;
     private float tmpInput = 0;
-    private float orientation = 1;
+    public float orientation = 1;
     private GameObject prevWall;
     private Vector3 prevWallNormal = Vector3.zero;
     private float joystickSide = 0;
@@ -48,6 +49,11 @@ public class NinjaControlle : MonoBehaviour
     public AudioSource footstep;
 
 
+    public Vector2 inputMove;
+
+    public delegate void DeathEvent();
+    public event DeathEvent OnDead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,13 +68,29 @@ public class NinjaControlle : MonoBehaviour
         this.src = this.GetComponent<AudioSource>();
     }
 
+    public float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (this.isDead)
             return;
 
-        this.body.velocity = new Vector3(this.body.velocity.x, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
+        float friction = 20;
+
+        float xVelocity = this.body.velocity.x;
+        if (xVelocity != 0)
+        {
+            if (this.inputMove.x == 0 && !this.inTheAir)
+                xVelocity = Mathf.MoveTowards(xVelocity, 0, friction * Time.deltaTime);
+        }
+       
+        
+        this.body.velocity = new Vector3(xVelocity, this.body.velocity.y - (this.gravityAdition * Time.deltaTime), this.body.velocity.z);
+
         this.body.drag = this.onWall ? this.userSlideDrag : 0;
 
 
@@ -140,7 +162,7 @@ public class NinjaControlle : MonoBehaviour
         if (this.isDead)
             return;
 
-        Vector2 direct = context.ReadValue<Vector2>();
+        Vector2 direct = this.inputMove = context.ReadValue<Vector2>();
 
         if (!this.blockInput)
         {
@@ -486,6 +508,8 @@ public class NinjaControlle : MonoBehaviour
 
     public IEnumerator dead()
     {
+        this.OnDead.Invoke();
+
         this.anim.clip = this.current = this.anim.GetClip("ninja_dead");
         this.anim.Play();
         this.GetComponent<Collider>().enabled = false;
