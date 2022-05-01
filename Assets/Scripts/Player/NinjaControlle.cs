@@ -66,6 +66,8 @@ public class NinjaControlle : MonoBehaviour
         anim.Play();
 
         this.src = this.GetComponent<AudioSource>();
+
+        GameManager.Player = this.gameObject;
     }
 
     public float Remap(float value, float from1, float to1, float from2, float to2)
@@ -508,8 +510,6 @@ public class NinjaControlle : MonoBehaviour
 
     public IEnumerator dead()
     {
-        this.OnDead.Invoke();
-
         this.anim.clip = this.current = this.anim.GetClip("ninja_dead");
         this.anim.Play();
         this.GetComponent<Collider>().enabled = false;
@@ -519,6 +519,8 @@ public class NinjaControlle : MonoBehaviour
         this.footstep.Stop();
         yield return new WaitForSeconds(this.anim.GetClip("ninja_dead").length);
         Destroy(this.gameObject);
+
+        this.OnDead.Invoke();
     }
 
     public void Pause(InputAction.CallbackContext context)

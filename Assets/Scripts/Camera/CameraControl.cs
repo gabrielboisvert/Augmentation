@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
@@ -48,10 +47,9 @@ public class CameraControl : MonoBehaviour
     struct PlayerData
     {
         private Rigidbody playerBody;
-        public NinjaControlle controller;
+        public Player controller;
 
         public Vector2 velocity;
-        public Vector2 joystick;
         public int orientation;
         public int orientationTop;
         public float maxVelocityX;
@@ -60,9 +58,8 @@ public class CameraControl : MonoBehaviour
         public PlayerData(GameObject player)
         {
             this.playerBody = player.GetComponent<Rigidbody>();
-            this.controller = player.GetComponent<NinjaControlle>();
+            this.controller = player.GetComponent<Player>();
             this.velocity = Vector2.zero;
-            this.joystick = Vector2.zero;
             this.orientation = 0;
             this.orientationTop = 0;
             this.maxVelocityX = this.controller.maxMovementSpeed;
@@ -71,9 +68,8 @@ public class CameraControl : MonoBehaviour
         public void update()
         {
             this.velocity = this.playerBody.velocity;
-            this.orientation = (int)this.controller.orientation;
+            this.orientation = this.controller.Orientation;
             this.orientationTop = this.playerBody.velocity.y < 0 ? -1 : 1;
-            this.joystick = this.controller.inputMove;
         }
     }
     struct LastHit
@@ -86,6 +82,7 @@ public class CameraControl : MonoBehaviour
     public float maxLerpY = 5;
     public float lerpSpeedX = 3;
     public float lerpSpeedy = 1;
+    public float minRespawnSpeed = 40;
 
     private Camera cam;
     private Transform startedTransf;
@@ -98,6 +95,10 @@ public class CameraControl : MonoBehaviour
     private bool firstInit = true;
     private bool isRespawn;
 
+    public void Awake()
+    {
+        GameManager.Cam = this;
+    }
     public void Start()
     {
         this.cam = this.GetComponent<Camera>();
@@ -108,17 +109,16 @@ public class CameraControl : MonoBehaviour
         this.wallSide[(int)Side.DOWN] = new Displacement(Vector3.down);
         this.wallSide[(int)Side.LEFT] = new Displacement(Vector3.left);
         
-        GameManager.Spawner.OnRespawn += new Spawner.SpawnEvent(delegate (GameObject player) {
-            this.player = player;
-            this.playerData = new PlayerData(player);
+        GameManager.Spawner.OnRespawn += new Spawner.SpawnEvent(delegate (GameObject newPlayer) {
+            this.player = newPlayer;
+            this.playerData = new PlayerData(newPlayer);
+            //this.player = this.playerData.controller.gameObject;
             this.lerpDisplacement = new LerpDisplacement();
-
-            this.playerData.controller.OnDead += new NinjaControlle.DeathEvent(delegate () { this.player = null; });
 
             if (this.firstInit)
             {
                 this.startedTransf = new Transform(this.gameObject.transform, this.player.transform);
-                float y = 2.0f * this.startedTransf.position.z * Mathf.Tan(this.cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+                float y = 2.0f * -this.startedTransf.position.z * Mathf.Tan(this.cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
                 float x = y * this.cam.aspect;
                 this.m_collider.size = new Vector3(x, y, this.m_collider.size.z);
 
@@ -127,13 +127,12 @@ public class CameraControl : MonoBehaviour
             }
 
             this.isRespawn = true;
-
-            this.respawnSpeed = Mathf.Abs(Vector3.Distance(player.transform.position, this.transform.position) * 2);
+            this.respawnSpeed = Mathf.Clamp(Mathf.Abs(Vector3.Distance(newPlayer.transform.position, this.transform.position) * 2), this.minRespawnSpeed, Mathf.Infinity);
         });
     }
     public void Update()
     {
-        if (player == null)
+        if (this.player == null)
             return;
 
         this.playerData.update();
@@ -227,7 +226,7 @@ public class CameraControl : MonoBehaviour
         playerPos.z = this.startedTransf.position.z;
 
         float dist = Vector2.Distance(this.transform.position, playerPos);
-        if (dist < 0.001f)
+        if (dist < 0.1f)
         {
             this.isRespawn = false;
             return;
@@ -239,4 +238,5 @@ public class CameraControl : MonoBehaviour
 
         this.m_collider.center = new Vector3(this.player.transform.position.x - this.transform.position.x, this.player.transform.position.y - this.transform.position.y, -this.startedTransf.position.z);
     }
+    public bool IsRespawn() { return this.isRespawn; }
 }

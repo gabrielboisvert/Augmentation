@@ -6,10 +6,10 @@ public class DeathTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            KnightControlle k = other.GetComponent<KnightControlle>();
+            Player k = other.GetComponent<Player>();
             if (k != null)
             {
-                StartCoroutine(k.dead());
+                k.Kill();
                 return;
             }
 

@@ -30,10 +30,10 @@ public class AIBullet : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            KnightControlle k = other.GetComponent<KnightControlle>();
+            Player k = other.GetComponent<Player>();
             if (k != null)
             {
-                k.wasDead();
+                k.Kill();
                 Destroy(this.gameObject);
                 return;
             }

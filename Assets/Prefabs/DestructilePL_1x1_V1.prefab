@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6975878022865266980}
   - component: {fileID: 5128398569996705262}
   - component: {fileID: -3357884593368885288}
+  - component: {fileID: -8532238670972094417}
   m_Layer: 0
   m_Name: DestructilePL_1x1_V1
   m_TagString: DestructibleBlock
@@ -96,3 +97,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28, z: 1.28}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8532238670972094417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641480294390692923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c36b45115d54d44994a4410a87dd1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructibleBloc: {fileID: 8300000, guid: 847dff4c10d0c3e4b8ec73a8e6778b83, type: 3}

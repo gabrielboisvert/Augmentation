@@ -8,8 +8,8 @@ public class MeleAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("DestructibleBlock"))
-            if (this.GetComponentInParent<KnightControlle>() != null)
-                if (this.GetComponentInParent<KnightControlle>().isChargedAttack())
+            if (this.GetComponentInParent<Brawler>() != null)
+                if (this.GetComponentInParent<Brawler>().IsChargedAttack())
                     StartCoroutine(this.DestructBlock(other.gameObject));
 
         if (other.gameObject.CompareTag("AI"))
@@ -35,11 +35,12 @@ public class MeleAttack : MonoBehaviour
 
     IEnumerator DestructBlock(GameObject obj)
     {
-        GameManager.Spawner.addObj(obj);
-        GameManager.PlaySound(this.clip);
-        obj.GetComponent<Collider>().isTrigger = true;
-        yield return new WaitForSeconds(0.1f);
-        obj.GetComponent<Collider>().isTrigger = false;
-        obj.SetActive(false);
+        yield return null;
+        //GameManager.Spawner.AddObj(obj);
+        //GameManager.PlaySound(this.clip);
+        //obj.GetComponent<Collider>().isTrigger = true;
+        //yield return new WaitForSeconds(0.1f);
+        //obj.GetComponent<Collider>().isTrigger = false;
+        //obj.SetActive(false);
     }
 }

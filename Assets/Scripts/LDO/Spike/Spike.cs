@@ -8,10 +8,10 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            KnightControlle k = collision.gameObject.GetComponent<KnightControlle>();
+            Player k = collision.gameObject.GetComponent<Player>();
             if (k != null)
             {
-                StartCoroutine(k.dead());
+                k.Kill();
                 return;
             }
 

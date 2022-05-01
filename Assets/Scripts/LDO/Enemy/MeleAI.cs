@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleAI : MonoBehaviour
+public class MeleAI : MonoBehaviour, DestructibleObj
 {
     private GameObject player;
+    private Vector3 originPosition;
     public float speed = 2;
     public float attackRange = 3;
     public float attackCoolDown = 1;
@@ -29,8 +29,8 @@ public class MeleAI : MonoBehaviour
         this.anim.Play();
 
         this.src = GetComponent<AudioSource>();
+        this.originPosition = this.gameObject.transform.position;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -75,7 +75,6 @@ public class MeleAI : MonoBehaviour
                 this.anim.Play();
         }
     }
-
     void Attack()
     {
         if (this.dead)
@@ -95,7 +94,6 @@ public class MeleAI : MonoBehaviour
 
         StartCoroutine(this.StopAttacking());
     }
-
     IEnumerator StopAttacking()
     {
         yield return new WaitForSeconds(0.3f);
@@ -107,7 +105,6 @@ public class MeleAI : MonoBehaviour
         this.isAttacking = false;
         this.anim.Stop();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (this.dead)
@@ -116,28 +113,31 @@ public class MeleAI : MonoBehaviour
         if (other.CompareTag("Player"))
             player = other.gameObject;
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
             player = null;
     }
-
     public void wasDead()
     {
         this.hit.Play();
         StartCoroutine(DestructAI());
     }
-
     IEnumerator DestructAI()
     {
-        GameManager.Spawner.addObj(this.gameObject);
+        GameManager.Spawner.AddObj(this);
         this.dead = true;
         yield return new WaitForSeconds(0.3f);
-        this.dead = false;
-        this.isAttacking = false;
+
         this.anim.clip = this.current = this.anim.GetClip("Mele_idle");
         this.anim.Play();
         this.gameObject.SetActive(false);
+    }
+    public void Reset()
+    {
+        this.gameObject.SetActive(true);
+        this.transform.position = this.originPosition;
+        this.dead = false;
+        this.isAttacking = false;
     }
 }

@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: block_actif
+    second: Brawler_Block_Actif
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: block_actif
+      name: Brawler_Block_Actif
       takeName: Take 001
       internalID: 0
       firstFrame: 0

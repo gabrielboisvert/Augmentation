@@ -8,11 +8,11 @@ public class MeleAttackAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            KnightControlle k = other.GetComponent<KnightControlle>();
+            Brawler k = other.GetComponent<Brawler>();
             if (k != null)
             {
                 this.gameObject.SetActive(false);
-                k.wasDead();
+                k.Kill();
                 return;
             }
 

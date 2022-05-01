@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAI : MonoBehaviour
+public class RangedAI : MonoBehaviour, DestructibleObj
 {
     private GameObject player;
+    private Vector3 originPosition;
     public float speed = 2;
     public float attackRange = 3;
     public float attackCoolDown = 1;
@@ -27,13 +27,13 @@ public class RangedAI : MonoBehaviour
     void Start()
     {
         this.anim = this.GetComponent<Animation>();
+        this.originPosition = this.transform.position;
 
         this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
         this.anim.Play();
 
         this.src = GetComponent<AudioSource>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -90,7 +90,6 @@ public class RangedAI : MonoBehaviour
                 this.anim.Play();
         }
     }
-
     void Attack()
     {
         if (this.dead)
@@ -108,7 +107,6 @@ public class RangedAI : MonoBehaviour
 
         StartCoroutine(this.StopAttacking());
     }
-
     IEnumerator StopAttacking()
     {
         this.src.clip = this.clip[1];
@@ -128,7 +126,6 @@ public class RangedAI : MonoBehaviour
         this.isAttacking = false;
         this.anim.Stop();
     }
-
     IEnumerator RotateAnimation()
     {
         while (true)
@@ -147,10 +144,8 @@ public class RangedAI : MonoBehaviour
 
             yield return null;
         }
-
         this.rotationAnimeCoro = null;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (this.dead)
@@ -159,28 +154,31 @@ public class RangedAI : MonoBehaviour
         if (other.CompareTag("Player"))
             player = other.gameObject;
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
             player = null;
     }
-
     public void wasDead()
     {
         this.hit.Play();
         StartCoroutine(DestructAI());
     }
-
     IEnumerator DestructAI()
     {
-        GameManager.Spawner.addObj(this.gameObject);
+        GameManager.Spawner.AddObj(this);
         this.dead = true;
         yield return new WaitForSeconds(0.3f);
-        this.dead = false;
-        this.isAttacking = false;
+        
         this.anim.clip = this.current = this.anim.GetClip("Ranged_Idle");
         this.anim.Play();
         this.gameObject.SetActive(false);
+    }
+    public void Reset()
+    {
+        this.gameObject.SetActive(true);
+        this.transform.position = this.originPosition;
+        this.dead = false;
+        this.isAttacking = false;
     }
 }

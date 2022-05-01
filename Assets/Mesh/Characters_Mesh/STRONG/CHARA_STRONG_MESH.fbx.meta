@@ -3,17 +3,7 @@ guid: ae4bf5c5b3c6e454285b45a3bc43c1fd
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glow
-    second: {fileID: 2100000, guid: 5f62a30f00e3d1d49aaa4b4c76ddd378, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gradiant
-    second: {fileID: 2100000, guid: 87fd708f6becff644a8d80aa2acacfeb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

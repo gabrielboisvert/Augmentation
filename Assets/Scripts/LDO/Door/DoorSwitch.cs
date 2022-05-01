@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class DoorSwitch : MonoBehaviour
+public class DoorSwitch : MonoBehaviour, DestructibleObj
 {
-    public GameObject[] door;
-    private AudioSource src;
+    public GameObject[] doors;
+    private AudioSource m_audio;
     public AudioClip triggerHit;
     public AudioClip doorOpen;
 
@@ -11,27 +11,32 @@ public class DoorSwitch : MonoBehaviour
 
     void Start()
     {
-        this.src = this.GetComponent<AudioSource>();
+        this.m_audio = this.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
         {
-            this.src.PlayOneShot(this.triggerHit);
+            this.m_audio.PlayOneShot(this.triggerHit);
 
             if (this.isActivated)
                 return;
 
             this.isActivated = true;
-            this.src.PlayOneShot(this.doorOpen);
+            this.m_audio.PlayOneShot(this.doorOpen);
 
-            for (int i = 0; i < door.Length; i++)
-            {
-                GameManager.Spawner.addObj(door[i]);
-                door[i].gameObject.SetActive(false);
-            }
-            GameManager.Spawner.addObj(this.gameObject);
+            for (int i = 0; i < doors.Length; i++)
+                doors[i].gameObject.SetActive(false);
+
+            GameManager.Spawner.AddObj(this);
         }
+    }
+
+    public void Reset()
+    {
+        this.isActivated = false;
+        for (int i = 0; i < doors.Length; i++)
+            doors[i].gameObject.SetActive(true);
     }
 }

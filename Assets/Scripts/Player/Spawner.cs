@@ -3,71 +3,46 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] players;
-    public GameObject player;
-    private int currentPlayer;
-    public Camera cam;
-
     public delegate void SpawnEvent(GameObject player);
     public event SpawnEvent OnRespawn;
 
-    private List<GameObject> destroyedObjec = new List<GameObject>();
+    public GameObject[] players;
+    private GameObject player;
+    private int currentPlayer;
+    private List<DestructibleObj> destroyedObject = new List<DestructibleObj>();
+
     void Awake()
     {
         GameManager.Spawner = this;
     }
-
     private void Start()
     {
         this.Respawn();
     }
-
     void Respawn()
     {
+        this.ResetObj();
+
         int rand;
         do
         {
             rand = Random.Range(0, players.Length);
         } while (rand == this.currentPlayer);
 
-        this.player = Instantiate(players[rand]);
+        this.player = Instantiate(players[rand], this.transform.position, Quaternion.identity);
+        this.player.GetComponent<Player>().OnDead += new Player.DeathEvent(delegate () { this.Respawn(); });
         this.currentPlayer = rand;
 
-        this.player.transform.position = this.transform.position;
-
-        //cam.GetComponent<CameraControl>().player = this.player;
-
         this.OnRespawn.Invoke(this.player);
-
-        this.ResetObj();
     }
-
     void ResetObj()
     {
-        for (int i = 0; i < this.destroyedObjec.Count; i++)
-        {
-            this.destroyedObjec[i].SetActive(true);
-
-            DoorSwitch ds = this.destroyedObjec[i].GetComponent<DoorSwitch>();
-            if (ds != null)
-                ds.isActivated = false;
-        
-        }
-
-        this.destroyedObjec.Clear();
+        for (int i = 0; i < this.destroyedObject.Count; i++)
+            this.destroyedObject[i].Reset();
+        this.destroyedObject.Clear();
     }
-
-    public void addObj(GameObject obj)
+    public void AddObj(DestructibleObj obj)
     {
-        this.destroyedObjec.Add(obj);
-    }
-
-    private void Update()
-    {
-        if (this.player == null)
-        {
-            this.Respawn();
-            //StartCoroutine(this.cam.GetComponent<CameraControl>().StarLerp());
-        }
+        this.destroyedObject.Add(obj);
     }
 }
