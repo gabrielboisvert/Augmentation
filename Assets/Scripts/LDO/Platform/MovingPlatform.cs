@@ -7,8 +7,7 @@ public class MovingPlatform : MonoBehaviour
     protected float startTime;
     protected bool starting = true;
     private GameObject player;
-    private Vector3 offset;
-
+    private Rigidbody playerBody;
     public Vector3 MaxPos { get => maxPos; set => maxPos = value; }
     public void Start()
     {
@@ -20,15 +19,9 @@ public class MovingPlatform : MonoBehaviour
         float t = (Time.time - this.startTime) / this.duration;
 
         if (this.starting)
-            this.transform.position = Vector3.Lerp(this.minimum, this.minimum + this.MaxPos, t);
+            transform.position = Vector3.Lerp(this.minimum, this.minimum + this.MaxPos, t);
         else
-            this.transform.position = Vector3.Lerp(this.minimum + this.MaxPos, this.minimum, t);
-
-        if (this.player != null)
-        {
-            this.offset = this.transform.position - this.player.transform.position;
-            this.player.transform.position = this.transform.position + this.offset;
-        }
+            transform.position = Vector3.Lerp(this.minimum + this.MaxPos, this.minimum, t);
 
         if (Time.time - this.startTime > this.duration)
         {
@@ -40,16 +33,27 @@ public class MovingPlatform : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            if (collision.GetContact(0).normal == Vector3.down)
-            {
-                this.player = collision.gameObject;
-                this.offset = this.transform.position - collision.gameObject.transform.position;
-            }
+        {
+            this.player = collision.gameObject;
+            this.playerBody = collision.gameObject.GetComponent<Rigidbody>();
+
+            this.player.transform.SetParent(this.transform);
+            this.playerBody.interpolation = RigidbodyInterpolation.None;
+            this.playerBody.velocity = Vector3.zero;
+        }
     }
 
     public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            this.player = null;
+        {
+            if (this.player.transform.parent == this.transform)
+            {
+                this.player.transform.SetParent(null);
+                this.playerBody.interpolation = RigidbodyInterpolation.Interpolate;
+                this.playerBody = null;
+                this.player = null;
+            }
+        }
     }
 }

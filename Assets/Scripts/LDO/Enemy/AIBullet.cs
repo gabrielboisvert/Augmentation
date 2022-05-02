@@ -30,29 +30,23 @@ public class AIBullet : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Player k = other.GetComponent<Player>();
-            if (k != null)
-            {
-                k.Kill();
-                Destroy(this.gameObject);
-                return;
-            }
+            other.GetComponent<Player>().Kill(this.tag);
+            
+            //NinjaControlle n = other.GetComponent<NinjaControlle>();
+            //if (n != null)
+            //{
+            //    n.wasDead();
+            //    Destroy(this.gameObject);
+            //    return;
+            //}
 
-            NinjaControlle n = other.GetComponent<NinjaControlle>();
-            if (n != null)
-            {
-                n.wasDead();
-                Destroy(this.gameObject);
-                return;
-            }
-
-            ArcherControlle a = other.GetComponent<ArcherControlle>();
-            if (a != null)
-            {
-                a.wasDead();
-                Destroy(this.gameObject);
-                return;
-            }
+            //ArcherControlle a = other.GetComponent<ArcherControlle>();
+            //if (a != null)
+            //{
+            //    a.wasDead();
+            //    Destroy(this.gameObject);
+            //    return;
+            //}
         }
 
         Destroy(this.gameObject);

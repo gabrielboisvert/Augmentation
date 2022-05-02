@@ -13,7 +13,6 @@ public class DoorSwitch : MonoBehaviour, DestructibleObj
     {
         this.m_audio = this.GetComponent<AudioSource>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
@@ -32,7 +31,6 @@ public class DoorSwitch : MonoBehaviour, DestructibleObj
             GameManager.Spawner.AddObj(this);
         }
     }
-
     public void Reset()
     {
         this.isActivated = false;

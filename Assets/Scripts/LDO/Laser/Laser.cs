@@ -58,26 +58,21 @@ public class Laser : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Player k = other.GetComponent<Player>();
-            if (k != null)
-            {
-                k.Kill();
-                return;
-            }
+            other.GetComponent<Player>().Kill();
+            
+            //NinjaControlle n = other.GetComponent<NinjaControlle>();
+            //if (n != null)
+            //{
+            //    StartCoroutine(n.dead());
+            //    return;
+            //}
 
-            NinjaControlle n = other.GetComponent<NinjaControlle>();
-            if (n != null)
-            {
-                StartCoroutine(n.dead());
-                return;
-            }
-
-            ArcherControlle a = other.GetComponent<ArcherControlle>();
-            if (a != null)
-            {
-                StartCoroutine(a.dead());
-                return;
-            }
+            //ArcherControlle a = other.GetComponent<ArcherControlle>();
+            //if (a != null)
+            //{
+            //    StartCoroutine(a.dead());
+            //    return;
+            //}
         }
     }
 }

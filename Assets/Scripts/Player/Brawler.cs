@@ -18,26 +18,19 @@ public class Brawler : Player
     }
 
     public string[] animationStr;
-    public GameObject attackRange;
     public float dashSpeed = 400;
     public float shieldDuration = 3;
+    public BoxCollider[] fists;
 
-    private bool isAttacking = false;
     private bool isChargeAttack = false;
     private float chargeTimer;
     private float chargeMinTime;
-    private Coroutine attackCoro;
     private Coroutine shieldCoro;
     private bool hasShield = false;
     private float shieldTimer;
 
 
-
-    public AudioClip[] clip;
-    public AudioSource footstep;
-
-
-    public new void Start()
+    public override void Start()
     {
         base.Start();
         this.transform.rotation = Quaternion.Euler(0, -90, 0);
@@ -47,7 +40,7 @@ public class Brawler : Player
 
         this.chargeMinTime = (anim.GetClip(animationStr[(int)ANIMATION_STATE.CHARGE]).length / 3) * 2;
     }
-    public void Update()
+    public override void Update()
     {
         if (this.isDead)
             return;
@@ -92,7 +85,6 @@ public class Brawler : Player
         this.m_body.velocity = new Vector3(this.m_body.velocity.x, 0, 0);
         this.m_body.AddForce(new Vector3(0, this.jumpForce, 0), ForceMode.Impulse);
 
-
         if (!this.isAttacking && !this.hasShield)
         {
             this.anim.clip = this.currentAnim = this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.JUMP]);
@@ -114,7 +106,7 @@ public class Brawler : Player
                 Vector3 jump = new Vector3(-this.transform.right.x * this.orientation * this.bunnyHopForce, this.jumpForce, 0);
                 this.m_body.velocity = new Vector3(this.m_body.velocity.x, 0, 0);
                 this.m_body.AddForce(jump, ForceMode.Impulse);
-                //this.inTheAir = false;
+                this.canJump = true;
 
                 //this.m_audio.PlayOneShot(this.clip[3]);
                 //this.footstep.Stop();
@@ -133,13 +125,6 @@ public class Brawler : Player
             //this.m_audio.PlayOneShot(this.clip[2]);
             //this.footstep.Stop();
         }
-    }
-    public override void Kill()
-    {
-        if (this.hasShield)
-            return;
-
-        StartCoroutine(this.Dead());
     }
     public override IEnumerator Dead()
     {
@@ -198,11 +183,13 @@ public class Brawler : Player
 
         //this.m_audio.PlayOneShot(this.clip[1]);
         //this.footstep.Stop();
-        yield return new WaitForSeconds(this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.ATTACK]).length / 4);
-        this.attackRange.SetActive(true);
-        yield return new WaitForSeconds((this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.ATTACK]).length / 4) * 2);
+
+        for (int i = 0; i < this.fists.Length; i++)
+            this.fists[i].enabled = true;
+        yield return new WaitForSeconds(this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.ATTACK]).length);
         this.isAttacking = false;
-        this.attackRange.SetActive(false);
+        for (int i = 0; i < this.fists.Length; i++)
+            this.fists[i].enabled = false;
         this.attackCoro = null;
     }
     public void ChargeAttack(InputAction.CallbackContext context)
@@ -244,12 +231,14 @@ public class Brawler : Player
 
         this.anim.clip = this.currentAnim = this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.PUNCH]);
         this.anim.Play();
-        this.attackRange.SetActive(true);
-        yield return new WaitForSeconds((this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.PUNCH]).length));
 
+        for (int i = 0; i < this.fists.Length; i++)
+            this.fists[i].enabled = true;
+        yield return new WaitForSeconds((this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.PUNCH]).length));
         this.isAttacking = false;
         this.isChargeAttack = false;
-        this.attackRange.SetActive(false);
+        for (int i = 0; i < this.fists.Length; i++)
+            this.fists[i].enabled = false;
         this.attackCoro = null;
     }
     IEnumerator StopSlide(float duration)
@@ -266,5 +255,15 @@ public class Brawler : Player
     public bool IsChargedAttack()
     {
         return this.isChargeAttack;
+    }
+    public override void Kill(string tag = "")
+    {
+        this.hit.Play();
+
+        if ((tag == "AI" || tag == "BulletAI") && this.hasShield)
+            return;
+
+        this.m_body.velocity = Vector3.zero;
+        StartCoroutine(this.Dead());
     }
 }

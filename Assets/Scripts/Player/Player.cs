@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public ParticleSystem hit;
     public GameObject rain;
     private Vector3 rainPosition;
-
+    public AudioClip[] audioClip;
+    public AudioSource footstep;
 
     protected Rigidbody m_body;
     protected Animation anim;
@@ -28,17 +29,27 @@ public class Player : MonoBehaviour
     protected bool isDead = false;
     protected int joystickSide;
     protected int orientation = 1;
+    protected Coroutine attackCoro;
+    protected bool isAttacking = false;
     protected bool canJump = true;
     protected bool inTheAir = false;
     protected Coroutine rotationAnimeCoro = null;
 
-    public void Start()
+    public virtual void Start()
     {
         this.m_body = this.GetComponent<Rigidbody>();
         this.anim = this.GetComponent<Animation>();
         this.m_audio = this.GetComponent<AudioSource>();
 
         this.rainPosition = this.rain.gameObject.transform.localPosition;
+    }
+    public virtual void Update()
+    {
+        if (this.isDead)
+            return;
+
+        this.UpdateGravity();
+        this.UpdateAnimationState();
     }
     public virtual void FixedUpdate()
     {
@@ -66,7 +77,7 @@ public class Player : MonoBehaviour
     {
         this.OnDead.Invoke();
     }
-    public void Move(InputAction.CallbackContext context)
+    public virtual void Move(InputAction.CallbackContext context)
     {
         if (this.isDead)
             return;
@@ -101,6 +112,7 @@ public class Player : MonoBehaviour
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
 
+            this.m_body.velocity = new Vector3(Mathf.Clamp(this.m_body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.m_body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
             yield return null;
         }
 
@@ -112,15 +124,11 @@ public class Player : MonoBehaviour
     }
     public int Orientation { get => orientation; set => orientation = value; }
     public virtual void OnCollisionEnter(Collision collision) { throw new NotImplementedException(""); }
-    public virtual void Kill()
+    public virtual void Kill(string tag = "")
     {
+        this.hit.Play();
+        this.m_body.velocity = Vector3.zero;
         StartCoroutine(this.Dead());
     }
     public virtual IEnumerator Dead() { throw new NotImplementedException(""); }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("AI") || other.CompareTag("BulletAI"))
-            if (other.GetComponent<Collider>().GetType() != typeof(SphereCollider))
-                this.hit.Play();
-    }
 }

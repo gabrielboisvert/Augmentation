@@ -375,17 +375,6 @@
                 },
                 {
                     "name": "",
-                    "id": "93dbb12e-d045-497a-9f2e-e546a900b0fa",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Arms",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3f3c0c93-0a96-424c-b09e-11b81f96020a",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
