@@ -11,13 +11,15 @@ public class Player : MonoBehaviour
     public float movementSpeed = 50;
     public float maxMovementSpeed = 5;
     public float friction = 20;
-
     public float jumpForce = 15;
     public float bunnyHopForce = 5;
     public float maxJumpSpeed = 10;
     public float mass = 15;
-
     public float rotationSpeed = 1400;
+    public ParticleSystem hit;
+    public GameObject rain;
+    private Vector3 rainPosition;
+
 
     protected Rigidbody m_body;
     protected Animation anim;
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
     protected AnimationClip currentAnim;
     protected bool isDead = false;
     protected int joystickSide;
-    protected int orientation = -1;
+    protected int orientation = 1;
     protected bool canJump = true;
     protected bool inTheAir = false;
     protected Coroutine rotationAnimeCoro = null;
@@ -35,16 +37,18 @@ public class Player : MonoBehaviour
         this.m_body = this.GetComponent<Rigidbody>();
         this.anim = this.GetComponent<Animation>();
         this.m_audio = this.GetComponent<AudioSource>();
+
+        this.rainPosition = this.rain.gameObject.transform.localPosition;
     }
     public virtual void FixedUpdate()
     {
-        if (this.isDead)
+        if (this.isDead || this.rotationAnimeCoro != null)
             return;
 
         this.m_body.velocity = new Vector3(Mathf.Clamp(this.m_body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.m_body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
         this.m_body.AddRelativeForce(-this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime), ForceMode.VelocityChange);
     }
-    protected void updateGravity()
+    protected void UpdateGravity()
     {
         if (this.isDead)
             return;
@@ -57,7 +61,7 @@ public class Player : MonoBehaviour
         }
         this.m_body.velocity = new Vector3(xVelocity, this.m_body.velocity.y - (this.mass * Time.deltaTime), this.m_body.velocity.z);
     }
-    protected virtual void updateAnimationState() { throw new NotImplementedException(""); }
+    protected virtual void UpdateAnimationState() { throw new NotImplementedException(""); }
     protected virtual void FireDeath()
     {
         this.OnDead.Invoke();
@@ -84,9 +88,15 @@ public class Player : MonoBehaviour
         while (true)
         {
             if (this.orientation == 1)
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+            {
+                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 270, 0), this.rotationSpeed * Time.deltaTime);
+                this.rain.transform.localPosition = this.rainPosition;
+            }
             else
-                transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+            {
+                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(0, 90, 0), this.rotationSpeed * Time.deltaTime);
+                this.rain.transform.localPosition = new Vector3(-this.rainPosition.x, this.rainPosition.y, this.rainPosition.z);
+            }
 
             if (this.transform.rotation.eulerAngles.y == 90 || this.transform.rotation.eulerAngles.y == 270)
                 break;
@@ -107,4 +117,10 @@ public class Player : MonoBehaviour
         StartCoroutine(this.Dead());
     }
     public virtual IEnumerator Dead() { throw new NotImplementedException(""); }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AI") || other.CompareTag("BulletAI"))
+            if (other.GetComponent<Collider>().GetType() != typeof(SphereCollider))
+                this.hit.Play();
+    }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +25,13 @@ public class GameManager : MonoBehaviour
     public static CameraControl Cam { get => Instance.cam; set => Instance.cam = value; }
     public static void PlaySound(AudioClip clip)
     {
+        instance.StartCoroutine(instance.DeleteSound(clip));
+    }
+    public IEnumerator DeleteSound(AudioClip clip)
+    {
         GameObject sound = new GameObject("sound", typeof(AudioSource));
         sound.GetComponent<AudioSource>().PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length);
+        Destroy(sound);
     }
 }

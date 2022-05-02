@@ -52,13 +52,13 @@ public class Brawler : Player
         if (this.isDead)
             return;
 
-        this.updateGravity();
-        this.updateAnimationState();
+        this.UpdateGravity();
+        this.UpdateAnimationState();
 
         if (this.hasShield && Time.time - this.shieldTimer > this.shieldDuration && this.shieldCoro == null)
             this.shieldCoro = StartCoroutine(this.StopShield());
     }
-    protected override void updateAnimationState() 
+    protected override void UpdateAnimationState() 
     {
         if (this.joystickSide != 0)
         {
@@ -144,7 +144,7 @@ public class Brawler : Player
     public override IEnumerator Dead()
     {
         this.isDead = true;
-        //this.GetComponent<Collider>().isTrigger = true;
+        this.m_body.velocity = Vector3.zero;
 
         this.anim.clip = this.currentAnim = this.anim.GetClip(animationStr[(int)ANIMATION_STATE.DEATH]);
         this.anim.Play();

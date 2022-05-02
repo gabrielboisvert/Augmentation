@@ -6,6 +6,9 @@ public class MovingPlatform : MonoBehaviour
     protected Vector3 minimum;
     protected float startTime;
     protected bool starting = true;
+    private GameObject player;
+    private Vector3 offset;
+
     public Vector3 MaxPos { get => maxPos; set => maxPos = value; }
     public void Start()
     {
@@ -17,9 +20,15 @@ public class MovingPlatform : MonoBehaviour
         float t = (Time.time - this.startTime) / this.duration;
 
         if (this.starting)
-            transform.position = Vector3.Lerp(this.minimum, this.minimum + this.MaxPos, t);
+            this.transform.position = Vector3.Lerp(this.minimum, this.minimum + this.MaxPos, t);
         else
-            transform.position = Vector3.Lerp(this.minimum + this.MaxPos, this.minimum, t);
+            this.transform.position = Vector3.Lerp(this.minimum + this.MaxPos, this.minimum, t);
+
+        if (this.player != null)
+        {
+            this.offset = this.transform.position - this.player.transform.position;
+            this.player.transform.position = this.transform.position + this.offset;
+        }
 
         if (Time.time - this.startTime > this.duration)
         {
@@ -31,12 +40,16 @@ public class MovingPlatform : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            collision.transform.SetParent(this.transform);
+            if (collision.GetContact(0).normal == Vector3.down)
+            {
+                this.player = collision.gameObject;
+                this.offset = this.transform.position - collision.gameObject.transform.position;
+            }
     }
 
     public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            collision.transform.SetParent(null);
+            this.player = null;
     }
 }
