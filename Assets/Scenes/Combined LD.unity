@@ -6900,6 +6900,10 @@ PrefabInstance:
       value: DestructilePL_1x1_V1 (18)
       objectReference: {fileID: 0}
     - target: {fileID: 6641480294390692923, guid: dab32e14da9822f4a9cc9a2f08e5ed22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641480294390692923, guid: dab32e14da9822f4a9cc9a2f08e5ed22, type: 3}
       propertyPath: m_TagString
       value: DestructibleBlock
       objectReference: {fileID: 0}
@@ -64661,6 +64665,10 @@ PrefabInstance:
     - target: {fileID: 6641480294390692923, guid: dab32e14da9822f4a9cc9a2f08e5ed22, type: 3}
       propertyPath: m_Name
       value: DestructilePL_1x1_V1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641480294390692923, guid: dab32e14da9822f4a9cc9a2f08e5ed22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6641480294390692923, guid: dab32e14da9822f4a9cc9a2f08e5ed22, type: 3}
       propertyPath: m_TagString
