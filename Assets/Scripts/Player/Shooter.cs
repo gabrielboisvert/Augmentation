@@ -48,7 +48,6 @@ public class Shooter : Player
 
         if (this.grabbedBlock != null)
         {
-            //Interpolate
             Vector3 newPos = Vector3.MoveTowards(this.transform.position, this.grabbedBlock.transform.position, this.grabSpeed * Time.deltaTime);
             this.transform.position = newPos;
 
@@ -116,23 +115,20 @@ public class Shooter : Player
         if (this.isDead)
             return;
 
-        if (collision.gameObject.CompareTag("AI"))
+        if (collision.gameObject.CompareTag("AI") && collision.GetContact(0).normal == Vector3.up)
         {
-            if (collision.GetContact(0).normal == Vector3.up)
+            Vector3 jump = new Vector3(-this.transform.right.x * this.orientation * this.bunnyHopForce, this.jumpForce, 0);
+            this.m_body.velocity = new Vector3(this.m_body.velocity.x, 0, 0);
+            this.m_body.AddForce(jump, ForceMode.Impulse);
+            this.canJump = true;
+
+            // this.src.PlayOneShot(this.clip[3]);
+            // this.footstep.Stop();
+
+            if (!this.isGrappling && !this.isAttacking)
             {
-                Vector3 jump = new Vector3(-this.transform.right.x * this.orientation * this.bunnyHopForce, this.jumpForce, 0);
-                this.m_body.velocity = new Vector3(this.m_body.velocity.x, 0, 0);
-                this.m_body.AddForce(jump, ForceMode.Impulse);
-                this.canJump = true;
-
-                // this.src.PlayOneShot(this.clip[3]);
-                // this.footstep.Stop();
-
-                if (!this.isGrappling && !this.isAttacking)
-                {
-                    this.anim.clip = this.currentAnim = this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.JUMP]);
-                    this.anim.Play();
-                }
+                this.anim.clip = this.currentAnim = this.anim.GetClip(this.animationStr[(int)ANIMATION_STATE.JUMP]);
+                this.anim.Play();
             }
         }
         else if (collision.GetContact(0).normal == Vector3.up)

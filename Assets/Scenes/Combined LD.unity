@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 5983624}
   m_Layer: 0
   m_Name: PL_1x3_V1 (6)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540,6 +540,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -814,7 +818,7 @@ GameObject:
   - component: {fileID: 27753804}
   m_Layer: 0
   m_Name: PL_1x5_V1 (51)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1457,7 +1461,7 @@ GameObject:
   - component: {fileID: 43844071}
   m_Layer: 0
   m_Name: PL_1x5_V1 (70)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1609,7 +1613,7 @@ GameObject:
   - component: {fileID: 50645749}
   m_Layer: 0
   m_Name: PL_1x1_V1 (3)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2104,7 +2108,7 @@ GameObject:
   - component: {fileID: 60073944}
   m_Layer: 0
   m_Name: PL_1x2_V1 (17)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2339,7 +2343,7 @@ GameObject:
   - component: {fileID: 64668737}
   m_Layer: 0
   m_Name: PL_1x5_V1 (42)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2561,6 +2565,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -3552,6 +3560,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3679,7 +3691,7 @@ GameObject:
   - component: {fileID: 99721386}
   m_Layer: 0
   m_Name: PL_1x5_V1 (97)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4205,7 +4217,7 @@ GameObject:
   - component: {fileID: 116329467}
   m_Layer: 0
   m_Name: PL_1x5_V1 (47)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4554,7 +4566,7 @@ GameObject:
   - component: {fileID: 125607075}
   m_Layer: 0
   m_Name: PL_1x5_V1 (71)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5157,7 +5169,7 @@ GameObject:
   - component: {fileID: 146757318}
   m_Layer: 0
   m_Name: PL_1x5_V1 (83)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6912,7 +6924,7 @@ GameObject:
   - component: {fileID: 172849776}
   m_Layer: 0
   m_Name: PL_1x5_V1 (47)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7007,7 +7019,7 @@ GameObject:
   - component: {fileID: 174649472}
   m_Layer: 0
   m_Name: PL_1x5_V1 (1)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7171,7 +7183,7 @@ GameObject:
   - component: {fileID: 180500307}
   m_Layer: 0
   m_Name: PL_1x5_V1 (52)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8312,7 +8324,7 @@ GameObject:
   - component: {fileID: 206513005}
   m_Layer: 0
   m_Name: PL_1x2_V1 (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9287,7 +9299,7 @@ GameObject:
   - component: {fileID: 230143217}
   m_Layer: 0
   m_Name: PL_1x1_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10005,7 +10017,7 @@ GameObject:
   - component: {fileID: 259239512}
   m_Layer: 0
   m_Name: PL_1x5_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10302,7 +10314,7 @@ GameObject:
   - component: {fileID: 264132795}
   m_Layer: 0
   m_Name: PL_1x5_V1 (46)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10854,7 +10866,7 @@ GameObject:
   - component: {fileID: 271549179}
   m_Layer: 0
   m_Name: PL_1x5_V1 (70)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11153,7 +11165,7 @@ GameObject:
   - component: {fileID: 279064408}
   m_Layer: 0
   m_Name: PL_1x1_V1 (2)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11248,6 +11260,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -11750,7 +11766,7 @@ GameObject:
   - component: {fileID: 288608373}
   m_Layer: 0
   m_Name: PL_1x5_V1 (9)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11850,7 +11866,7 @@ GameObject:
   - component: {fileID: 293078572}
   m_Layer: 0
   m_Name: PL_1x5_V1 (79)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11955,7 +11971,7 @@ GameObject:
   - component: {fileID: 297727273}
   m_Layer: 0
   m_Name: PL_1x2_V1 (9)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12603,7 +12619,7 @@ GameObject:
   - component: {fileID: 318172189}
   m_Layer: 0
   m_Name: PL_1x2_V1 (16)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12920,7 +12936,7 @@ GameObject:
   - component: {fileID: 322351343}
   m_Layer: 0
   m_Name: PL_1x3_V1 (5)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13922,7 +13938,7 @@ GameObject:
   - component: {fileID: 351966452}
   m_Layer: 0
   m_Name: PL_1x1_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14084,7 +14100,7 @@ GameObject:
   - component: {fileID: 357199939}
   m_Layer: 0
   m_Name: PL_1x5_V1 (43)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14179,7 +14195,7 @@ GameObject:
   - component: {fileID: 357968352}
   m_Layer: 0
   m_Name: PL_1x5_V1 (80)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14637,7 +14653,7 @@ GameObject:
   - component: {fileID: 373212316}
   m_Layer: 0
   m_Name: PL_1x5_V1 (27)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14803,7 +14819,7 @@ GameObject:
   - component: {fileID: 377110983}
   m_Layer: 0
   m_Name: PL_1x5_V1 (74)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14898,7 +14914,7 @@ GameObject:
   - component: {fileID: 380486662}
   m_Layer: 0
   m_Name: PL_1x5_V1 (58)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14993,7 +15009,7 @@ GameObject:
   - component: {fileID: 383175190}
   m_Layer: 0
   m_Name: PL_1x5_V1 (40)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15088,7 +15104,7 @@ GameObject:
   - component: {fileID: 385237652}
   m_Layer: 0
   m_Name: PL_1x5_V1 (111)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15257,7 +15273,7 @@ GameObject:
   - component: {fileID: 391601668}
   m_Layer: 0
   m_Name: PL_1x5_V1 (30)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15894,7 +15910,7 @@ GameObject:
   - component: {fileID: 410212041}
   m_Layer: 0
   m_Name: PL_1x1_V1 (12)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16773,7 +16789,7 @@ GameObject:
   - component: {fileID: 426731668}
   m_Layer: 0
   m_Name: PL_1x5_V1 (78)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17224,6 +17240,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -18005,7 +18025,7 @@ GameObject:
   - component: {fileID: 445796638}
   m_Layer: 0
   m_Name: PL_1x5_V1 (13)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18699,7 +18719,7 @@ GameObject:
   - component: {fileID: 474440847}
   m_Layer: 0
   m_Name: PL_1x5_V1 (81)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18982,7 +19002,7 @@ GameObject:
   - component: {fileID: 477085284}
   m_Layer: 0
   m_Name: PL_1x1_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19151,7 +19171,7 @@ GameObject:
   - component: {fileID: 478677426}
   m_Layer: 0
   m_Name: PL_1x5_V1 (10)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19424,7 +19444,7 @@ GameObject:
   - component: {fileID: 483965923}
   m_Layer: 0
   m_Name: PL_1x1_V1 (26)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19693,7 +19713,7 @@ GameObject:
   - component: {fileID: 497524228}
   m_Layer: 0
   m_Name: PL_1x5_V1 (73)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20562,7 +20582,7 @@ GameObject:
   - component: {fileID: 523750168}
   m_Layer: 0
   m_Name: PL_1x1_V1 (23)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21126,7 +21146,7 @@ GameObject:
   - component: {fileID: 534097912}
   m_Layer: 0
   m_Name: PL_1x2_V1 (15)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21221,7 +21241,7 @@ GameObject:
   - component: {fileID: 534134514}
   m_Layer: 0
   m_Name: PL_1x3_V1 (2)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21884,7 +21904,7 @@ GameObject:
   - component: {fileID: 554136224}
   m_Layer: 0
   m_Name: PL_1x5_V1 (16)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21979,7 +21999,7 @@ GameObject:
   - component: {fileID: 554849831}
   m_Layer: 0
   m_Name: PL_1x5_V1 (74)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22074,7 +22094,7 @@ GameObject:
   - component: {fileID: 555232933}
   m_Layer: 0
   m_Name: PL_1x5_V1 (25)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22798,6 +22818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -22863,7 +22887,7 @@ GameObject:
   - component: {fileID: 589737369}
   m_Layer: 0
   m_Name: PL_1x1_V1 (5)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23015,7 +23039,7 @@ GameObject:
   - component: {fileID: 591400551}
   m_Layer: 0
   m_Name: PL_1x5_V1 (22)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23110,7 +23134,7 @@ GameObject:
   - component: {fileID: 591815677}
   m_Layer: 0
   m_Name: PL_1x3_V1 (1)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23210,7 +23234,7 @@ GameObject:
   - component: {fileID: 595872033}
   m_Layer: 0
   m_Name: PL_1x5_V1 (86)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23379,7 +23403,7 @@ GameObject:
   - component: {fileID: 609749789}
   m_Layer: 0
   m_Name: PL_1x1_V1 (1)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23552,7 +23576,7 @@ GameObject:
   - component: {fileID: 615050601}
   m_Layer: 0
   m_Name: PL_1x5_V1 (5)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23857,7 +23881,7 @@ GameObject:
   - component: {fileID: 617838548}
   m_Layer: 0
   m_Name: PL_1x2_V1 (2)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23952,7 +23976,7 @@ GameObject:
   - component: {fileID: 619550500}
   m_Layer: 0
   m_Name: PL_1x3_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24645,7 +24669,7 @@ GameObject:
   - component: {fileID: 639628209}
   m_Layer: 0
   m_Name: PL_1x1_V1 (13)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25623,7 +25647,7 @@ GameObject:
   - component: {fileID: 659132415}
   m_Layer: 0
   m_Name: PL_1x1_V1 (25)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25997,7 +26021,7 @@ GameObject:
   - component: {fileID: 671484532}
   m_Layer: 0
   m_Name: PL_1x5_V1 (56)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26092,7 +26116,7 @@ GameObject:
   - component: {fileID: 677099338}
   m_Layer: 0
   m_Name: PL_1x5_V1 (59)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26916,7 +26940,7 @@ GameObject:
   - component: {fileID: 693818139}
   m_Layer: 0
   m_Name: PL_1x5_V1 (100)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27011,7 +27035,7 @@ GameObject:
   - component: {fileID: 694883198}
   m_Layer: 0
   m_Name: PL_1x5_V1 (112)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27206,7 +27230,7 @@ GameObject:
   - component: {fileID: 703791512}
   m_Layer: 0
   m_Name: PL_1x3_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27665,7 +27689,7 @@ GameObject:
   - component: {fileID: 712772506}
   m_Layer: 0
   m_Name: PL_1x5_V1 (99)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28147,7 +28171,7 @@ GameObject:
   - component: {fileID: 728481193}
   m_Layer: 0
   m_Name: PL_1x1_V1 (6)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28375,7 +28399,7 @@ GameObject:
   - component: {fileID: 733541898}
   m_Layer: 0
   m_Name: PL_1x5_V1 (65)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28601,6 +28625,10 @@ PrefabInstance:
     - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_Name
       value: MovingPL_1x1_V2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
@@ -29734,7 +29762,7 @@ GameObject:
   - component: {fileID: 762485990}
   m_Layer: 0
   m_Name: PL_1x1_V1 (19)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30690,7 +30718,7 @@ GameObject:
   - component: {fileID: 786397977}
   m_Layer: 0
   m_Name: PL_1x2_V1 (7)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31074,7 +31102,7 @@ GameObject:
   - component: {fileID: 794082314}
   m_Layer: 0
   m_Name: PL_1x3_V1 (2)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31454,6 +31482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPL_1x1_V2
       objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -31661,7 +31693,7 @@ GameObject:
   - component: {fileID: 814302931}
   m_Layer: 0
   m_Name: PL_1x5_V1 (67)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32574,6 +32606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPL_1x1_V2
       objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -32787,7 +32823,7 @@ GameObject:
   - component: {fileID: 840723573}
   m_Layer: 0
   m_Name: PL_1x5_V1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33243,6 +33279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -33525,7 +33565,7 @@ GameObject:
   - component: {fileID: 856569335}
   m_Layer: 0
   m_Name: PL_1x1_V1 (7)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33927,7 +33967,7 @@ GameObject:
   - component: {fileID: 871111697}
   m_Layer: 0
   m_Name: PL_1x1_V1 (8)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34278,7 +34318,7 @@ GameObject:
   - component: {fileID: 876815992}
   m_Layer: 0
   m_Name: PL_1x5_V1 (66)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34373,7 +34413,7 @@ GameObject:
   - component: {fileID: 878441241}
   m_Layer: 0
   m_Name: PL_1x3_V1 (3)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34647,7 +34687,7 @@ GameObject:
   - component: {fileID: 892247439}
   m_Layer: 0
   m_Name: PL_1x3_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34785,6 +34825,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a151a4867c4e6e848b3d283dc4525303, type: 3}
+--- !u!1 &894278428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1853901950366195639, guid: 3962722333409d247bd6dc1fedc36da9, type: 3}
+  m_PrefabInstance: {fileID: 1775539110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &894278429
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894278428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f320009ad3accb499ab5482e29c81b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &894451742
 GameObject:
   m_ObjectHideFlags: 0
@@ -34799,7 +34863,7 @@ GameObject:
   - component: {fileID: 894451744}
   m_Layer: 0
   m_Name: PL_1x1_V1 (9)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34894,7 +34958,7 @@ GameObject:
   - component: {fileID: 895615824}
   m_Layer: 0
   m_Name: PL_1x2_V1 (3)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35672,6 +35736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -36064,7 +36132,7 @@ GameObject:
   - component: {fileID: 935015169}
   m_Layer: 0
   m_Name: PL_1x5_V1 (69)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36289,7 +36357,7 @@ GameObject:
   - component: {fileID: 946443106}
   m_Layer: 0
   m_Name: PL_1x5_V1 (24)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36699,6 +36767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -36888,7 +36960,7 @@ GameObject:
   - component: {fileID: 956349299}
   m_Layer: 0
   m_Name: PL_1x5_V1 (110)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37109,7 +37181,7 @@ GameObject:
   - component: {fileID: 959833195}
   m_Layer: 0
   m_Name: PL_1x5_V1 (55)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37509,7 +37581,7 @@ GameObject:
   - component: {fileID: 967396466}
   m_Layer: 0
   m_Name: PL_1x5_V1 (45)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37879,7 +37951,7 @@ GameObject:
   - component: {fileID: 974453933}
   m_Layer: 0
   m_Name: PL_1x1_V1 (24)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37979,7 +38051,7 @@ GameObject:
   - component: {fileID: 979301943}
   m_Layer: 0
   m_Name: PL_1x2_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38508,7 +38580,7 @@ GameObject:
   - component: {fileID: 1001370978}
   m_Layer: 0
   m_Name: PL_1x5_V1 (28)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38907,7 +38979,7 @@ GameObject:
   - component: {fileID: 1011122983}
   m_Layer: 0
   m_Name: PL_1x5_V1 (64)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39137,7 +39209,7 @@ GameObject:
   - component: {fileID: 1017797742}
   m_Layer: 0
   m_Name: PL_1x1_V1 (14)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39294,7 +39366,7 @@ GameObject:
   - component: {fileID: 1022019118}
   m_Layer: 0
   m_Name: PL_1x5_V1 (104)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40455,7 +40527,7 @@ GameObject:
   - component: {fileID: 1049395148}
   m_Layer: 0
   m_Name: PL_1x5_V1 (53)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40679,7 +40751,7 @@ GameObject:
   - component: {fileID: 1055496673}
   m_Layer: 0
   m_Name: PL_1x5_V1 (75)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41042,7 +41114,7 @@ GameObject:
   - component: {fileID: 1059180743}
   m_Layer: 0
   m_Name: PL_1x5_V1 (68)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41414,7 +41486,7 @@ GameObject:
   - component: {fileID: 1079335178}
   m_Layer: 0
   m_Name: PL_1x1_V1 (10)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41761,7 +41833,7 @@ GameObject:
   - component: {fileID: 1085805144}
   m_Layer: 0
   m_Name: PL_1x5_V1 (57)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41930,7 +42002,7 @@ GameObject:
   - component: {fileID: 1096750151}
   m_Layer: 0
   m_Name: PL_1x5_V1 (77)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43292,7 +43364,7 @@ GameObject:
   - component: {fileID: 1137997862}
   m_Layer: 0
   m_Name: PL_1x2_V1 (12)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43692,7 +43764,7 @@ GameObject:
   - component: {fileID: 1147597169}
   m_Layer: 0
   m_Name: PL_1x5_V1 (84)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43787,6 +43859,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -44068,7 +44144,7 @@ GameObject:
   - component: {fileID: 1162275306}
   m_Layer: 0
   m_Name: PL_1x5_V1 (109)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44672,7 +44748,7 @@ GameObject:
   - component: {fileID: 1190470136}
   m_Layer: 0
   m_Name: PL_1x5_V1 (7)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45728,7 +45804,7 @@ GameObject:
   - component: {fileID: 1220178219}
   m_Layer: 0
   m_Name: PL_1x2_V1 (6)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46180,7 +46256,7 @@ GameObject:
   - component: {fileID: 1228728580}
   m_Layer: 0
   m_Name: PL_1x2_V1 (5)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46773,7 +46849,7 @@ GameObject:
   - component: {fileID: 1244836522}
   m_Layer: 0
   m_Name: PL_1x5_V1 (44)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47377,7 +47453,7 @@ GameObject:
   - component: {fileID: 1254233517}
   m_Layer: 0
   m_Name: PL_1x5_V1 (61)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47538,7 +47614,7 @@ GameObject:
   - component: {fileID: 1257678218}
   m_Layer: 0
   m_Name: PL_1x2_V1 (10)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47733,7 +47809,7 @@ GameObject:
   - component: {fileID: 1261591882}
   m_Layer: 0
   m_Name: PL_1x5_V1 (3)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48899,7 +48975,7 @@ GameObject:
   - component: {fileID: 1292943753}
   m_Layer: 0
   m_Name: PL_1x5_V1 (60)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48994,7 +49070,7 @@ GameObject:
   - component: {fileID: 1293657685}
   m_Layer: 0
   m_Name: PL_1x3_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49482,6 +49558,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -50325,7 +50405,7 @@ GameObject:
   - component: {fileID: 1330909631}
   m_Layer: 0
   m_Name: PL_1x5_V1 (61)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52139,6 +52219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -52640,7 +52724,7 @@ GameObject:
   - component: {fileID: 1406525563}
   m_Layer: 0
   m_Name: PL_1x5_V1 (8)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52958,7 +53042,7 @@ GameObject:
   - component: {fileID: 1412415607}
   m_Layer: 0
   m_Name: PL_1x2_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53121,7 +53205,7 @@ GameObject:
   - component: {fileID: 1416607984}
   m_Layer: 0
   m_Name: PL_1x5_V1 (6)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54467,7 +54551,7 @@ GameObject:
   - component: {fileID: 1483235662}
   m_Layer: 0
   m_Name: PL_1x3_V1
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55029,7 +55113,7 @@ GameObject:
   - component: {fileID: 1499768676}
   m_Layer: 0
   m_Name: PL_1x1_V1 (16)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55203,7 +55287,7 @@ GameObject:
   - component: {fileID: 1501273091}
   m_Layer: 0
   m_Name: PL_1x5_V1 (75)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56471,7 +56555,7 @@ GameObject:
   - component: {fileID: 1513431349}
   m_Layer: 0
   m_Name: PL_1x5_V1 (71)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56894,7 +56978,7 @@ GameObject:
   - component: {fileID: 1520820723}
   m_Layer: 0
   m_Name: PL_1x1_V1 (11)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57360,7 +57444,7 @@ GameObject:
   - component: {fileID: 1532467644}
   m_Layer: 0
   m_Name: PL_1x5_V1 (51)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57779,6 +57863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPL_1x1_V2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -57987,7 +58075,7 @@ GameObject:
   - component: {fileID: 1556476974}
   m_Layer: 0
   m_Name: PL_1x5_V1 (88)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58213,7 +58301,7 @@ GameObject:
   - component: {fileID: 1563294784}
   m_Layer: 0
   m_Name: PL_1x5_V1 (48)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58617,6 +58705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -58830,6 +58922,10 @@ PrefabInstance:
     - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_Name
       value: MovingPL_1x1_V2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183219606897777290, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 7558232595330433072, guid: fe8b781727802a44e975179dc0d8d28c, type: 3}
       propertyPath: m_RootOrder
@@ -59106,6 +59202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -59295,7 +59395,7 @@ GameObject:
   - component: {fileID: 1589960096}
   m_Layer: 0
   m_Name: PL_1x5_V1 (41)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59390,7 +59490,7 @@ GameObject:
   - component: {fileID: 1590221954}
   m_Layer: 0
   m_Name: PL_1x2_V1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59692,7 +59792,7 @@ GameObject:
   - component: {fileID: 1592789684}
   m_Layer: 0
   m_Name: PL_1x3_V1 (1)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60030,7 +60130,7 @@ GameObject:
   - component: {fileID: 1602353893}
   m_Layer: 0
   m_Name: PL_1x5_V1 (26)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61867,7 +61967,7 @@ GameObject:
   - component: {fileID: 1652496023}
   m_Layer: 0
   m_Name: PL_1x5_V1 (59)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62131,7 +62231,7 @@ GameObject:
   - component: {fileID: 1655405701}
   m_Layer: 0
   m_Name: PL_1x5_V1 (73)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62226,7 +62326,7 @@ GameObject:
   - component: {fileID: 1655741890}
   m_Layer: 0
   m_Name: PL_1x5_V1 (82)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63155,7 +63255,7 @@ GameObject:
   - component: {fileID: 1678595382}
   m_Layer: 0
   m_Name: PL_1x5_V1 (96)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63255,7 +63355,7 @@ GameObject:
   - component: {fileID: 1678978994}
   m_Layer: 0
   m_Name: PL_1x3_V1 (7)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63519,7 +63619,7 @@ GameObject:
   - component: {fileID: 1683161655}
   m_Layer: 0
   m_Name: PL_1x5_V1 (23)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63947,7 +64047,7 @@ GameObject:
   - component: {fileID: 1698937563}
   m_Layer: 0
   m_Name: PL_1x2_V1 (13)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64042,7 +64142,7 @@ GameObject:
   - component: {fileID: 1699235040}
   m_Layer: 0
   m_Name: PL_1x1_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64980,7 +65080,7 @@ GameObject:
   - component: {fileID: 1719734247}
   m_Layer: 0
   m_Name: PL_1x2_V1 (14)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65825,7 +65925,7 @@ GameObject:
   - component: {fileID: 1742410631}
   m_Layer: 0
   m_Name: PL_1x2_V1 (19)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65925,7 +66025,7 @@ GameObject:
   - component: {fileID: 1746671535}
   m_Layer: 0
   m_Name: PL_1x5_V1 (87)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66199,7 +66299,7 @@ GameObject:
   - component: {fileID: 1754324275}
   m_Layer: 0
   m_Name: PL_1x5_V1 (93)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66699,7 +66799,7 @@ GameObject:
   - component: {fileID: 1769402714}
   m_Layer: 0
   m_Name: PL_1x5_V1 (72)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66828,7 +66928,7 @@ GameObject:
   - component: {fileID: 1770495340}
   m_Layer: 0
   m_Name: PL_1x5_V1 (69)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67042,7 +67142,7 @@ GameObject:
   - component: {fileID: 1773553944}
   m_Layer: 0
   m_Name: PL_1x5_V1 (2)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67556,7 +67656,7 @@ GameObject:
   - component: {fileID: 1787561084}
   m_Layer: 0
   m_Name: PL_1x2_V1 (8)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67882,7 +67982,7 @@ GameObject:
   - component: {fileID: 1794923030}
   m_Layer: 0
   m_Name: PL_1x2_V1 (18)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68456,7 +68556,7 @@ GameObject:
   - component: {fileID: 1811050646}
   m_Layer: 0
   m_Name: PL_1x1_V1 (20)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68587,15 +68687,15 @@ PrefabInstance:
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 2461241337389971718, guid: e0c53a26af202dd469868d6cc5a41408, type: 3}
+      objectReference: {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 2461241337389971718, guid: e0c53a26af202dd469868d6cc5a41408, type: 3}
+      objectReference: {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
     - target: {fileID: 1964376931341630425, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: players.Array.data[2]
       value: 
-      objectReference: {fileID: 2461241337389971718, guid: e0c53a26af202dd469868d6cc5a41408, type: 3}
+      objectReference: {fileID: 3160892848249808106, guid: 2a87c6182de76e845b761df85204f112, type: 3}
     - target: {fileID: 1964376931341630426, guid: 08200d3be652fe245936fe94b1310a73, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -68670,7 +68770,7 @@ GameObject:
   - component: {fileID: 1813135030}
   m_Layer: 0
   m_Name: PL_1x2_V1 (4)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68765,7 +68865,7 @@ GameObject:
   - component: {fileID: 1813289358}
   m_Layer: 0
   m_Name: PL_1x3_V1 (5)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69439,7 +69539,7 @@ GameObject:
   - component: {fileID: 1836853832}
   m_Layer: 0
   m_Name: PL_1x1_V1 (17)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69876,7 +69976,7 @@ GameObject:
   - component: {fileID: 1849860765}
   m_Layer: 0
   m_Name: PL_1x5_V1 (12)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70037,6 +70137,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -70322,7 +70426,7 @@ GameObject:
   - component: {fileID: 1861948105}
   m_Layer: 0
   m_Name: PL_1x1_V1 (18)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71025,7 +71129,7 @@ GameObject:
   - component: {fileID: 1878457866}
   m_Layer: 0
   m_Name: PL_1x5_V1 (36)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71893,7 +71997,7 @@ GameObject:
   - component: {fileID: 1910779110}
   m_Layer: 0
   m_Name: PL_1x5_V1 (6)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72117,6 +72221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -72239,7 +72347,7 @@ GameObject:
   - component: {fileID: 1928522825}
   m_Layer: 0
   m_Name: PL_1x5_V1 (50)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72417,7 +72525,7 @@ GameObject:
   - component: {fileID: 1930940769}
   m_Layer: 0
   m_Name: PL_1x2_V1 (20)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72991,7 +73099,7 @@ GameObject:
   - component: {fileID: 1955938813}
   m_Layer: 0
   m_Name: PL_1x5_V1 (85)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73314,7 +73422,7 @@ GameObject:
   - component: {fileID: 1964201951}
   m_Layer: 0
   m_Name: PL_1x5_V1 (95)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74036,6 +74144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -74584,7 +74696,7 @@ GameObject:
   - component: {fileID: 2003224790}
   m_Layer: 0
   m_Name: PL_1x2_V1 (3)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74968,7 +75080,7 @@ GameObject:
   - component: {fileID: 2011329761}
   m_Layer: 0
   m_Name: PL_1x1_V1 (21)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75518,7 +75630,7 @@ GameObject:
   - component: {fileID: 2024110057}
   m_Layer: 0
   m_Name: PL_1x2_V1 (1)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75682,6 +75794,10 @@ PrefabInstance:
     - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_Name
       value: MovingPLV_1x2_V2 1 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748957856946528685, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3273433272031476503, guid: 7046faba70a9d2b4f87d8cb3924c5a2c, type: 3}
       propertyPath: m_RootOrder
@@ -76929,7 +77045,7 @@ GameObject:
   - component: {fileID: 2060201868}
   m_Layer: 0
   m_Name: PL_1x5_V1 (49)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77875,7 +77991,7 @@ GameObject:
   - component: {fileID: 2089330948}
   m_Layer: 0
   m_Name: PL_1x1_V1 (22)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78189,7 +78305,7 @@ GameObject:
   - component: {fileID: 2091804853}
   m_Layer: 0
   m_Name: PL_1x1_V1 (15)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78715,7 +78831,7 @@ GameObject:
   - component: {fileID: 2099383680}
   m_Layer: 0
   m_Name: PL_1x5_V1 (60)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79184,7 +79300,7 @@ GameObject:
   - component: {fileID: 2108221895}
   m_Layer: 0
   m_Name: PL_1x5_V1 (62)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79911,7 +80027,7 @@ GameObject:
   - component: {fileID: 2120903752}
   m_Layer: 0
   m_Name: PL_1x5_V1 (63)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80129,7 +80245,7 @@ GameObject:
   - component: {fileID: 2129539294}
   m_Layer: 0
   m_Name: PL_1x5_V1 (11)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80224,7 +80340,7 @@ GameObject:
   - component: {fileID: 2131996128}
   m_Layer: 0
   m_Name: PL_1x5_V1 (29)
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

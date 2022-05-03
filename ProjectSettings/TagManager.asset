@@ -15,6 +15,7 @@ TagManager:
   - BulletAI
   - Tower
   - Trail
+  - Platform
   layers:
   - Default
   - TransparentFX

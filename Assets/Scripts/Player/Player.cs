@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float rotationSpeed = 1400;
     public ParticleSystem hit;
     public GameObject rain;
-    private Vector3 rainPosition;
+    protected Vector3 rainPosition;
     public AudioClip[] audioClip;
     public AudioSource footstep;
 
@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         this.m_audio = this.GetComponent<AudioSource>();
 
         this.rainPosition = this.rain.gameObject.transform.localPosition;
+
+        GameManager.Player = this.gameObject;
     }
     public virtual void Update()
     {
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour
                 this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
         }
     }
-    protected IEnumerator RotateAnimation()
+    protected virtual IEnumerator RotateAnimation()
     {
         while (true)
         {
