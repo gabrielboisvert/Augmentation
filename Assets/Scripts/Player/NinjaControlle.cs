@@ -73,6 +73,16 @@ public class NinjaControlle : Player
             this.footstep.Stop();
         }
     }
+    public override void FixedUpdate()
+    {
+        if (this.isDead || this.rotationAnimeCoro != null)
+            return;
+
+        this.m_body.velocity = new Vector3(Mathf.Clamp(this.m_body.velocity.x, -this.maxMovementSpeed, this.maxMovementSpeed), Mathf.Clamp(this.m_body.velocity.y, -this.maxJumpSpeed, this.maxJumpSpeed), 0);
+
+        if (!this.hasDash)
+            this.m_body.AddRelativeForce(-this.transform.right * (this.joystickSide * this.movementSpeed * Time.fixedDeltaTime), ForceMode.VelocityChange);
+    }
     protected override IEnumerator RotateAnimation()
     {
         while (true)
