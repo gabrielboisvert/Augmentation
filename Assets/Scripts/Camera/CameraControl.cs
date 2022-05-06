@@ -97,7 +97,8 @@ public class CameraControl : MonoBehaviour
 
     public void Awake()
     {
-        GameManager.Cam = this;
+        GameManager.CamControl = this;
+        GameManager.Cam = this.GetComponent<Camera>();
     }
     public void Start()
     {

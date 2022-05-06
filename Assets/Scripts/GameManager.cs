@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
     private FadeSceneTransition fade = null;
     private GameObject player;
     private Spawner spawner;
-    private CameraControl cam;
+    private CameraControl camControl;
+    private Camera cam;
 
     public void Awake()
     {
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
     public static FadeSceneTransition Fade { get => Instance.fade; set => Instance.fade = value; }
     public static GameObject Player { get => Instance.player; set => Instance.player = value; }
     public static Spawner Spawner { get => Instance.spawner; set => Instance.spawner = value; }
-    public static CameraControl Cam { get => Instance.cam; set => Instance.cam = value; }
+    public static CameraControl CamControl { get => Instance.camControl; set => Instance.camControl = value; }
+    public static Camera Cam { get => Instance.cam; set => Instance.cam = value; }
     public static void PlaySound(AudioClip clip)
     {
         instance.StartCoroutine(instance.DeleteSound(clip));

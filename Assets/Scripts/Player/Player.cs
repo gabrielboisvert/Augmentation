@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public delegate void DeathEvent();
     public event DeathEvent OnDead;
 
+    public const float defaultDeadzone = 0.25f;
+
     public float movementSpeed = 50;
     public float maxMovementSpeed = 5;
     public float friction = 20;
@@ -87,6 +89,9 @@ public class Player : MonoBehaviour
         Vector2 direct = context.ReadValue<Vector2>();
         direct.x = Mathf.RoundToInt(direct.x);
 
+        if (context.control.device is Gamepad)
+            direct = Player.InputWithRadialDeadZone(direct.x, direct.y);
+
         this.joystickSide = (int)direct.x;
 
         if (this.orientation != direct.x && direct.x != 0)
@@ -95,6 +100,14 @@ public class Player : MonoBehaviour
             if (this.rotationAnimeCoro == null)
                 this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
         }
+    }
+    public static Vector2 InputWithRadialDeadZone(float horizontalInput, float verticalInput, float deadzone = Player.defaultDeadzone)
+    {
+        Vector2 joystickInput = new Vector2(horizontalInput, verticalInput);
+
+        if (joystickInput.magnitude < deadzone)
+            joystickInput = Vector2.zero;
+        return joystickInput;
     }
     protected virtual IEnumerator RotateAnimation()
     {

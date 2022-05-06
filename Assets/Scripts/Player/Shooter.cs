@@ -15,6 +15,7 @@ public class Shooter : Player
 
     public string[] animationStr;
     public float grabSpeed = 10;
+    public float grapplingRange = 10;
     public GameObject arm;
     public LayerMask grapplingMask;
     public GameObject bullet;
@@ -28,6 +29,7 @@ public class Shooter : Player
 
     private bool isAiming = false;
     private Vector2 aimJoyStick;
+    private float currentArmsAngle = 0;
 
     public override void Start()
     {
@@ -169,25 +171,39 @@ public class Shooter : Player
         else if (context.canceled)
         {
             this.isAiming = false;
+            this.grapplingAim.SetPosition(0, this.arm.transform.position);
+            this.grapplingAim.SetPosition(1, this.arm.transform.position);
             this.anim.Play();
         }
 
-        this.aimJoyStick = context.ReadValue<Vector2>();
+        if (context.control.device is Gamepad)
+        {
+            Vector2 joystick = context.ReadValue<Vector2>();
+            this.aimJoyStick = Player.InputWithRadialDeadZone(Shooter.Remap(joystick.x, -1, 1, 0, Screen.width), Shooter.Remap(joystick.y, -1, 1, 0, Screen.height));
+        }
+        else
+            this.aimJoyStick = context.ReadValue<Vector2>();
+    }
+    public static float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
     private void RotateArmsUpdate()
     {
-        if (this.isDead || this.rotationAnimeCoro != null)
+        if (this.isDead || this.rotationAnimeCoro != null || !this.isAiming)
             return;
 
-        float angle = 180 - (Mathf.Atan2(this.aimJoyStick.x, this.aimJoyStick.y) * Mathf.Rad2Deg);
-        this.arm.transform.rotation = Quaternion.Euler(angle, -90, 90);
+        Vector3 screenPos = GameManager.Cam.WorldToScreenPoint(this.arm.transform.position);
+        this.currentArmsAngle = 90 + Mathf.Atan2(this.aimJoyStick.y - screenPos.y, this.aimJoyStick.x - screenPos.x) * Mathf.Rad2Deg;
 
-        if (this.orientation == 1 && angle > 180)
+        this.arm.transform.rotation = Quaternion.Euler(currentArmsAngle, -90, 90);
+
+        if (this.orientation == 1 && (this.currentArmsAngle < 0 || this.currentArmsAngle > 180 ))
         {
             this.orientation = -1;
             this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
         }
-        else if (this.orientation == -1 && angle < 180)
+        else if (this.orientation == -1 && (this.currentArmsAngle > 0 && this.currentArmsAngle < 180))
         {
             this.orientation = 1;
             this.rotationAnimeCoro = StartCoroutine(this.RotateAnimation());
@@ -196,20 +212,10 @@ public class Shooter : Player
         //Show Calculate grap
         if (this.isGrappling)
         {
+            Vector3 angle = new Vector3(Mathf.Cos((this.currentArmsAngle - 90) * Mathf.Deg2Rad), Mathf.Sin((this.currentArmsAngle - 90) * Mathf.Deg2Rad), 0);
+            
             this.grapplingAim.SetPosition(0, this.arm.transform.position);
-            this.grapplingAim.SetPosition(1, this.arm.transform.position);
-
-            RaycastHit hit;
-            if (Physics.Raycast(this.arm.transform.position, new Vector3(this.aimJoyStick.x, this.aimJoyStick.y, 0), out hit, Mathf.Infinity, this.grapplingMask))
-            {
-                this.grapplingAim.SetPosition(0, this.arm.transform.position);
-                this.grapplingAim.SetPosition(1, hit.point);
-            }
-            else
-            {
-                this.grapplingAim.SetPosition(0, this.arm.transform.position);
-                this.grapplingAim.SetPosition(1, this.arm.transform.position + new Vector3(this.aimJoyStick.x, this.aimJoyStick.y, 0) * 10);
-            }
+            this.grapplingAim.SetPosition(1, this.arm.transform.position + angle * this.grapplingRange);
         }
     }
     private IEnumerator ResetAnimation()
@@ -257,9 +263,10 @@ public class Shooter : Player
 
             this.grapplingAim.SetPosition(0, this.transform.position);
             this.grapplingAim.SetPosition(1, this.transform.position);
+            Vector3 angle = new Vector3(Mathf.Cos((this.currentArmsAngle - 90) * Mathf.Deg2Rad), Mathf.Sin((this.currentArmsAngle - 90) * Mathf.Deg2Rad), 0);
 
             RaycastHit hit;
-            if (Physics.Raycast(this.arm.transform.position, new Vector3(this.aimJoyStick.x, this.aimJoyStick.y, 0), out hit, Mathf.Infinity, this.grapplingMask))
+            if (Physics.Raycast(this.arm.transform.position, angle, out hit, this.grapplingRange, this.grapplingMask))
                 if (hit.collider.gameObject.CompareTag("GrabBlock"))
                 {
                     this.grabbedBlock = hit.collider.gameObject;
@@ -289,7 +296,8 @@ public class Shooter : Player
         if (context.started)
         {
             this.isAttacking = true;
-            this.attackTimer = this.attackSpeed;
+            if (Time.time - this.attackTimer < this.attackSpeed)
+                this.attackTimer = Time.time;
         }
         else if (context.canceled)
             this.isAttacking = false;
@@ -301,16 +309,7 @@ public class Shooter : Player
         if (Time.time - this.attackTimer > this.attackSpeed)
         {
             this.attackTimer = Time.time;
-            if (this.orientation == -1)
-            {
-                float angle = Vector3.Angle(new Vector3(this.aimJoyStick.x, this.aimJoyStick.y, 0), Vector3.up);
-                Instantiate(this.bullet, this.arm.transform.position, Quaternion.Euler(0, 0, angle + 180));
-            }
-            else
-            {
-                float angle = Vector3.Angle(new Vector3(this.aimJoyStick.x, this.aimJoyStick.y, 0), -Vector3.up);
-                Instantiate(this.bullet, this.arm.transform.position, Quaternion.Euler(0, 0, angle));
-            }
+            Instantiate(this.bullet, this.arm.transform.position, Quaternion.Euler(0, 0, this.currentArmsAngle));
         }
     }
 }
